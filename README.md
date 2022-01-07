@@ -1,2 +1,2 @@
-# ece-6045-machine-intelligence
-ece-6045-machine-intelligence
+# csci-6907-quantum-computing
+csci-6907-quantum-computing

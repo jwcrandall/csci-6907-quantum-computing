@@ -3,26 +3,194 @@
 
 \href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/review/lin-review/lin-review.html}{Linear Algebra Review}
 
-\subsubsection{Relationship between linear algebra and quantum computing}
+\subsection{Relationship between linear algebra and quantum computing}
 
-\subsubsection{Review of basic linear algebra}
+The parts of standard linear algebra we will cover in the review will include vectors, matrices, matrix-vector multiplication, matrix-matrix multiplication, span, basis, linear independence, eigenvectors, and eigenvalues.
 
-\paragraph{Part-I: Vectors, dot-products, lengths, angles, orthogonality, matrix-vector multiplication, solving \textbf{Ax=b} exactly and approximately}
+\subsection{Review of basic linear algebra parts I, II, III, and IV}
+    
+    \subsubsection{What are vectors and what do you do with them?}
+    
+    \begin{enumerate}[]
+        \item Scalar multiplication $$\begin{aligned} \alpha \mathbf{u} &=\alpha\left(u_{1}, \ldots, u_{n}\right) \\ &=\left(\alpha u_{1}, \ldots, \alpha u_{n}\right) \end{aligned}$$
+        
+        \item Vector addition $$\begin{aligned} \mathbf{u}+\mathbf{v} &=\left(u_{1}, u_{2}, \ldots, u_{n}\right)+\left(v_{1}, v_{2}, \ldots, v_{n}\right) \\ &= \left(u_{1}+v_{1}, u_{2}+v_{2}, \ldots, u_{n}+v_{n}\right) \end{aligned}$$
+        
+        \item Vector dot-product $$\begin{aligned} \mathbf{u} \cdot \mathbf{v} &=\left(u_{1}, u_{2}, \ldots, u_{n}\right) \cdot\left(v_{1}, v_{2}, \ldots, v_{n}\right) \\ &=u_{1} v_{1}+u_{2} v_{2}+\ldots+u_{n} v_{n} \end{aligned}$$
+    \end{enumerate}
+    
+    Scalars changes the magnitude of the vector, addition combines vectors, and dot-products transform multiple vectors into a scalar. Suppose we have three 3D vectors 
+    
+    $$\begin{aligned} \mathbf{u} &=\left(u_{1}, u_{2}, u_{3}\right) \\ \mathbf{v} &=\left(v_{1}, v_{2}, v_{3}\right) \\ \mathbf{w} &=\left(w_{1}, w_{2}, w_{3}\right) \end{aligned}$$
+    
+    and three scalars $\alpha, \beta, \gamma$, the linear combination becomes
+    
+    $$\begin{aligned} \alpha \mathbf{u}+\beta \mathbf{v}+\gamma \mathbf{w} &=\alpha\left(u_{1}, u_{2}, u_{3}\right)+\beta\left(v_{1}, v_{2}, v_{3}\right)+\gamma\left(w_{1}, w_{2}, w_{3}\right) \\ &=\left(\alpha u_{1}+\beta v_{1}+\gamma w_{1}, \alpha u_{2}+\beta v_{2}+\gamma w_{2}, \alpha u_{3}+\beta v_{3}+\gamma w_{3}\right) \end{aligned}$$
+    
+    Whenever you "think" vector, you should think "column" style and write $\mathbf{v}=(1,2,3)$ instead of 
+    
+    $$\mathbf{v}=\left[\begin{array}{l}1 \\ 2 \\ 3\end{array}\right].$$
+    
+    Sometimes, we'll emphasize the "row" style when it's useful by explicitly transposing the column into a row vector $\mathbf{v}^{T}=\left[\begin{array}{lll}1 & 2 & 3\end{array}\right]$.
+    
+    \subsubsection{Dot products, lengths, angles, orthogonal vectors}
+    
+    We can express the length of a vector with a dot-product:
+    
+    $$\begin{aligned}|\mathbf{u}| &=\text { length of } \mathbf{u} \\ &=\sqrt{\mathbf{u} \cdot \mathbf{u}} \end{aligned}$$
+    
+    The dot product gives us a relation with the angle between two vectors
+    
+    $$\mathbf{u} \cdot \mathbf{v}=|\mathbf{u}||\mathbf{v}| \cos (\theta)$$
+    
+    because when $\mathbf{u}=\mathbf{v}$ then 
+    
+    $$ \begin{aligned} \cos (\theta) &=\frac{\mathbf{u} \cdot \mathbf{v}}{|\mathbf{u}||\mathbf{v}|} \\
+    &=\frac{\mathbf{u} \cdot \mathbf{u}}{|\mathbf{u}||\mathbf{u}|} \\
+    &=\frac{|\mathbf{u}|^{2}}{|\mathbf{u}|^{2}} \\
+    &=1
+    \end{aligned}$$
+    
+    When $\theta=0, \cos (\theta)=1$ and is the largest possible value of the cosine. At the other extreme, the smallest value of the cosine is $0$ when the angle is $90^\circ$. Since $\cos \left(90^{\circ}\right)=0$, we can use this to define orthogonality with dot products where two vectors $\mathbf{u}$ and $\mathbf{v}$ are \textit{orthogonal} if their dot product is zero $\mathbf{u} \cdot \mathbf{v}=0$.
+    
+    \subsubsection{Matrix-vector multiplication and what it means}
+    
+    Think of the left side as the linear combination and the right side as the vector that results from the linear combination. Matrices came about by visually reorganizing the left side into 
+    
+    $$\alpha\left[\begin{array}{l}u_{1} \\ u_{2} \\ u_{3}\end{array}\right]+\beta\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]+\gamma\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]=\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{1} & v_{2} & w_{2} \\ u_{1} & v_{3} & w_{3}\end{array}\right]\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right]$$
+    
+    Since it's the same left-side (just visually) reorganized, it must equal the original right side:
 
-\paragraph{Part-II: matrix-matrix multiplication, spaces, span, basis, independence, orthogonality (again), projections}
+    $$\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{2} & v_{2} & w_{2} \\ u_{3} & v_{3} & w_{3}\end{array}\right]\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right]=\left[\begin{array}{l}\alpha u_{1}+\beta v_{1}+\gamma w_{1} \\ \alpha u_{2}+\beta v_{2}+\gamma w_{2} \\ \alpha u_{3}+\beta v_{3}+\gamma w_{3}\end{array}\right]$$
+    
+    If we give each of these names:
+    
+    $$\begin{aligned} \mathbf{A} & \triangleq\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{1} & v_{2} & w_{2} \\ u_{1} & v_{3} & w_{3}\end{array}\right] \\ \mathbf{x} & \triangleq\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right] \\ \mathbf{b} & \triangleq\left[\begin{array}{l}\alpha u_{1}+\beta v_{1}+\gamma w_{1} \\ \alpha u_{2}+\beta v_{2}+\gamma w_{2} \\ \alpha u_{3}+\beta v_{3}+\gamma w_{3}\end{array}\right] \end{aligned}$$
+    
+    Then, written in these symbols, we have $\mathbf{A x}=\mathbf{b}$, of which there are two meanings. In the first one, $\mathbf{x}$ is only incidentally a vector, and contains the scalars in the linear combination. The left side of $\mathbf{A} \mathbf{x}=\mathbf{b}$ unpacks into 
+    
+    $$\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{2} & v_{2} & w_{2} \\ u_{3} & v_{3} & w_{3}\end{array}\right]\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right]=\alpha\left[\begin{array}{l}u_{1} \\ u_{2} \\ u_{3}\end{array}\right]+\beta\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]+\gamma\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]$$
+    
+    whereas the right side is the result vector (of the linear combination):
+    
+    $$\left[\begin{array}{l}\alpha u_{1}+\beta v_{1}+\gamma w_{1} \\ \alpha u_{2}+\beta v_{2}+\gamma w_{2} \\ \alpha u_{3}+\beta v_{3}+\gamma w_{3}\end{array}\right]$$
+    
+    When we ask whether there is an $x$ vector such that $\mathbf{A x}=\mathbf{b}$, we are asking whether there is some linear combination of the column vectors to produce the vector $\mathbf{b}$. The second interpretation is a matrix transforms a vector
+    
+    $$\left[\begin{array}{ccc}\cdots & \mathbf{r}_{1} & \cdots \\ \cdots & \mathbf{r}_{2} & \cdots \\ \vdots & \vdots & \vdots \\ \cdots & \mathbf{r}_{m} & \cdots\end{array}\right] \mathbf{x}=\left[\begin{array}{c}\mathbf{r}_{1} \cdot \mathbf{x} \\ \mathbf{r}_{2} \cdot \mathbf{x} \\ \vdots \\ \mathbf{r}_{m} \cdot \mathbf{x}\end{array}\right]$$
+    
+    \subsubsection{Solving Ax=b exactly and approximately}
+    
+    In a "vector stretch"
+    
+    $$x_{1}\left[\begin{array}{l}1 \\ 4\end{array}\right]+x_{2}\left[\begin{array}{l}3 \\ 2\end{array}\right]=\left[\begin{array}{r}7.5 \\ 10\end{array}\right]$$
+    
+    we ask is there a linear combination (values of $x_1$,$x_2$) such that the linear combination on left yields the vector on the right. In this case the solution is $x_{1}=1.5, \quad x_{2}=2$. In a case where there is no solution 
+    
+    $$x_{1}\left[\begin{array}{l}1 \\ 2\end{array}\right]+x_{2}\left[\begin{array}{l}3 \\ 6\end{array}\right]=\left[\begin{array}{r}7.5 \\ 10\end{array}\right]$$
+    
+    we notice that the vector (3,6), which is the second column is in fact a multiple of the first column (1,2). Thus, it so happens that
+    
+    $$3\left[\begin{array}{l}1 \\ 2\end{array}\right]-\left[\begin{array}{l}3 \\ 6\end{array}\right]=\left[\begin{array}{l}0 \\ 0\end{array}\right]$$
+    
+    where 
+    
+    $$x_{1}\left[\begin{array}{l}1 \\ 2\end{array}\right]+x_{2}\left[\begin{array}{l}3 \\ 6\end{array}\right]=\left[\begin{array}{l}0 \\ 0\end{array}\right]$$
+    
+    has a non-zero solution $\left(x_{1}, x_{2}\right)=(3,-1)$. This means that the two columns are not independent by the definition of linear independence, and the matrix 
+    
+    $$\left[\begin{array}{ll}1 & 3 \\ 2 & 6\end{array}\right]$$
+    
+    is not full-rank. The Reduced Row Echelon Form (RREF) where 
+    
+    \begin{enumerate}
+        \item Nonzero rows appear above the zero rows.
+        \item In any nonzero row, the first nonzero entry is a one (called the leading one).
+        \item The leading one in a nonzero row appears to the left of the leading one in any lower row.
+        \item If a column contains a leading one, then all the other entries in that column are zero.
+    \end{enumerate}
+    
+    for 
+    
+    $$\left[\begin{array}{ll}1 & 3 \\ 2 & 6\end{array}\right]$$
+    
+    using elementary row operations
+    
+    \begin{enumerate}
+        \item Divide a row by a nonzero number.
+        \item Subtract a multiple of a row from another row.
+        \item Interchange two rows
+    \end{enumerate}
+    
+    (Row 2) - 2(Row 1) gives
+    
+    $$\left[\begin{array}{ll}1 & 3 \\ 0 & 0\end{array}\right]$$
 
-\paragraph{Part-III: summary of useful basic results, summary of some key theorems}
+    which contains one pivot. A pivot is any row that does not contain only zeros and its first non zero number is a 1. What do we do when no solution is possible? Consider $\mathbf{A x}=\mathbf{b}$ and $\mathbf{A}$'s columns
+    
+    $$\mathbf{A}=\left[\begin{array}{cccc}\vdots & \vdots & \ldots & \vdots \\ \mathbf{c}_{1} & \mathbf{c}_{2} & \ldots & \mathbf{c}_{n} \\ \vdots & \vdots & \ldots & \vdots\end{array}\right]$$
+    
+    In general, if $\mathbf{A} \mathbf{x}=\mathbf{b}$ does not have a solution, it means right-side vector $\mathbf{b}$ is not in the span of the columns of $\mathbf{A}$. The span of a set of vectors is all the vectors you can reach by linear combinations. Thus, there is no linear combination such that
+    
+    $$x_{1} \mathbf{c}_{1}+x_{2} \mathbf{c}_{2}+\ldots+x_{n} \mathbf{c}_{n}=\mathbf{b}$$
+    
+    Suppose we were to seek a "next best" or approximate solution $\hat{\mathbf{x}}$. The first thing to realize is that an approximate solution is still a linear combination of the columns:
+    
+    $$\hat{x}_{1} \mathbf{c}_{1}+\hat{x}_{2} \mathbf{c}_{2}+\ldots+\hat{x}_{n} \mathbf{c}_{n}=?$$
+    
+    Thus, in this example, we seek
 
-\paragraph{Part-IV: change of basis for vectors and matrices}
+    $$\hat{x}_{1}\left[\begin{array}{l}6 \\ 2 \\ 0\end{array}\right]+\hat{x}_{2}\left[\begin{array}{l}4 \\ 3 \\ 0\end{array}\right]+\hat{x}_{3}\left[\begin{array}{l}8 \\ 1 \\ 0\end{array}\right]$$
+    
+    that's closest to the desired target (5,6,3). The difference vector between the "closest" and $\mathbf{b}$ is perpendicular to every vector in the span of the columns. This is what the least-squares method exploits. Suppose $\mathbf{y}=$ the closest vector in the colspan. Let 
+    
+    $$\begin{aligned} \mathbf{z} &=\text { the difference vector } \\ &=\mathbf{b}-\mathbf{y} \end{aligned}$$
+    
+    Since $\mathbf{z}$ is perpendicular to the plane containing the columns, it's perpendicular to the columns themselves:
+    
+    $$\mathbf{c}_{1} \cdot \mathbf{z}=0$$
+    $$\mathbf{c}_{2} \cdot \mathbf{z}=0$$
+    
+    The rest of least squares stems from the observation that the columns of $\mathbf{A}$ are rows of $\mathbf{A}^{T}$. If we were to multiply $\mathbf{A}^{T}$ into $\mathbf{z}$
+    
+    $$\mathbf{A}^{T} \mathbf{z}=\left[\begin{array}{ccc}\cdots & \mathbf{c}_{1} & \cdots \\ \cdots & \mathbf{c}_{2} & \cdots \\ \vdots & \vdots & \vdots \\ \cdots & \mathbf{c}_{n} & \cdots\end{array}\right]=\left[\begin{array}{c}\mathbf{c}_{1} \cdot \mathbf{z} \\ \mathbf{c}_{2} \cdot \mathbf{z} \\ \vdots \\ \mathbf{c}_{n} \cdot \mathbf{z}\end{array}\right]=\left[\begin{array}{l}0 \\ 0 \\ 0 \\ 0\end{array}\right]$$
+    
+    plug $\mathbf{y}=\mathbf{A} \hat{\mathbf{x}}$ into $\mathbf{z}=\mathbf{b}-\mathbf{y}$ and do the algebra to get 
+    
+    $$\mathbf{A}^{T} \mathbf{b}-\mathbf{A}^{T} \mathbf{A} \hat{\mathbf{x}}=\mathbf{0}$$
+    
+    after which we get
+    
+    $$\hat{\mathbf{x}}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$$
+    
+    provided the inverse exists
+    
+    \subsubsection{Matrix-matrix multiplication and what it means}
+    
+    \subsubsection{Spaces, span, independence, basis}
+    
+    \subsubsection{Orthogonality}
+    
+    \subsubsection{Projections}
+    
+    \subsubsection{Summary of useful results}
+    
+    \subsubsection{Summary of some key theorems}
+    
+    \subsubsection{Change of basis for vectors}
+    
+    \subsubsection{Change of basis for matrices}
+    
+    \subsubsection{What basis should a (transform) matrix use?}
 
-\subsubsection{Some useful facts}
+\subsection{Some useful facts}
 
-\subsubsection{Inner-products and outer-products}
+\subsection{Inner-products and outer-products}
 
-\subsubsection{Eigenvectors and eigenvalues: a review}
+\subsection{Eigenvectors and eigenvalues: a review}
 
-\subsubsection{Unit length vectors and their importance}
+\subsection{Unit length vectors and their importance}
 
-\subsubsection{Projectors, completeness}
+\subsection{Projectors, completeness}
 
 \end{document}

@@ -418,7 +418,124 @@ The parts of standard linear algebra we will cover in the review will include ve
     
     \subsubsection{Summary of Useful Results}
     
+    \begin{itemize}
+        \item Properties of matrix multiplication:
+
+        $$
+        \begin{aligned}
+        \mathbf{A B} & \neq \mathbf{B A} & \text{Typically not commutative}\\
+        \mathbf{A}(\mathbf{B C}) &=(\mathbf{A B}) \mathbf{C} & \text{Always associative}\\
+        \mathbf{A}(\mathbf{B}+\mathbf{C}) &=(\mathbf{A B})+(\mathbf{A C}) & \text{Distributes over addition}\\
+        (\mathbf{A}+\mathbf{B}) \mathbf{C} &=(\mathbf{A} \mathbf{C})+(\mathbf{B C}) & \text{Distributes over addition}\\
+        \alpha(\mathbf{A B}) &=(\alpha \mathbf{A}) \mathbf{B}=\mathbf{A}(\alpha \mathbf{B}) & \text{Scalars move freely} 
+        \end{aligned}
+        $$
+
+        \item A different way to view matrix-matrix multiplication:
+        
+        $$
+        \mathbf{A}\left[\begin{array}{cccc} 
+        & & & \\
+        \vdots & \vdots & \vdots & \vdots \\
+        \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{n} \\
+        \vdots & \vdots & \vdots & \vdots
+        & & & \\
+        \end{array}\right]=\left[\begin{array}{cccc}
+        & & & \\
+        \vdots & \vdots & \vdots & \vdots \\
+        \mathbf{A b}_{1} & \mathbf{A b}_{2} & \cdots & \mathbf{A} \mathbf{b}_{n} \\
+        \vdots & \vdots & \vdots & \vdots \\
+        & & &
+        \end{array}\right]
+        $$
+        
+        \item Reverse order rules: 
+        
+        $$
+        \begin{aligned}
+        (\mathbf{A B})^{T} & =\mathbf{B}^{T} \mathbf{A}^{T} & \text{Transpose of a product} \\
+        (\mathbf{A B})^{-1} & =\mathbf{B}^{-1} \mathbf{A}^{-1} & \text{Inverse of a product}
+        \end{aligned}
+        $$
+        
+        \item Relationship between dot-product and angle between two vectors:
+        
+        $$
+        \cos (\theta)=\frac{\mathbf{v} \cdot \mathbf{u}}{|\mathbf{v}||\mathbf{u}|}
+        $$
+        
+        \item If $\mathbf{A}$ has orthonormal columns, then $\mathbf{A}^{T} \mathbf{A}=\mathbf{I}$ which makes  $\mathbf{A}^{-1}=\mathbf{A}^{T}$.
+        
+        \item If $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ is a collection of vectors and $\mathbf{A}$ is a matrix that has these vectors as columns, then if columns $i_{1}, i_{2}, \ldots, i_{k}$ are the pivot columns of $R R E F(\mathbf{A})$, then $\mathbf{v}_{i_{1}}, \mathbf{v}_{i_{2}}, \ldots, \mathbf{v}_{i_{k}}$ are independent vectors.
+        
+        \item The rowspace dimension (minimum number of vectors needed to span the rowspace) is the same as the colspace dimension: $\operatorname{dim}(\text{rowspace}(\mathbf{A}))=\operatorname{dim}(\operatorname{colspace}(\mathbf{A}))$
+        
+        \item A collection of mutually-orthogonal vectors is linearly independent.
+        
+        \item If the columns of $\mathbf{A}_{m \times n}$ are linearly independent, then $\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1}$ exists. This is useful in the least squares solution $\hat{\mathbf{x}}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$. In most applications, we'll typically have many more rows than columns, and so it's very likely that the columns are independent. Also, if the system $\mathbf{A x}=\mathbf{b}$ has a solution, the least squares solution is an exact solution.
+        
+        \item The Gram-Schmidt algorithm takes a collection of linearly independent vectors and produces an orthogonal (orthonormal, if tweaked) basis for the span of those vectors. Another way of saying it: it turns a non-orthogonal basis into an orthogonal one. 
+        
+        \item The following are equivalent (any one implies the other two):
+        
+        \begin{enumerate}
+            \item $\mathbf{Q}$ has orthonormal columns.
+            \item $|\mathbf{Q} \mathbf{x}|=|\mathbf{x}|$, Transformation by $\mathbf{Q}$ preserves lengths.
+            \item $(\mathbf{Q x}) \cdot(\mathbf{Q y})=\mathbf{x} \cdot \mathbf{y}$, Transformation by $\mathbf{Q}$ preserves dot-products.
+        \end{enumerate}
+    
+    \end{itemize}       
+    
     \subsubsection{Summary of Some Key Theorems}
+    
+    \begin{itemize}
+    
+        \item The main result that ties together inverses and equation solutions for square matrices: The following are equivalent (each implies any of the others) for a real matrix $\mathbf{A}_{n \times n}$.
+        
+        \begin{enumerate}
+            \item $\mathbf{A}$ is invertible (the inverse exists).
+            \item $\mathbf{A}^{T}$ is invertible.
+            \item $RREF(\mathbf{A})=\mathbf{I}$
+            \item $\operatorname{rank}(A)=n$.
+            \item The rows are linearly independent.
+            \item The columns are linearly independent.
+            \item $\operatorname{nullspace}(\mathbf{A})=\{\mathbf{0}\}$ $\triangleright \mathbf{A} \mathbf{x}=\mathbf{0}$ has $\mathbf{x}=\mathbf{0}$ as the only solution.
+            \item $\mathbf{A x}=\mathbf{b}$ has a unique solution.
+            \item $\operatorname{colspace}(\mathbf{A})=\operatorname{rowspace}(\mathbf{A})=\mathbb{R}^{n}$
+        \end{enumerate}
+        
+        \item For any matrix $\mathbf{A}_{m \times n}$, $\operatorname{rank}(\mathbf{A})=\operatorname{rank}\left(\mathbf{A}^{T} \mathbf{A}\right)$
+        
+        \item The singular value decomposition: any real matrix $\mathbf{A}_{m \times n}$ with rank r can be written as the product $\mathbf{A}=\mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^{T}$ where $\mathbf{U}_{m \times m}$ and $\mathbf{V}_{n \times n}$ are real orthogonal matrices and $\boldsymbol{\Sigma}_{m \times n}$ is a real diagonal matrix of the form
+        
+            $$
+            \boldsymbol{\Sigma}=\left[\begin{array}{ccccccc}
+            \sigma_{1} & 0 & 0 & \ldots & & & 0 \\
+            0 & \sigma_{2} & 0 & \ldots & & & 0 \\
+            \vdots & \vdots & \ddots & & & & 0 \\
+            0 & 0 & \ldots & \sigma_{r} & & \ldots & 0 \\
+            0 & \ldots & & & 0 & \ldots & 0 \\
+            0 & \ldots & & & \ldots & \ddots & 0 \\
+            0 & \ldots & & & & \ldots & 0
+            \end{array}\right]
+            $$
+        
+        \item For every linear transformation $T$ there is an equivalent matrix $\mathbf{A}$ such that $T(\mathbf{x})=\mathbf{A} \mathbf{x}$ for all $\mathbf{x}$. Think of a transformation $T(\mathbf{x})$ as something that does something to a vector. An example: square the components of a vector: $T\left(x_{1}, x_{2}, \ldots, x_{n}\right)=\left(\left(x_{1}^{2}, x_{2}^{2}, \ldots, x_{n}^{2}\right)\right$. Thus, a transformation produces another vector. A linear transformation satisfies the property: $T(\alpha \mathbf{x}+\beta \mathbf{y})=\alpha T(\mathbf{x})+\beta T(\mathbf{y})$ for all scalars $\alpha, \beta$ and all vectors $\mathbf{x}$. (The squaring example above is not linear.) Let's now expand $\mathbf{x}$ in terms of a basis like the standard basis and apply the linearity of $T$ :
+        $$
+        \begin{aligned}
+        T(\mathbf{x}) &=T\left(x_{1} \mathbf{e}_{1}+x_{2} \mathbf{e}_{2}+\ldots+x_{n} \mathbf{e}_{n}\right) \\
+        &=x_{1} T\left(\mathbf{e}_{1}\right)+x_{2} T\left(\mathbf{e}_{2}\right)+\ldots+x_{n} T\left(\mathbf{e}_{n}\right)
+        \end{aligned}
+        $$
+        What this means: once a linear transformation has taken a linear combination of the standard vectors, it is forced to produce the same linear combination of the transformed standard vectors. Thus, a linear transformations actions on standard vectors completely determine its action on any vector. This becomes the equivalent matrix (with the $T\left(\mathbf{e}_{i}\right)$'s as columns).
+        
+        \item Why should we care about linear transformations when we could instead work with their matrix representations? The linear transformation version is useful in proofs. Linear transformations generalize beyond real vectors to functions.
+        
+        \item Consider $\mathbb{R}^{n}$, the set of all $\mathrm{n}$-component vectors: Then, $\mathbb{R}^{n}$ needs exactly $n$ vectors for a basis. That is, $n$ linearly independent vectors are sufficient and necessary.
+        
+        \item If $\mathbf{w}$ is in the span of linearly independent vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{m}$, then there's a unique linear combination that expresses $\mathbf{w}$ in terms of the $\mathbf{v}_{i}$'s. To prove this, try two different linear combinations and subtract. Then use the linear independence of the $\mathbf{v}_{i}$'s.
+    
+    \end{itemize}
     
     \subsubsection{Change of Basis for Vectors}
     

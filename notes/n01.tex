@@ -3,13 +3,13 @@
 
 \href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/review/lin-review/lin-review.html}{Linear Algebra Review}
 
-\subsection{Relationship between linear algebra and quantum computing}
+\subsection{Relationship Between Linear Algebra and Quantum Computing}
 
 The parts of standard linear algebra we will cover in the review will include vectors, matrices, matrix-vector multiplication, matrix-matrix multiplication, span, basis, linear independence, eigenvectors, and eigenvalues.
 
-\subsection{Review of basic linear algebra parts I, II, III, and IV}
+\subsection{Review of Basic Linear Algebra Parts I, II, III, and IV}
     
-    \subsubsection{What are vectors and what do you do with them?}
+    \subsubsection{What are Vectors and what do you do with them?}
     
     \begin{enumerate}[]
         \item Scalar multiplication $$\begin{aligned} \alpha \mathbf{u} &=\alpha\left(u_{1}, \ldots, u_{n}\right) \\ &=\left(\alpha u_{1}, \ldots, \alpha u_{n}\right) \end{aligned}$$
@@ -33,7 +33,7 @@ The parts of standard linear algebra we will cover in the review will include ve
     
     Sometimes, we'll emphasize the "row" style when it's useful by explicitly transposing the column into a row vector $\mathbf{v}^{T}=\left[\begin{array}{lll}1 & 2 & 3\end{array}\right]$.
     
-    \subsubsection{Dot products, lengths, angles, orthogonal vectors}
+    \subsubsection{Dot Products, Lengths, Angles, Orthogonal Vectors}
     
     We can express the length of a vector with a dot-product:
     
@@ -53,7 +53,7 @@ The parts of standard linear algebra we will cover in the review will include ve
     
     When $\theta=0, \cos (\theta)=1$ and is the largest possible value of the cosine. At the other extreme, the smallest value of the cosine is $0$ when the angle is $90^\circ$. Since $\cos \left(90^{\circ}\right)=0$, we can use this to define orthogonality with dot products where two vectors $\mathbf{u}$ and $\mathbf{v}$ are \textit{orthogonal} if their dot product is zero $\mathbf{u} \cdot \mathbf{v}=0$.
     
-    \subsubsection{Matrix-vector multiplication and what it means}
+    \subsubsection{Matrix-Vector Multiplication and what it means}
     
     Think of the left side as the linear combination and the right side as the vector that results from the linear combination. Matrices came about by visually reorganizing the left side into 
     
@@ -79,7 +79,7 @@ The parts of standard linear algebra we will cover in the review will include ve
     
     $$\left[\begin{array}{ccc}\cdots & \mathbf{r}_{1} & \cdots \\ \cdots & \mathbf{r}_{2} & \cdots \\ \vdots & \vdots & \vdots \\ \cdots & \mathbf{r}_{m} & \cdots\end{array}\right] \mathbf{x}=\left[\begin{array}{c}\mathbf{r}_{1} \cdot \mathbf{x} \\ \mathbf{r}_{2} \cdot \mathbf{x} \\ \vdots \\ \mathbf{r}_{m} \cdot \mathbf{x}\end{array}\right]$$
     
-    \subsubsection{Solving Ax=b exactly and approximately}
+    \subsubsection{Solving Ax=b Exactly and Approximately}
     
     In a "vector stretch"
     
@@ -165,32 +165,275 @@ The parts of standard linear algebra we will cover in the review will include ve
     
     provided the inverse exists
     
-    \subsubsection{Matrix-matrix multiplication and what it means}
+    \subsubsection{Matrix-Matrix Multiplication and what it means}
     
-    \subsubsection{Spaces, span, independence, basis}
+    There are generally four contexts where we see matrix-matrix multiplication:
     
+    \begin{enumerate}
+        \item When the matrices represent vector-transformations and they multiply to create one matrix that does the combined transformation.
+        \item When the associative rule is used to simplify terms.
+        \item When a matrix's inverse multiplies into it to produce $\mathbf{I}$
+        \item When one matrix transforms another matrix (which is useful in understanding row operations).
+    \end{enumerate}
+    
+    Multiply-compatibility for matrix-matrix and matrix-vector multiplication. Two matrices $\mathbf{A}_{m \times n}$ and $\mathbf{B}_{n \times k}$ can be multiplied as $\mathbf{A B}$ to produce $\mathbf{C}_{m \times k}$. $\mathbf{A}_{m \times n} \mathbf{B}_{n \times k}=\mathbf{C}_{m \times k}$. Thus, $\mathbf{B}$ should have as many rows as $\mathbf{A}$ has columns. The same rule works for matrix-vector compatibility if we treat a column vector of dimension $n$ as having $n$ rows $\mathbf{A}_{m \times n} \mathbf{x}_{n \times 1}=\mathbf{b}_{m \times 1}$. The standard way we describe $\mathbf{B A}$ is 
+
+    $$
+    \left[\begin{array}{cccc}
+    b_{11} & b_{12} & \cdots & b_{1 n} \\
+    b_{21} & b_{22} & \cdots & b_{2 n} \\
+    \vdots & \vdots & & \vdots \\
+    b_{n 1} & b_{n 2} & \cdots & b_{n n}
+    \end{array}\right]\left[\begin{array}{cccc}
+    a_{11} & a_{12} & \cdots & a_{1 n} \\
+    a_{21} & a_{22} & \cdots & a_{2 n} \\
+    \vdots & \vdots & & \vdots \\
+    a_{n 1} & a_{n 2} & \cdots & a_{n n}
+    \end{array}\right]=\left[\begin{array}{cccc}
+    c_{11} & c_{12} & \cdots & c_{1 n} \\
+    c_{21} & c_{22} & \cdots & c_{2 n} \\
+    \vdots & \vdots & & \vdots \\
+    c_{n 1} & c_{n 2} & \cdots & c_{n n}
+    \end{array}\right]
+    $$    
+
+    where 
+    
+    $$c_{i j}=\sum_{k=1}^{n} b_{i k} a_{k j}$$
+    
+    (this is the element in row i, column j of $\mathbf{C}$. When unpacking the matrix $\mathbf{A}$ into its columns $\mathbf{a}_{1}, \mathbf{a}_{2}, \ldots$ then this is one useful way to describe it
+    
+    $$
+    \mathbf{B}\left[\begin{array}{cccc}
+    a_{11} & a_{12} & \cdots & a_{1 n} \\
+    a_{21} & a_{22} & \cdots & a_{2 n} \\
+    a_{31} & a_{32} & \cdots & a_{3 n} \\
+    \vdots & \vdots & \vdots & \vdots \\
+    a_{n 1} & a_{n 2} & \cdots & a_{n n}
+    \end{array}\right]=\mathbf{B}\left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \vdots & \vdots \\
+    \mathbf{a}_{1} & \mathbf{a}_{2} & \cdots & \mathbf{a}_{n} \\
+    \vdots & \vdots & \vdots & \vdots
+    \end{array}\right]=\left[\begin{array}{cccc} 
+    & & & \\
+    & & & \vdots & \vdots & \vdots \\
+    \mathbf{B a}_{1} & \mathbf{B a}_{2} & \cdots & \mathbf{B a}_{n} \\
+    \vdots & \vdots & \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    where the k-th column of the resulting $\mathbf{C}$ matrix is the vector $\mathbf{B a}_{k}$ that results from the matrix $\mathbf{B}$ multiplying vector $\mathbf{a}_{k}$. For the second context matrix multiplication turned out to be associative $\mathbf{A}(\mathbf{B C})=(\mathbf{A B}) \mathbf{C}$, however is not commutative. For the third context the inverse of a matrix $\mathbf{A}$, if it exists, is a matrix $\mathbf{A}^{-1}$ such that $\mathbf{A}^{-1} \mathbf{A}=\mathbf{I}$ where $\mathbf{I}$ is the identity matrix. 
+    
+    $$
+    \left[\begin{array}{cccc}
+    1 & 0 & \cdots & 0 \\
+    0 & 1 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & \cdots & 1
+    \end{array}\right]
+    $$
+    
+    Additionally, $\mathbf{A}^{-1}$ is defined only for square matrices, exists only if it's full rank, and is computed by identifying the row operations that reduce $\mathbf{A}$ to its Reduced Row Echelon Form (RREF). If RREF procedures reveal that $\mathbf{A}$ is not full-rank (fewer pivots than columns), then $\mathbf{A}^{-1}$ does not exist. If $\mathbf{A}$ is not square or $\mathbf{A^{-1}}$ does not exist we can utilize least-squares. In this case, $\mathbf{A}^{T} \mathbf{A}$ is square and likely to have an inverse. Recall the least-squares solution:
+    
+    $$\hat{\mathbf{x}}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$$
+    
+    Here we need the inverse $\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1}$ to exist. When there are many more rows than columns $\mathbf{A}_{m \times n}$ has a few column vectors with many dimensions. The likelihood that these are independent will be high. A somewhat difficult proof showed that if the columns of $\mathbf{A}$ are independent then $\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1}$ oes indeed exist. For the fourth context matrix-multiplication as a "matrix transformer", we multiply one matrix by another and get a third $\mathbf{A B}=\mathbf{C}$, and could interpret it as $\mathbf{A}$ transforms matrix $\mathbf{B}$ into matrix $\mathbf{C}$. Such an interpretation does turn out to be useful for theoretical purposes, as we'll see when reasoning about RREFs where there are three types of row operations
+    
+    \begin{enumerate}
+        \item Scale: divide one row by a number
+        $$
+        \mathbf{r}_{i} \leftarrow \frac{\mathbf{r}_{i}}{\alpha}
+        $$
+        \item Swap: swap two rows
+        $$
+        \begin{aligned}
+        \operatorname{temp} & \leftarrow \mathbf{r}_{i} \\
+        \mathbf{r}_{i} & \leftarrow \mathbf{r}_{j} \\
+        \mathbf{r}_{j} & \leftarrow \text { temp }
+        \end{aligned}
+        $$    
+        \item Replace a row by adding a multiple of another row.
+        $$
+        \mathbf{r}_{i} \leftarrow \mathbf{r}_{i}+\alpha \mathbf{r}_{j}
+        $$
+    \end{enumerate}
+    
+    There is also an order in which we change coefficients, always start with row 1, column 1, trying to make that element a pivot, when we're successful making an element into a pivot, we change coefficients below the pivot to zero. The search for the next pivot moves to the next row, next column. A search may not be successful, in which case we move to the next column (same row). fter the final pivot we go back to the first one and start the process of creating zeroes above each pivot. A full-rank RREF (a pivot in every column), tells us the equations have a unique solution. When we get an RREF at the end of $k$ row operations (transformations) we can describe it as $\operatorname{RREF}(\mathbf{A})=\mathbf{R}_{k} \mathbf{R}_{k-1} \cdots \mathbf{R}_{2} \mathbf{R}_{1} \mathbf{A}$ where the first row op is acheived by $\mathbf{R}_{1}$ the second is represented by $\mathbf{R}_{2}$ applied to the result, and so on. So, the question is: what do we get when applying $\mathbf{R}_{k} \mathbf{R}_{k-1} \cdots \mathbf{R}_{2} \mathbf{R}_{1} \mathbf{I}=?$ \\
+    
+    Start with $\operatorname{RREF}(\mathbf{A})=\mathbf{R}_{k} \mathbf{R}_{k-1} \ldots \mathbf{R}_{2} \mathbf{R}_{1} \mathbf{A}$ and recognize that $\operatorname{RREF}(\mathbf{A})=\mathbf{I}$, and multiply all the $\mathbf{R}_{i}$ matrices into one matrix $\mathbf{R} \triangleq \mathbf{R}_{k} \mathbf{R}_{k-1} \ldots \mathbf{R}_{2} \mathbf{R}_{1}$. The reduction to RREF can be written as $\mathbf{I}=\mathbf{R} \mathbf{A}$ which means that $\mathbf{R}$ is the inverse of $\mathbf{A}$.\\
+    
+    If we've already solved for the variables, why do we need the inverse? We started with wanting to solve $\mathbf{A x}=\mathbf{b}$ for some $\mathbf{A}$ and some $\mathbf{b}$, the given equations. We apply row reductions to get $\operatorname{RREF}(\mathbf{A})$. That gave us the solution $\mathbf{x}$. Isn't that enough? Why also compute $\mathbf{A}^{-1}$ on the right side? In applications, it turns out that very often the equations stay the same but the right side changes to $\mathbf{A} \mathbf{x}=\mathbf{c}$. We solve once to get $\mathbf{A}^{-1}$ and apply it to a new right side $\mathbf{X}=\mathbf{A}^{-1} \mathbf{c}$. In other applications like least-squares, we need to compute the inverse of matrices like $\left(\mathbf{A}^{T} \mathbf{A}\right)$.
+    
+    \subsubsection{Spaces, Span, Independence, Basis}
+    
+    The span is all the vectors you can get by linear combinations $\operatorname{span}(\mathbf{u}, \mathbf{v})=\{\mathbf{z}: \mathbf{z}=\alpha \mathbf{u}+\beta \mathbf{v}$, for some $\alpha, \beta\}$ read as "all z such that z can be expressed as a linear combination of u and v". A plane is "complete" if that it contains all linear combinations of any subset of vectors. Such a collection is called a subspace. A subspace is a collection of vectors where the linear combination of any two vectors is in the collection. A basis for a subspace is any minimal collection of vectors whose span is the subspace. Two vectors are not enough to span a 3D space. A basis for a 3D space needs three, and three that are not co-planar. We are often interested in an orthogonal basis. Consider $\mathbf{u}=(4,0,2)$ and $\left.\mathbf{r}=\left(3,-\frac{25}{2},-6\right)\right)$, $\mathbf{u} \cdot \mathbf{r}=(4,0,2) \cdot\left(3,-\frac{25}{2},-6\right)=0$. So, these two are orthogonal and because two vectors are enough for a 2D plane, they form an orthogonal basis.\\
+    
+    For orthogonal spaces, consider the vectors $\mathbf{y}$ and $\mathbf{w}$ both of which are on the same line. $\operatorname{span}(\mathbf{y}, \mathbf{w})$ is a subspace, because all linear combinations of any two vectors on this line are on the line. Consider all the vectors orthogonal to $\mathbf{y}$. These are all going to be on a plane to which the line is perpendicular. Let $\mathbf{S}$ be the subspace of vectors on this perpendicular plane. Every vector in $\mathbf{S}$ is perpendicular to every vector $\operatorname{span}(\mathbf{y}, \mathbf{w})$. Thus, $\mathbf{S}$ and span $(\mathbf{y}, \mathbf{w})$ are orthogonal subspaces $\mathbf{S}^{\perp}=\operatorname{span}(\mathbf{y}, \mathbf{w})$ and $\mathbf{S}=\operatorname{span}(\mathbf{y}, \mathbf{w})^{\perp}$.\\
+    
+    Vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ are linearly independent if the only solution to the equation $x_{1} \mathbf{v}_{1}+x_{2} \mathbf{v}_{2}+\ldots+x_{n} \mathbf{v}_{n}=\mathbf{0}$ is $x_{1}=x_{2}=\ldots=x_{n}=0$. Given a collection of vectors, we can check that they are independent by placing the vectors as columns of a matrix $\mathbf{A}$:
+    
+    $$
+    \mathbf{A}=\left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \ldots & \vdots \\
+    \mathbf{v}_{1} & \mathbf{v}_{2} & \ldots & \mathbf{v}_{n} \\
+    \vdots & \vdots & \ldots & \vdots
+    & & & \\
+    \end{array}\right]
+    $$
+    
+    so $x_{1} \mathbf{v}_{1}+x_{2} \mathbf{v}_{2}+\ldots+x_{n} \mathbf{v}_{n}=\mathbf{0}$ becomes 
+
+    $$
+    \left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \ldots & \vdots \\
+    \mathbf{v}_{1} & \mathbf{v}_{2} & \ldots & \mathbf{v}_{n} \\
+    \vdots & \vdots & \ldots & \vdots
+    \end{array}\right]\left[\begin{array}{c}
+    x_{1} \\
+    x_{2} \\
+    x_{3} \\
+    \vdots \\
+    x_{n}
+    \end{array}\right]=\left[\begin{array}{c}
+    0 \\
+    0 \\
+    0 \\
+    \vdots \\
+    0
+    \end{array}\right]
+    $$
+    
+    or, more compactly, solve $\mathbf{A x}=\mathbf{0}$. When RREF(A) = I (i.e., the RREF is full-rank), then $\mathbf{x}=\mathbf{0}$ is the only solution to $\mathbf{A x}=\mathbf{0}$. Thus, the vectors will be independent if the RREF is full-rank (a pivot in every column). This gives us a means to identify whether a collection of vectors is independent: put them in a matrix and check its RREF.\\
+    
+    To review the rowspace and colspace of a matrix consider the matrix
+    
+    $$
+    \mathbf{A}=\left[\begin{array}{ccccc}
+    1 & 1 & 1 & 0 & 3 \\
+    -1 & 0 & 1 & 1 & -1 \\
+    0 & 1 & 2 & 1 & 2 \\
+    0 & 0 & 0 & 0 & 0
+    \end{array}\right]
+    $$
+    
+    treat the rows as vectors and name them
+    
+    $$
+    \begin{aligned}
+    &\mathbf{r}_{1}=(1,1,1,0,3) \\
+    &\mathbf{r}_{2}=(-1,0,1,1,-1) \\
+    &\mathbf{r}_{3}=(0,1,2,1,2) \\
+    &\mathbf{r}_{4}=(0,0,0,0,0)
+    \end{aligned}
+    $$
+    
+    The span of these vectors is the rowspace of the matrix $\operatorname{rowspace}(\mathbf{A})=\operatorname{span}\left(\mathbf{r}_{1}, \mathbf{r}_{2}, \mathbf{r}_{3}, \mathbf{r}_{4}\right)$. That is, any linear combination of the four row vectors is in the rowspace. For example 
+    
+    $$
+    \begin{aligned}
+    2 \mathbf{r}_{1}+3 \mathbf{r}_{2}+0 \mathbf{r}_{3}+5 \mathbf{r}_{4} &=2(1,1,1,0,3)+3(-1,0,1,1,-1)+0(0,1,2,1,2)+5(0,0,0,0,0) \\
+    &=(-1,2,5,3,3)
+    \end{aligned}
+    $$
+    
+    So (−1,2,5,3,3) is a vector in the rowspace. Similarly, if we name the 5 columns $\mathbf{c}_{1}, \mathbf{c}_{2}, \mathbf{c}_{3}, \mathbf{c}_{4}, \mathbf{c}_{5}$ then the colspace is their span $\operatorname{colspace}(\mathbf{A})=\operatorname{span}\left(\mathbf{c}_{1}, \mathbf{c}_{2}, \mathbf{c}_{3}, \mathbf{c}_{4}, \mathbf{c}_{5}\right)$. When checking the dimension of the rowspace the RREF turns out to be
+    
+    $$
+    \left[\begin{array}{ccccc}
+    \mathbf{1} & 0 & -1 & -1 & 1 \\
+    0 & \mathbf{1} & 2 & 1 & 2 \\
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0
+    \end{array}\right]
+    $$
+    
+    where the rowspace of the RREF is the span of the first two rows. The key observation is that the row operations we performed do not change the rowspace of the matrices along the way from $\mathbf{A}$ to its RREF. This is because all row operations are linear combinations of rows. However, it is not true that $\operatorname{colspace}(\mathbf{A})=\operatorname{colspace}(R R E F(\mathbf{A}))$ What is true is that the size of the basis for $\operatorname{colspace}(\mathbf{A})$ is the same as the number of pivot columns. Because pivots are alone in both their rows and columns, we get the result that the dimension of the rowspace is the same as the dimension of the colspace.
+
     \subsubsection{Orthogonality}
+    
+    There are two subtopics of orthogonality that commonly appear in applications, 1. Orthogonal vectors and matrices, and 2. Projections. Two vectors $\mathbf{u}$ and $\mathbf{v}$ are orthogonal if $\mathbf{u} \cdot \mathbf{v}=0$. The definition comes from the angle between them, which is a right-angle: $\cos (\theta)=\frac{\mathbf{u} \cdot \mathbf{v}}{|\mathbf{u}||\mathbf{v}|}$. Since the lengths aren't zero, if the dot product is zero, that implies a zero cosine, or $\theta=90^{\circ}$. This definition extends to a collection of vectors: Consider vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}$. The collection is orthogonal if 
+    
+    $$
+    \begin{aligned}
+    &\mathbf{v}_{1} \cdot \mathbf{v}_{2}=0 \\
+    &\mathbf{v}_{1} \cdot \mathbf{v}_{3}=0 \\
+    &\mathbf{v}_{2} \cdot \mathbf{v}_{3}=0
+    \end{aligned}
+    $$
+    
+    Since dot-product is commutative we don't need to specify products like $\mathbf{v}_{2} \cdot \mathbf{v}_{2}=0$. Now consider the equation $\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}+\alpha_{3} \mathbf{v}_{3}=\mathbf{0}$. Does this imply that all the $\alpha$'s are zero, and therefore the $\mathbf{v}$'s are independent? Multiply (dot product) both sides by $\mathbf{v}_1$: $\mathbf{v}_{1} \cdot\left(\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}+\alpha_{3} \mathbf{v}_{3}\right)=\mathbf{v}_{1} \cdot \mathbf{0}$. The right side becomes the number 0. Do the algebra on the left side, passing the dot into the parenthesis: $\alpha_{1}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{1}\right)+\alpha_{2}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{2}\right)+\alpha_{3}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{3}\right)=0$. Because they are orthogonal, the only non-zero dot product is the first one $\alpha_{1}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{1}\right)+0+0=0$. Now apply the dot product $\mathbf{v}_{1} \cdot \mathbf{v}_{1}=\left|\mathbf{v}_{1}\right|\left|\mathbf{v}_{1}\right| \cos (0)$ and we get $\alpha_{1}\left|\mathbf{v}_{1}\right|\left|\mathbf{v}_{1}\right|=0$ which, because $\left|\mathbf{v}_{1}\right| \neq 0$, implies that, $\alpha_{1}=0$. To conclude, an orthogonal collection is linearly independent.\\
+    
+    What about complex vectors? Consider these two 3-component complex vectors $\mathbf{u}=(1+0 i,-0.5+0.866 i,-0.5-0.866 i)$, and $\mathbf{v}=(1+0 i, 1+0 i, 1+0 i)$. Their dot-product is $(1+0 i)(1-0 i)+(-0.5+0.866 i)(1-0 i)+(-0.5-0.866 i)(1-0 i)=0$. Thus, we define orthogonality between two complex vectors to mean: their dot-product is zero.\\
+    
+    To differentiate between orthogonal vs orthonormal consider two vectors $\mathbf{u}$ and $\mathbf{v}$ are orthonormal if 1. They are orthogonal, and 2. They have unit length $|\mathbf{u}|=1$, $|\mathbf{v}|=1$. An orthogonal matrix is a matrix whose columns are pairwise (all possible pairs) orthonormal. For example, consider 
+    
+    $$
+    \mathbf{A}=\left[\begin{array}{ccc}
+    4 & 4 & 6 \\
+    4 & -8 & 0 \\
+    4 & 4 & -6
+    \end{array}\right]
+    $$
+    
+    You can check that the columns are pairwise orthogonal but not orthonormal. For example: $|(4,4,4)|=\sqrt{4^{2}+4^{2}+4^{2}}=6.92820$. However, this matrix is orthonormal: 
+    
+    $$
+    \mathbf{Q}=\left[\begin{array}{ccc}
+    0.577 & 0.408 & 0.707 \\
+    0.577 & -0.816 & 0.408 \\
+    0.577 & 0 & -0.707
+    \end{array}\right]
+    $$
+    
+    The columns are pairwise orthogonal and all have unit length. What's nice about an orthogonal matrix is this: $\mathbf{Q}^{T} \mathbf{Q}=\mathbf{I}$. With the above example: 
+    
+    $$
+    \mathbf{Q}^{T} \mathbf{Q}=\left[\begin{array}{ccc}
+    0.577 & 0.577 & 0.577 \\
+    0.408 & -0.816 & 0 \\
+    0.707 & 0.408 & -0.707
+    \end{array}\right]\left[\begin{array}{ccc}
+    0.577 & 0.408 & 0.707 \\
+    0.577 & -0.816 & 0.408 \\
+    0.577 & 0 & -0.707
+    \end{array}\right]=\left[\begin{array}{lll}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+    \end{array}\right]
+    $$
+    
+    The row $i$, column $j$ entry of the product is the dot product of row i from $\mathbf{Q}^{T}$ and column $j$ from $\mathbf{Q}$. But row i from $\mathbf{Q}^{T}$ is just column i from $\mathbf{Q}$. When $i \neq j$ column i and column j from $\mathbf{Q}$ are orthonormal and so their dot-product is 0. When $\mathrm{i}=\mathrm{j}$, it's the dot-product of a column with itself, which is $1$. The important implication is that $\mathbf{Q}^{T}$ is the inverse of $\mathbf{Q}$.
     
     \subsubsection{Projections}
     
-    \subsubsection{Summary of useful results}
+    The projection of vector $\mathbf{w}$ on vector $\mathbf{v}$ is that vector $\mathbf{y}$ along $\mathbf{v}$ which will make the difference perpendicular (dot product zero): $(\mathbf{w}-\alpha \mathbf{v}) \cdot \mathbf{v}=0$. That is, there is some stretch $\alpha \mathbf{v}$ of $\mathbf{v}$ which will make the difference $\mathbf{z}$ perpendicular to $\mathbf{v}$. We can solve for the number $\alpha=\frac{\mathbf{w} \cdot \mathbf{v}}{\mathbf{v} \cdot \mathbf{v}}$. \\
     
-    \subsubsection{Summary of some key theorems}
+    Let's look at a 3D vector that's projected onto a plane whose basis is orthogonal. Think of $\mathbf{w}$ as a regular $3 \mathrm{D}$ vector sticking out into $3 \mathrm{D}$ space. Next, let $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$ be two orthogonal vectors in the x-y plane. We want to ask: what's the projection of $\mathbf{w}$ onto each of $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$ and what do those individual projections have to do with $\mathbf{y}$, the projection of $\mathbf{w}$ on the span of the two vectors? The individual projections are: $\alpha_{1} \mathbf{v}_{1}$, and $\alpha_{2} \mathbf{v}_{2}$ where $\alpha_{1}=\frac{\mathbf{w} \cdot \mathbf{v}_{1}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}}$ and $\alpha_{2}=\frac{\mathbf{w} \cdot \mathbf{v}_{2}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}}$. But the sum of these is exactly $\mathbf{y}=\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}$. Note: you cannot reconstruct the original vector $\mathbf{w}$ knowing only the individual projections $\alpha_{1} \mathbf{v}_{1}$ and $\alpha_{2} \mathbf{v}_{2}$. That's because $\mathbf{w}$ is not in the same space as $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$.\\
     
-    \subsubsection{Change of basis for vectors}
+    In the case when $\mathbf{w}$ is in the span of $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, the individual projections add up to the original vector $\mathbf{w}=\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}$. Thus, when $\mathbf{w}$ is in the span of $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, we can fully reconstruct $\mathbf{w}$ knowing only the individual projections on the basis vectors. Note: although we have used a basis for the x-y plane, the above reasoning applies to any subspace and any orthogonal basis for that subspace. Thus, in the general case we'd say that $\mathbf{w}=\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2} \ldots+\alpha_{n} \mathbf{v}_{n}$ where $\alpha_{i}=\frac{\mathbf{w} \cdot \mathbf{v}_{i}}{\mathbf{v}_{i} \cdot \mathbf{v}_{i}}$. When the $\mathbf{v}_{i}$ 's are orthonormal, they have unit length and so $\mathbf{v}_{i} \cdot \mathbf{v}_{i}=\left|\mathbf{v}_{i}\right|^{2}=1$. Which means $\alpha_{i}=\mathbf{w} \cdot \mathbf{v}_{i}$ and then $\mathbf{w}=\left(\mathbf{w} \cdot \mathbf{v}_{1}\right) \mathbf{v}_{1}+\ldots+\left(\mathbf{w} \cdot \mathbf{v}_{n}\right) \mathbf{v}_{n}$.
     
-    \subsubsection{Change of basis for matrices}
+    \subsubsection{Summary of Useful Results}
     
-    \subsubsection{What basis should a (transform) matrix use?}
+    \subsubsection{Summary of Some Key Theorems}
+    
+    \subsubsection{Change of Basis for Vectors}
+    
+    \subsubsection{Change of Basis for Matrices}
+    
+    \subsubsection{What Basis Should a (Transform) Matrix Use?}
 
-\subsection{Some useful facts}
+\subsection{Some Useful Facts}
 
-\subsection{Inner-products and outer-products}
+\subsection{Inner-Products and Outer-Products}
 
-\subsection{Eigenvectors and eigenvalues: a review}
+\subsection{Eigenvectors and Eigenvalues: A Review}
 
-\subsection{Unit length vectors and their importance}
+\subsection{Unit Length Vectors and Their Importance}
 
-\subsection{Projectors, completeness}
+\subsection{Projectors, Completeness}
 
 \end{document}

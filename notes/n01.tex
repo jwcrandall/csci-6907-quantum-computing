@@ -1094,12 +1094,605 @@ The parts of standard linear algebra we will cover in the review will include ve
     
 \subsection{Some Useful Facts}
 
+The product $\mathbf{A B}$ can be written in terms of the columns of $\mathbf{B}$ as
+
+$$
+\mathbf{A B}=\mathbf{A}\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]=\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{A} \mathbf{b}_{1} & \mathbf{A} \mathbf{b}_{2} & \cdots & \mathbf{A} \mathbf{b}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+$$
+
+That is, we stack the individual $\mathbf{A} \mathbf{b}_{i}$ products (which are vectors) as columns in the result. Let's see how this works in an example. Consider
+
+$$
+\mathbf{A B}=\left[\begin{array}{cc}
+1 & 2 \\
+0 & -3
+\end{array}\right]\left[\begin{array}{cc}
+2 & -3 \\
+0 & 1
+\end{array}\right]=\left[\begin{array}{cc}
+2 & -1 \\
+0 & -3
+\end{array}\right]
+$$
+
+The first column on the right becomes
+
+$$
+\mathbf{A} \mathbf{b}_{1}=\left[\begin{array}{cc}
+1 & 2 \\
+0 & -3
+\end{array}\right]\left[\begin{array}{l}
+2 \\
+0
+\end{array}\right]=\left[\begin{array}{l}
+2 \\
+0
+\end{array}\right]
+$$
+
+The second column becomes
+
+$$
+\mathbf{A} \mathbf{b}_{2}=\left[\begin{array}{cc}
+1 & 2 \\
+0 & -3
+\end{array}\right]\left[\begin{array}{c}
+-3 \\
+1
+\end{array}\right]=\left[\begin{array}{l}
+-1 \\
+-3
+\end{array}\right]
+$$
+
 \subsection{Inner-Products and Outer-Products}
+
+We're already familiar with an inner-product: The inner-product of two vectors (of the same dimension) is also known as the dot-product. An example with
+
+$$
+\mathbf{u}=\left[\begin{array}{l}
+1 \\
+2 \\
+3
+\end{array}\right] \quad \mathbf{v}=\left[\begin{array}{r}
+0 \\
+-1 \\
+2
+\end{array}\right]
+$$
+
+The inner (dot) product is the number $1 \times 0+2 \times-1+3 \times 2=4$. We often write the inner product as $\mathbf{u} \cdot \mathbf{v}$. But there is another way of writing this that will ultimately be more useful for us. Let's write the two vectors as a row times a column:
+
+$$
+\left[\begin{array}{lll}
+1 & 2 & 3
+\end{array}\right]\left[\begin{array}{c}
+0 \\
+-1 \\
+2
+\end{array}\right]
+$$
+
+Think of the object on the left as a single-row matrix, the transpose $\mathbf{u}^{T}=\left[\begin{array}{lll} 1 & 2 & 3 \end{array}\right]$. In effect, we are writing the inner product as: $\mathbf{u}^{T} \mathbf{v}$. Why is this useful? This puts the inner product on an equal footing with matrix-vector multiplication, which means larger expressions can be algebraically simplified using associativity and distribution. That is, think of $\mathbf{u}^{T} \mathbf{v}$ as this "matrix" product with dimensions as shown: $\mathbf{u}_{1 \times n}^{T} \mathbf{v}_{n \times 1}$. For example:
+
+$$
+\begin{aligned}
+|\mathbf{u}+\mathbf{v}|^{2} &=(\mathbf{u}+\mathbf{v})^{T}(\mathbf{u}+\mathbf{v}) \\
+&=\left(\mathbf{u}^{T}+\mathbf{v}^{T}\right)(\mathbf{u}+\mathbf{v}) \\
+&=|\mathbf{u}|^{2}+2 \mathbf{u}^{T} \mathbf{v}+|\mathbf{v}|^{2}
+\end{aligned}
+$$
+
+If we had instead only the previous inner-product definition, we would be stuck at the second line. We've seen that a row times a column is a number (the inner product). We could ask: what do we get if we multiple a column times a row? Answer: The product of a column times a row is a matrix: For example:
+
+$$
+\left[\begin{array}{l}
+1 \\
+2 \\
+3
+\end{array}\right]\left[\begin{array}{lll}
+0 & -1 & 2
+\end{array}\right]=\left[\begin{array}{lll}
+0 & -1 & 2 \\
+0 & -2 & 4 \\
+0 & -3 & 6
+\end{array}\right]
+$$
+
+This is simply all possible number multiplications. This is called the outer-product of two vectors. If $\mathbf{A}_{i j}$ is the $\mathrm{i}$-th row, $\mathrm{j}$-th column element of the resulting matrix then $\mathbf{A}_{i, j}=\mathbf{u}_{i} \mathbf{v}_{j}$. We don't even need the vectors to be of the same length, for example:
+
+$$
+\left[\begin{array}{l}
+1 \\
+2
+\end{array}\right]\left[\begin{array}{lll}
+0 & -1 & 2
+\end{array}\right]=\left[\begin{array}{lll}
+0 & -1 & 2 \\
+0 & -2 & 4
+\end{array}\right]
+$$
+
+Thus, if $\mathbf{u}$ and $\mathbf{v}$ are $\mathbf{m}$-dimensional and $\mathbf{n}$-dimensional vectors, the outer-product $\mathbf{u v}^{T}$ has dimensions $m \times n$. As we will see, outer-products are used all over quantum computing (with different notation that we will encounter).
 
 \subsection{Eigenvectors and Eigenvalues: A Review}
 
+We'll focus on the second interpretation of matrix-vector multiplication $\mathbf{A u}=\mathbf{v}$ where we'll think of the matrix $\mathbf{A}$ as transforming or "acting on" vector $\mathbf{u}$ to produce vector $\mathbf{v}$.
+
+$$
+\underset{\mathbf{A}}{\left[\begin{array}{ll}
+5 & -3 \\
+0 & -1
+\end{array}\right]}
+\underset{\mathbf{u}}{\left[\begin{array}{l}
+3 \\
+2
+\end{array}\right]}
+=
+\underset{\mathbf{v}}{\left[\begin{array}{r}
+9 \\
+-2
+\end{array}\right]}
+$$
+
+Notice that $\mathbf{v}$ has a different length and direction than $\mathbf{u}$. This is typical for a random matrix acting on a random vector. We see that $\mathbf{A x}_{i}=\lambda_{i} \mathbf{x}_{i}$. Such $\mathbf{x}_{i}$ vectors are called eigenvectors of the matrix $\mathbf{A}$, each with its associated eigenvalue $\lambda_{i}$ (a number). Thus, in the above case, A has eigenvectors
+
+$$
+\mathbf{x}_{1}=\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right] \quad \mathbf{x}_{2}=\left[\begin{array}{r}
+0.5 \\
+1
+\end{array}\right]
+$$
+
+with associated eigenvalues $\lambda_{1}=5 \quad \lambda_{2}=-1$. Here's what to remember about eigenvectors and eigenvalues. The matrix $\mathbf{A}$ in $\mathbf{A x}=\lambda \mathbf{x}$ needs to be square. Consider $\mathbf{A}_{m \times n} \mathbf{x}_{n \times 1}$. This produces a vector of dimension $m \times 1$. The only way $\mathbf{A x}=\lambda \mathbf{x}$ is if $m=n$. Some matrices will not have eigenvectors. For example, no rotation matrix can possibly leave a vector in the same direction. Most math textbooks focus on hand-calculating eigenvalues using the so-called characteristic equation. In practice, eigenvectors/values are almost always computed using numerical algorithms. \\
+
+Let's examine the special case when when the matrix of interest is symmetric (i.e., $\mathbf{A}^{T}=\mathbf{A}$ ). The spectral theorem (as it's called) tells us that. All its eigenvalues $\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}$ (with possible multiplicities) are real. There exist $n$ corresponding eigenvectors $\mathbf{x}_{1}, \mathbf{x}_{2}, \ldots, \mathbf{x}_{n}$ such that the matrix
+
+$$
+\mathbf{S} \triangleq\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{x}_{1} & \mathbf{x}_{2} & \cdots & \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+\end{array}\right]
+$$
+
+is orthonormal (making them a basis for the space). This is not at all obvious. Surprisingly, this is easier to prove with complex-number matrices. Now, suppose we place the eigenvalues from above diagonally in a matrix $\boldsymbol{\Lambda}$.
+
+$$
+\boldsymbol{\Lambda}=\left[\begin{array}{cccc}
+\lambda_{1} & 0 & & 0 \\
+0 & \lambda_{2} & & 0 \\
+\vdots & & \ddots & \\
+0 & 0 & & \lambda_{n}
+\end{array}\right]
+$$
+
+(with the eigenvalues on the diagonal) then $\mathbf{A S}=\mathbf{S} \boldsymbol{\Lambda}$. It is conventional to renumber the indices so that the eigenvalues are sorted along the diagonal from large to small. Since $\mathbf{A x}_{i}=\lambda_{i} \mathbf{x}_{i}$ you can check that $\text { AS }=\text { S } \boldsymbol{\Lambda}$ (with the eigenvalue matrix appearing on the right side). Then, multiply both sides by $\mathbf{S}^{-1}$ on the right to get $A=S \Lambda S^{-1}$. Because $\mathbf{S}$ has orthonormal columns, $\mathbf{S}^{-1}=\mathbf{S}^{T}$. Which means we can write $\mathbf{A}=\mathbf{S} \mathbf{\Lambda} \mathbf{S}^{T}$. This is sometimes called the diagonalization of the the matrix $\mathbf{A}$. Let's look at an example of a symmetric matrix:
+
+$$
+\mathbf{A}=\left[\begin{array}{lll}
+2 & 1 & 3 \\
+1 & 0 & 1 \\
+3 & 1 & 2
+\end{array}\right]
+$$
+
+For this case, it turns out that the
+
+$$
+\mathbf{x}_{1}=\left[\begin{array}{l}
+0.684 \\
+0.255 \\
+0.684
+\end{array}\right] \quad \mathbf{x}_{2}=\left[\begin{array}{c}
+0.18 \\
+-0.967 \\
+0.18
+\end{array}\right] \quad \mathbf{x}_{3}=\left[\begin{array}{c}
+0.707 \\
+0 \\
+-0.707
+\end{array}\right]
+$$
+
+are the orthonormal eigenvectors with corresponding eigenvalues
+
+$$
+\lambda_{1}=5.372 \quad \lambda_{2}=-0.372 \quad \lambda_{3}=-1
+$$
+
+Which means we can write
+
+$$
+\underset{\mathbf{A}}{\left[\begin{array}{lll}
+2 & 1 & 3 \\
+1 & 0 & 1 \\
+3 & 1 & 2
+\end{array}\right]}
+=
+\underset{\mathbf{S}}{\left[\begin{array}{ccc}
+0.684 & 0.18 & 0.707 \\
+0.255 & -0.967 & 0 \\
+0.684 & 0.18 & -0.707
+\end{array}\right]}
+\underset{\mathbf{\Lambda}}{\left[\begin{array}{ccc}
+5.372 & 0 & 0 \\
+0 & -0.372 & 0 \\
+0 & 0 & -1
+\end{array}\right]}
+\underset{\mathbf{S}^{\mathrm{T}}}{\left[\begin{array}{ccc}
+0.684 & 0.255 & 0.684 \\
+0.18 & -0.967 & 0.18 \\
+0.707 & 0 & -0.707
+\end{array}\right]}
+$$
+
+It turns out we can express the (symmetric) matrix $\mathbf{A}$ above using outer-products of the eigenvectors. Let's go back to $\mathbf{A}=\mathbf{S} \mathbf{\Lambda} \mathbf{S}^{T}$ and write
+
+$$
+\mathbf{S} \mathbf{\Lambda}=\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{x}_{1} & \mathbf{x}_{2} & \cdots & \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+\left[\begin{array}{cccc}
+\lambda_{1} & 0 & & 0 \\
+0 & \lambda_{2} & & 0 \\
+\vdots & & \ddots & \\
+0 & 0 & & \lambda_{n}
+\end{array}\right]
+=
+\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\lambda_{1} \mathbf{x}_{1} & \lambda_{2} \mathbf{x}_{2} & \cdots & \lambda_{n} \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+$$
+
+Therefore
+
+$$
+\mathbf{A}=\mathbf{S} \mathbf{\Lambda} \mathbf{S}^{T}=\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\lambda_{1} \mathbf{x}_{1} & \lambda_{2} \mathbf{x}_{2} & \ldots & \lambda_{n} \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+\left[\begin{array}{ccc}
+\ldots & \mathbf{x}_{1}^{T} & \ldots \\
+\ldots & \mathbf{x}_{2}^{T} & \ldots \\
+& \vdots & \\
+\ldots & \mathbf{x}_{n}^{T} & \ldots
+\end{array}\right]=\sum_{i=1}^{n} \lambda_{i} \mathbf{x}_{i} \mathbf{x}_{i}^{T}
+$$
+
+For our $3 \times 3$ matrix $\mathbf{A}$ example:
+
+$$
+\begin{aligned}
+\mathbf{A}=& \sum_{i=1}^{3} \lambda_{i} \mathbf{x}_{i} \mathbf{x}_{i}^{T} \\
+=& \lambda_{1} \mathbf{x}_{1} \mathbf{x}_{1}^{T}+\lambda_{2} \mathbf{x}_{2} \mathbf{x}_{2}^{T}+\lambda_{3} \mathbf{x}_{3} \mathbf{x}_{3}^{T} \\
+=& 5.372\left[\begin{array}{c}
+0.684 \\
+0.255 \\
+0.684
+\end{array}\right]\left[\begin{array}{llll}
+0.684 & 0.255 & 0.684
+\end{array}\right] \\
+&-0.372\left[\begin{array}{c}
+0.18 \\
+-0.967 \\
+0.18
+\end{array}\right]\left[\begin{array}{llll}
+0.18 & -0.967 & 0.18
+\end{array}\right] \\
+&-1\left[\begin{array}{c}
+0.707 \\
+0 \\
+-0.707
+\end{array}\right]\left[\begin{array}{lll}
+0.707 & 0 & -0.707
+\end{array}\right]
+\end{aligned}
+$$
+
+Each outer-product is matrix. Let's expand to make this clear:
+
+$$
+\mathbf{A}=5.372\left[\begin{array}{ccc}
+0.468 & 0.174 & 0.468 \\
+0.174 & 0.065 & 0.174 \\
+0.468 & 0.174 & 0.468
+\end{array}\right]-0.372\left[\begin{array}{ccc}
+0.032 & -0.174 & 0.032 \\
+-0.174 & 0.935 & -0.174 \\
+0.032 & -0.174 & 0.032
+\end{array}\right]-1\left[\begin{array}{ccc}
+0.5 & 0 & -0.5 \\
+0 & 0 & 0 \\
+-0.5 & 0 & 0.5
+\end{array}\right]
+$$
+
+Why is this useful? Two reasons. The first reason is to approximate and simplify a matrix. Outside of quantum computing, large eigenvalues can indicate what "matters" in a matrix. Thus, in the above case, the first term can be computed as
+
+$$
+5.372\left[\begin{array}{lll}
+0.468 & 0.174 & 0.468 \\
+0.174 & 0.065 & 0.174 \\
+0.468 & 0.174 & 0.468
+\end{array}\right]=\left[\begin{array}{lll}
+2.513 & 0.937 & 2.513 \\
+0.937 & 0.349 & 0.937 \\
+2.513 & 0.937 & 2.513
+\end{array}\right] \approx\left[\begin{array}{lll}
+2 & 1 & 3 \\
+1 & 0 & 1 \\
+3 & 1 & 2
+\end{array}\right]=\mathbf{A}
+$$
+
+Which is a first-order approximation of the original matrix $\mathbf{A}$. In quantum computing and quantum mechanics, however, this eigenvector outerproduct expression is an essential part of the theory. The act of measuring, a very strange aspect of the fundamental theory, will use such outerproducts.
+
 \subsection{Unit Length Vectors and Their Importance}
 
+A unit-length vector $\mathbf{v}$ has $|\mathbf{v}|=\sqrt{\mathbf{v} \cdot \mathbf{v}}=1$ which implies $\mathbf{v} \cdot \mathbf{v}=1$. The importance of unit-length in quantum computing (and mechanics): Unit-length vectors are the only kind of vector used in quantum computing (and mechanics). The reason is convenience. Unit lengths simplify calculations and terms you have to carry around. Let's look at an example of such a simplification: Recall how we computed the projection of a vector $\mathbf{u}$ on $\mathbf{v}$. The projection of $\mathbf{u}$ along $\mathbf{v}$ is:
+
+$$
+\begin{aligned}
+\mathbf{y} &=\alpha \mathbf{v} \\
+&=\left(\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}}\right) \mathbf{v}
+\end{aligned}
+$$
+
+When $\mathbf{v}$ has unit length, this becomes $\mathbf{y}=(\mathbf{v} \cdot \mathbf{u}) \mathbf{v}$. Unit lengths also simplify orthogonal bases. The basis
+
+$$
+\mathbf{w}_{1}=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right] \quad \mathbf{w}_{2}=\left[\begin{array}{r}
+-\sqrt{3} \\
+1
+\end{array}\right]
+$$
+
+is orthogonal (Check: $\mathbf{w}_{1} \cdot \mathbf{w}_{2}=0$ ). But neither vector is of unit length. Which means that if we place them as columns in a matrix
+
+$$
+\mathbf{X}=\left[\begin{array}{cc}
+\vdots & \vdots \\
+\mathbf{w}_{1} & \mathbf{w}_{2} \\
+\vdots & \vdots
+\end{array}\right]=\left[\begin{array}{cc}
+1 & -\sqrt{3} \\
+\sqrt{3} & 1
+\end{array}\right]
+$$
+
+then the transpose is not quite the inverse:
+
+$$
+\mathbf{X}^{T} \mathbf{X}=\left[\begin{array}{cc}
+1 & \sqrt{3} \\
+-\sqrt{3} & 1
+\end{array}\right]\left[\begin{array}{cc}
+1 & -\sqrt{3} \\
+\sqrt{3} & 1
+\end{array}\right]=\left[\begin{array}{ll}
+4 & 0 \\
+0 & 4
+\end{array}\right]
+$$
+
+It is easy to convert an orthogonal basis to an orthonormal basis: divide each vector by its length. Thus, define
+
+$$
+\mathbf{v}_{1}=\frac{\mathbf{w}_{1}}{\left|\mathbf{w}_{1}\right|}=\left[\begin{array}{r}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]
+$$
+
+and
+
+$$
+\mathbf{v}_{2}=\frac{\mathbf{w}_{2}}{\left|\mathbf{w}_{2}\right|}=\left[\begin{array}{c}
+-\frac{\sqrt{3}}{2} \\
+\frac{1}{2}
+\end{array}\right]
+$$
+
+Then, if we define
+
+$$
+\mathbf{Y}=\left[\begin{array}{cc}
+\vdots & \vdots \\
+\mathbf{v}_{1} & \mathbf{v}_{2} \\
+\vdots & \vdots
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]
+$$
+
+we see that
+
+$$
+\mathbf{Y}^{T} \mathbf{Y}=\left[\begin{array}{cc}
+\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+-\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]\left[\begin{array}{cc}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1
+\end{array}\right]=\mathbf{I}
+$$
+
 \subsection{Projectors, Completeness}
+
+Let's revisit projection on unit-length vectors: Consider the projection of vector $\mathbf{u}$ (not necessarly unit-length along unit-length vector $\mathbf{v}_{1}$. We've seen that the projected vector $\mathbf{y}_{1}$ is
+
+$$
+\begin{aligned}
+\mathbf{y}_{1} &=\left(\mathbf{v}_{1} \cdot \mathbf{u}\right) \mathbf{v}_{1} \\
+&=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1}
+\end{aligned}
+$$
+
+Note: The customary denominator in the projection coefficient, the squared length of $\mathbf{v}_{1}$ is now $1$. We've written the dot-product in row-column form. In our example,
+
+$$
+\begin{aligned}
+\mathbf{y}_{1} &=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1} \\
+&=\left(\left[\begin{array}{ll}
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]\right)\left[\begin{array}{c}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]=2\left[\begin{array}{r}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right]
+\end{aligned}
+$$
+
+One could think of $\mathbf{y}_{1}$ as the resulting vector obtained (through projection on $\mathbf{v}_{1}$ ) from the vector $\mathbf{u}$. We can then ask: is there a matrix $\mathbf{P}_{1}$ that would achieve this transformation, i.e. $\mathbf{y}_{1}=\mathbf{P}_{1} \mathbf{u}$? We could call such a matrix a projector matrix. Observe that
+
+$$
+\begin{aligned}
+\mathbf{y}_{1} &=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1} & & \text { From earlier } \\
+&=\mathbf{v}_{1}\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) & & \text { The scalar in parens can be moved } \\
+&=\left(\mathbf{v}_{1} \mathbf{v}_{1}^{T}\right) \mathbf{u} & & \text { Associativity of matrix multiplication }
+\end{aligned}
+$$
+
+But we've seen that the outerproduct $\mathbf{v}_{1} \mathbf{v}_{1}^{T}$ is in fact a matrix. So, let's define $\mathbf{P}_{1} \triangleq \mathbf{v}_{1} \mathbf{v}_{1}^{T}$
+
+In our example:
+
+$$
+\mathbf{v}_{1} \mathbf{v}_{1}^{T}=\left[\begin{array}{c}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]\left[\begin{array}{ll}
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right] \triangleq \mathbf{P}_{1}
+$$
+
+Then,
+
+$$
+\mathbf{P}_{1} \mathbf{u}=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right]=\mathbf{y}_{1}
+$$
+
+Now consider projecting a vector $\mathbf{u}$ onto every vector in an orthonormal basis $\mathbf{v}_{1}, \ldots, \mathbf{v}_{n}$:
+
+Note how the projections add up to the original vector: $\mathbf{y}_{1}+\mathbf{y}_{2}=\mathbf{u}$. The projector matrices are:
+
+$$
+\begin{aligned}
+&\mathbf{P}_{1}=\mathbf{v}_{1} \mathbf{v}_{1}^{T}=\left[\begin{array}{c}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]\left[\begin{array}{ll}
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right] \quad=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right] \\
+&\mathbf{P}_{2}=\mathbf{v}_{2} \mathbf{v}_{2}^{T}=\left[\begin{array}{c}
+\frac{-\sqrt{3}}{2} \\
+\frac{1}{2}
+\end{array}\right]\left[\begin{array}{ll}
+-\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{3}{4} & \frac{-\sqrt{3}}{4} \\
+\frac{-\sqrt{3}}{4} & \frac{1}{4}
+\end{array}\right]
+\end{aligned}
+$$
+
+Applying them in this example gives us
+
+$$
+\begin{aligned}
+&\mathbf{y}_{1}=\mathbf{P}_{1} \mathbf{u}=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right]=\left[\begin{array}{c}
+1 \\
+-\frac{1}{\sqrt{3}}
+\end{array}\right]=\mathbf{y}_{1} \\
+&\mathbf{y}_{2}=\mathbf{P}_{2} \mathbf{u}=\left[\begin{array}{cc}
+\frac{3}{4} & \frac{-\sqrt{3}}{4} \\
+\frac{-\sqrt{3}}{4} & \frac{1}{4}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]=\mathbf{y}_{2}
+\end{aligned}
+$$
+
+We'll next describe a property called completeness for projectors: First, let's recall that a vector is the sum of its projections on any orthonormal basis:
+$\mathbf{u}=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1}+\ldots\left(\mathbf{v}_{n}^{T} \mathbf{u}\right) \mathbf{v}_{n}$. Why is this true? This comes from first writing $\mathbf{u}$ in terms of the basis: $\mathbf{u}=\alpha_{1} \mathbf{v}_{1}+\ldots \alpha_{n} \mathbf{v}_{n}$. Now multiply from the left by $\mathbf{v}_{i}^{T}$ to get $\alpha_{i}=\mathbf{v}_{i}^{T} \mathbf{u}$. Since $\mathbf{v}_{i}^{T} \mathbf{u}$ is a number we can rewrite and use associativity
+
+$$
+\begin{aligned}
+\mathbf{u} &=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1}+\ldots+\left(\mathbf{v}_{n}^{T} \mathbf{u}\right) \mathbf{v}_{n} \\
+&=\mathbf{v}_{1}\left(\mathbf{v}_{1}^{T} \mathbf{u}\right)+\ldots+\mathbf{v}_{n}\left(\mathbf{v}_{n}^{T} \mathbf{u}\right) \\
+&=\left(\mathbf{v}_{1} \mathbf{v}_{1}^{T}\right) \mathbf{u}+\ldots+\left(\mathbf{v}_{n} \mathbf{v}_{n}^{T}\right) \mathbf{u} \\
+&=\left(\mathbf{v}_{1} \mathbf{v}_{1}^{T}+\ldots+\mathbf{v}_{n} \mathbf{v}_{n}^{T}\right) \mathbf{u}
+\end{aligned}
+$$
+
+Which means the sum of projector matrices $\mathbf{v}_{i} \mathbf{v}_{i}^{T}$ is the identity matrix: $\mathbf{v}_{1} \mathbf{v}_{1}^{T}+\ldots+\mathbf{v}_{n} \mathbf{v}_{n}^{T}=\mathbf{I}$. This is sometimes called the completeness theorem for projectors. We will make frequent use of this result.
 
 \end{document}

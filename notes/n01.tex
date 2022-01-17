@@ -3,6 +3,14 @@
 
 \href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/review/lin-review/lin-review.html}{Linear Algebra Review}
 
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review1.html}{Linear Algebra Review Basics Part I}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review2.html}{Linear Algebra Review Basics Part II}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review3.html}{Linear Algebra Review Basics Part III}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review4.html}{Linear Algebra Review Basics Part IV}
+
 \subsection{Relationship Between Linear Algebra and Quantum Computing}
 
 The parts of standard linear algebra we will cover in the review will include vectors, matrices, matrix-vector multiplication, matrix-matrix multiplication, span, basis, linear independence, eigenvectors, and eigenvalues.
@@ -539,10 +547,551 @@ The parts of standard linear algebra we will cover in the review will include ve
     
     \subsubsection{Change of Basis for Vectors}
     
+    Suppose $B$ denotes a basis with vectors $\mathbf{b}_{1}$ and $\mathbf{b}_{2}$ where
+    
+    $$
+    \mathbf{b}_{1}=\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right] \quad \mathbf{b}_{2}=\left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right]
+    $$
+    
+    Next, suppose $C$ denotes a basis with vectors $\mathbf{c}_{1}$ and $\mathbf{c}_{2}$ where 
+    
+    $$
+    \mathbf{c}_{1}=\left[\begin{array}{l}
+    2 \\
+    4
+    \end{array}\right] \quad \mathbf{c}_{2}=\left[\begin{array}{l}
+    3 \\
+    1
+    \end{array}\right]
+    $$
+    
+    Then, if $\mathbf{u}$ is the vector $(4,3)$, we can express $\mathbf{u}$ in either basis:
+    
+    $$
+    \begin{aligned}
+    &\mathbf{u}=4 \mathbf{b}_{1}+3 \mathbf{b}_{2}=4\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right]+3\left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right] \\
+    &\mathbf{u}=0.5 \mathbf{c}_{1}+1 \mathbf{c}_{2}=0.5\left[\begin{array}{l}
+    2 \\
+    4
+    \end{array}\right]+1\left[\begin{array}{l}
+    3 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    The coordinates of $\mathbf{u}$ in basis $B$ are $(4,3)$. The coordinates of $\mathbf{u}$ in basis $C$ are $(0.5,1)$. We can write these statements in matrix form by placing the basis vectors as columns:
+    
+    $$
+    \begin{aligned}
+    &\mathbf{u}=\left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right] \\
+    &\mathbf{u}=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    The vector $\mathbf{u}$ exists (as an arrow) without being codified numerically in a basis: It has a length. And it has an orientation (direction). To express a vector numerically, we need to pick a basis. The numbers then obtained are the coordinates of the vector in the basis selected. Thus, if we select $B$ as a basis, then $\mathbf{u}$ gets "numerified" as (4,3), the coordinates in $B$ (the coefficients in the linear combination). If we instead select $C$, $\mathbf{u}$ gets "numerified" as (0.5,1).\\
+    
+    If we have the coordinates in one basis, how can we get the coordinates in another basis? Let's start by going from basis $C$ to basis $B$ by writing $\mathbf{u}$ in $C$:
+    
+    $$
+    \left[\begin{array}{cc}
+    \vdots & \vdots \\
+    \mathbf{c}_{1} & \mathbf{c}_{2} \\
+    \vdots & \vdots
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\mathbf{u}
+    $$
+    
+    If we numerify $\mathbf{c}_{1}, \mathbf{c}_{2}$ and $\mathbf{u}$ in the $B$ basis, we would get:
+    
+    $$
+    \left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]
+    $$
+    
+    The columns are the vectors $\mathbf{c}_{1}, \mathbf{c}_{2}$ numerified in the $B$ basis. That is, the coordinates of $\mathbf{c}_{1}, \mathbf{c}_{2}$ in the $B$ basis. Why is this? It's because the un-numerified vectors here are the two columns $\mathbf{c}_{1}, \mathbf{c}_{2}$ and the vector $\mathbf{u}$ on the right, whereas $0.5$ and 1 are the linear-combination-of-columns coefficients. This means, whatever basis one picks (like $B$ above), we numerify $\mathbf{c}_{1}, \mathbf{c}_{2}$ and $\mathbf{u}$, in that same basis. This converts coordinates in $C$ to $B$ coordinates. To emphasize, we are going to rewrite this as: $\mathbf{A}_{C \rightarrow B}[\mathbf{u}]_{C}=[\mathbf{u}]_{B}$ where
+    
+    $$
+    \begin{aligned}
+    \mathbf{A}_{C \rightarrow B} 
+    & =\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]
+    & =\text { Change-of-basis matrix from } \mathrm{C} \text { to } \mathrm{B} \\
+    [\mathbf{u}]_{C} 
+    & =\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]
+    & =\text { u expressed in basis } \mathrm{C} \\
+    [\mathbf{u}]_{B} &=\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]
+    & =\mathbf{u} \text { expressed in basis } \mathrm{B}
+    \end{aligned} 
+    $$
+    
+    Thus, we have a way to convert coordinates in one basis to another. To go from $B$ coordinates to $C$ coordinates, there will be some matrix that converts: $\mathbf{A}_{B \rightarrow C}[\mathbf{u}]_{B}=[\mathbf{u}]_{C}$. Clearly, from the earlier conversion of $\mathbf{A}_{C \rightarrow B}[\mathbf{u}]_{C}=[\mathbf{u}]_{B}$ we can multiply both sides by the matrix inverse to get $[\mathbf{u}]_{C}=\mathbf{A}_{C \rightarrow B}^{-1}[\mathbf{u}]_{B}$ and so $\mathbf{A}_{B \rightarrow C}=\mathbf{A}_{C \rightarrow B}^{-1}$. In this example (once the inverse is found): 
+    
+    $$
+    \left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]
+    $$
+    
+    and so
+    
+    $$
+    \mathbf{A}_{B \rightarrow C}=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]
+    $$
+
+    This is the change-of-basis matrix going from $B$ coordinates to $C$ coordinates. Note that the columns 
+    
+    $$
+    \left[\begin{array}{r}
+    -0.1 \\
+    0.3
+    \end{array}\right] \text { and }\left[\begin{array}{r}
+    0.4 \\
+    -0.2
+    \end{array}\right]
+    $$
+    
+    are the basis vectors of $B$, $\mathbf{b}_{1}$ and $\mathbf{b}_{2}$ expressed in C's coordinates. Since we are working with a basis, the vectors as columns will be independent. Then, if the dimensions are correct, the matrix is square (with independent columns). Thus, the inverse will exist.\\
+    
+    A vector exists without reference to any basis, in which case it is just a length and a direction. To "numerify" a vector, we need to pick a basis, in which case the numbers are the coordinates in that basis: the coefficients when expression the vector as a linear combination of the basis vectors. We now know how to convert coordinates in one basis to coordinates in another by building the change-of-basis matrix: Express the source basis vectors in terms of the target basis and place these as columns. If it's more convenient to start with one basis, then for the other direction, just use the inverse. Having an orthonormal basis simplifies matters because the inverse is the transpose. Thus, $[\mathbf{u}]_{C}=\mathbf{A}_{C \rightarrow B}^{-1}[\mathbf{u}]_{B}=\mathbf{A}_{C \rightarrow B}^{T}[\mathbf{u}]_{B}$.
+
     \subsubsection{Change of Basis for Matrices}
     
-    \subsubsection{What Basis Should a (Transform) Matrix Use?}
+    Recall the two meanings of matrix-vector multiplication: 1. The vector has the coefficients in the linear combination of the columns:
 
+    $$
+    \left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{l}
+    \alpha \\
+    \beta
+    \end{array}\right]=\alpha\left[\begin{array}{l}
+    2 \\
+    4
+    \end{array}\right]+\beta\left[\begin{array}{l}
+    3 \\
+    1
+    \end{array}\right]
+    $$
+    
+    This is the interpretation we use, for example, when we seek change of basis, or equation solving (which asks to find the coefficients). 2. The other interpretation is that a matrix transforms one vector into another:
+    
+    $$
+    \left[\begin{array}{cc}
+    0.5 & -0.866 \\
+    0.866 & 0.5
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]=\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]
+    $$
+    
+    This happens to be the "rotate anticlockwise by 60 degrees" matrix. Recall, for a general angle $\theta$ the rotation matrix turned out to be: 
+    
+    $$
+    \left[\begin{array}{cc}
+    \cos (\theta) & -\sin (\theta) \\
+    \sin (\theta) & \cos (\theta)
+    \end{array}\right]
+    $$
+    
+    Now let's return to our two bases $B$ and $C$ from the earlier section and ask: does the same transforming matrix work in both? That is, we know that in the standard basis $B$:
+    
+    $$
+    \left[\begin{array}{cc}
+    0.5 & -0.866 \\
+    0.866 & 0.5
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]=\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]
+    $$
+    
+    If we convert $\mathbf{u}=(4,3)$ to basis $C$ and multiply by the rotation matrix, do we get the right result in $C$ coordinates?
+    
+    $$
+    \mathbf{A}_{B \rightarrow C}\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]
+    $$
+    
+    We already have calculated $\mathbf{u}=(0.5,1)$ in $C$ coordinates. Thus is it true that 
+    
+    $$
+    \left[\begin{array}{cc}
+    0.5 & -0.866 \\
+    0.866 & 0.5
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right] ?
+    $$
+    
+    The answer is: no! This is because the transforming matrix must also be converted into $C$ coordinates. If we convert the rotation matrix to C coordinates (we'll show how below) we get
+    
+    $$
+    \left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]
+    $$
+    
+    and this gives the correct results:
+    
+    $$
+    \left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]
+    $$
+
+    It is convenient to explain in terms of linear transformations. Let $S$ be a linear transformation. Think of this abstractly as $S$ "does something" to a vector. $S(\mathbf{u})$ = some result vector. For example, $S$ rotates a vector. We know of course that $S$ gets "numerified" by representing it as a matrix since every linear transformation can be expressed as a matrix. But for now, let's leave $S$ as an abstract entity. (The technical term for this abstraction is operator.) Since the basis vectors of $B$ are vectors, we can build a matrix by applying $S$ to these basis vectors $\mathbf{b}_{1}, \mathbf{b}_{2}$ and give it a name: 
+    
+    $$
+    \left[\mathbf{A}_{S}\right]_{B} \triangleq\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    S\left(\mathbf{b}_{1}\right) & S\left(\mathbf{b}_{2}\right) \\
+    \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    where: $\mathbf{A}_{S}$ means the matrix corresponding to transformation $S$. The $B$ subscript emphasizes that we built the matrix $\mathbf{A}_{S}$ using basis vectors from $B$. Next, for any vector $\mathbf{u}$ expressed in the basis $B$, we can write $\mathbf{u}=\alpha_{1} \mathbf{b}_{1}+\alpha_{2} \mathbf{b}_{2}$. Here the $\alpha$'s are the coordinates of $\mathbf{u}$ in basis $B$. By linearity of $S$: $S(\mathbf{u})=\alpha_{1} S\left(\mathbf{b}_{1}\right)+\alpha_{2} S\left(\mathbf{b}_{2}\right)$ which in matrix form is:
+    
+    $$
+    S(\mathbf{u})=\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    S\left(\mathbf{b}_{1}\right) & S\left(\mathbf{b}_{2}\right) \\
+    \vdots & \vdots
+    \end{array}\right]\left[\begin{array}{l}
+    \alpha_{1} \\
+    \alpha_{2}
+    \end{array}\right]
+    $$
+    
+    or $S(\mathbf{u})=\left[\mathbf{A}_{S}\right]_{B} \mathbf{u}$. To emphasise that all of this is occurring in basis $B$ we'll use the subscript $B$ everywhere: $[S(\mathbf{u})]_{B}=\left[\mathbf{A}_{S}\right]_{B}[\mathbf{u}]_{B}$.
+    If everything were converted to basis C we would have an equivalent expression. $[S(\mathbf{u})]_{C}=\left[\mathbf{A}_{S}\right]_{C}[\mathbf{u}]_{C}$. So, the obvious question is: what is the relation between $\left[\mathbf{A}_{S}\right]_{C}$ and $\left[\mathbf{A}_{S}\right]_{B}$? By the definition of $\left[\mathbf{A}_{S}\right]_{C}$ 
+    
+    $$
+    \left[\mathbf{A}_{S}\right]_{C}=\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    {\left[S\left(\mathbf{c}_{1}\right)\right]_{C}} & {\left[S\left(\mathbf{c}_{2}\right)\right]_{C}} \\
+    \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    where we're emphasizing that the columns are in $C$ coordinates. Now for a key observation: $\left[S\left(\mathbf{c}_{i}\right)\right]_{\mathbf{B}}=\left[\mathbf{A}_{S}\right]_{\mathbf{B}}\left[\mathbf{c}_{i}\right]_{\mathbf{B}}$ That is, if we expressed the $\mathbf{c}_{i}$'s in B, then applying the transformation in $B$ will give us the $B$-version of the transformed vector. (We've boldfaced $B$ to emphasize.) But we know how to convert any $B$ vector to a $C$ vector: multiply by the $B \rightarrow C$ change-of-basis matrix: $\left[S\left(\mathbf{c}_{i}\right)\right]_{C}=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B}\left[\mathbf{c}_{i}\right]_{B}$. This gives us the i-th column of the transformation matrix in the $C$ basis. Since matrix-matrix multiplication can be broken down column by column, we can piece the columns to together:
+    
+    $$
+    \left[\begin{array}{cc}
+    \vdots & \vdots \\
+    {\left[S\left(\mathbf{c}_{1}\right)\right]_{C}} & {\left[S\left(\mathbf{c}_{2}\right)\right]_{C}} \\
+    \vdots & \vdots
+    \end{array}\right]=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B}\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    \left.\left[\mathbf{c}_{1}\right)\right]_{B} & \left.\left[\mathbf{c}_{2}\right)\right]_{B} \\
+    \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    Now for another key observation: the last matrix is just the $C \rightarrow B$ basis-change matrix! And so,
+    
+    $$
+    \left[\begin{array}{cc}
+    \vdots & \vdots \\
+    {\left[S\left(\mathbf{c}_{1}\right)\right]_{C}} & {\left[S\left(\mathbf{c}_{2}\right)\right]_{C}} \\
+    \vdots & \vdots
+    \end{array}\right]=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B} \mathbf{A}_{C \rightarrow B}
+    $$
+    
+    Or, more compactly as: $\left[\mathbf{A}_{S}\right]_{C}=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B} \mathbf{A}_{C \rightarrow B}$. So finally we have a way to convert a transforming matrix from one basis to another. One can use the inverse relation between the two coordinate change matrices to write this as: $\left[\mathbf{A}_{S}\right]_{C}=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B} \mathbf{A}_{B \rightarrow C}^{-1}$. Let's apply this to our rotation example. We have the two change-of-basis matrices: 
+    
+    $$
+    \mathbf{A}_{B \rightarrow C}=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right] \quad \mathbf{A}_{C \rightarrow B}=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]
+    $$
+    
+    Now apply on either side of the rotation (transform) matrix:
+    
+    $$
+    \left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]\left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]=\left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]
+    $$
+    
+    Finally, apply this new ($C$-basis) transform matrix to to the original vector in $C$ coordinates: 
+    
+    $$
+    \left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]
+    $$
+    
+    As a final check, let's convert the result on the right back into the $B$ basis. 
+    
+    $$
+    \mathbf{A}_{C \rightarrow B}\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]=\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]
+    $$
+    
+    The vectors and transform exist without coordinates (without a basis). Once we choose a basis, we "numerify" the vectors and transform.
+    
+    \subsubsection{What Basis Should a (Transform) Matrix Use?}
+    
+    We've seen that a transform can be abstract and then "numerified" (turned into a matrix) once a basis is selected. The actual matrix produced is a bunch of numbers, and you get a different matrix for each choice of basis. Since we can choose the basis, we should ask: are some bases better than others for a given transform? The answer: yes, we should use the eigenbasis if one exists. Let's consider an example:
+    
+    $$
+    \mathbf{A} \triangleq\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    For example, when applied to the vector $\mathbf{u}=(3,2)$ we get 
+    
+    $$
+    \mathbf{A} \mathbf{u}=\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{l}
+    3 \\
+    2
+    \end{array}\right]=\left[\begin{array}{r}
+    11 \\
+    2
+    \end{array}\right]
+    $$
+    
+    It turns out that $\mathbf{A}$ has eigenvectors and corresponding eigenvalues
+    
+    $$
+    \begin{aligned}
+    & A\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right]=5\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right] \\
+    A &\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=1\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+
+    The two are linearly independent (but not orthogonal) and form a basis. Let's call this the $E$-basis. And we've called the standard basis $B$ in earlier sections. Then, let's build the change-of-basis matrix going from the eigenbasis to standard: 
+    
+    $$
+    \mathbf{A}_{E \rightarrow B}=\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    The inverse going from $B$ to $E$ turns out to be: 
+    
+    $$
+    \mathbf{A}_{B \rightarrow E}=\mathbf{A}_{E \rightarrow B}^{-1}=\left[\begin{array}{cc}
+    1 & -0.5 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    Finally, let's convert the transform to its own eigenbasis, which we'll write as
+    
+    $$
+    \begin{aligned}
+    [\mathbf{A}]_{E} &=\mathbf{A}_{B \rightarrow E}[\mathbf{A}]_{B} \mathbf{A}_{E \rightarrow B} \\
+    &=\left[\begin{array}{cc}
+    1 & -0.5 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right]=\left[\begin{array}{ll}
+    5 & 0 \\
+    0 & 1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    Which is a diagonal matrix containing the eigenvalues (and only the eigenvalues). For the general n-dimensional case suppose $\mathbf{A}$ is a transform matrix. Suppose $\mathbf{A}$ has $n$ eigenvectors $\mathbf{x}_{1}, \mathbf{x}_{2}, \ldots, \mathbf{x}_{n}$ and corresponding eigenvalues $\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}$ where $\mathbf{A x}_{i}=\lambda_{i} \mathbf{x}_{i}$. Then suppose we place the eigenvectors as columns in a matrix $\mathbf{E}$ and the eigenvalues into a diagonal matrix $\mathbf{\Lambda}$:
+    
+    $$
+    \mathbf{E}=\left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \vdots & \vdots \\
+    \mathbf{x}_{1} & \mathbf{x}_{2} & \cdots & \mathbf{x}_{n} \\
+    \vdots & \vdots & \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    and 
+    
+    $$
+    \boldsymbol{\Lambda}=\left[\begin{array}{cccc}
+    \lambda_{1} & 0 & & 0 \\
+    0 & \lambda_{2} & & 0 \\
+    \vdots & & \ddots & \\
+    0 & 0 & & \lambda_{n}
+    \end{array}\right]
+    $$
+    
+    In the change of basis for matrices we showed that $\mathbf{A E}=\mathbf{E} \boldsymbol{\Lambda}$. If $\mathbf{E}$ is indeed a basis, it will have an inverse. Then, we can left-multiply and switch sides to get: $\boldsymbol{\Lambda}=\mathbf{E}^{-1} \mathbf{A} \mathbf{E}$. Thus, the diagonal eigenvalue matrix can be written in terms of the eigenbasis matrices. But this is exactly the change-of-basis we get when changing the matrix $\mathbf{A}$ to its eigenbasis. The take-away: the best basis in which to represent a transform matrix is the matrix's own eigenbasis (if one exists). This last point ("if one exists") is not unimportant. The spectral theorem guarantees the existence of such a basis when $\mathbf{A}$ is real, symmetric. We may nonetheless get lucky and get an eigenbasis (as we did with our running example). One additional point: the spectral theorem goes further and guarantees that if $\mathbf{A}$ is real and symmetric, the eigenbasis is orthonormal and the eigenvalues are real. Which means we can write $\boldsymbol{\Lambda}=\mathbf{E}^{-1} \mathbf{A} \mathbf{E}=\mathbf{E}^{T} \mathbf{A} \mathbf{E}$ (since the inverse is just the transpose). With our running example of
+    
+    $$
+    \mathbf{A} \triangleq\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]
+    $$
+
+    (which is not symmetric) we nonetheless got lucky and obtained an invertible
+    
+    $$
+    \mathbf{E}=\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    Notice: $\mathbf{E}$ is not orthogonal. If, however, we had used a symmetric
+    
+    $$
+    \mathbf{A} \triangleq\left[\begin{array}{cc}
+    5 & -2 \\
+    -2 & 1
+    \end{array}\right]
+    $$
+
+    we would get
+    
+    $$
+    \mathbf{E}=\left[\begin{array}{cc}
+    -0.383 & 0.924 \\
+    -0.924 & -0.383
+    \end{array}\right]
+    $$
+
+    which is orthonormal and thus $\mathbf{E}^{T} \mathbf{E}=\mathbf{I}$. When the eigenvectors of a square transform matrix are linearly independent, one can form a basis using the eigenvectors. If the matrix is then converted to eigenbasis coordinates, the resulting matrix is diagonal. The diagonal matrix has two advantages, it's easy to compute with ( $n$ values instead of $n^{2}$ ) and rhe diagonal entries neatly separate along dimensions, with one eigenvalue representing each dimension. Thus $n$ numbers describe the entire transformation, and each number is associated with a different dimension. This is why eigenvectors are important: they quantify the essence of a transformation in its simplest form.
+    
 \subsection{Some Useful Facts}
 
 \subsection{Inner-Products and Outer-Products}

@@ -9,31 +9,125 @@
 
     \begin{enumerate}
         \item[a.] \textbf{Q.} Compute $|z|$ when $z = 4-3i$ \textbf{A.} $|z| = \triangleq \sqrt{a^{2}+b^{2}} = \sqrt{4^2 + (-3)^2} = \sqrt{25} = 5$ 
+        
         \item[b.] \textbf{Q.} Express $3-3 i$ in polar form. \textbf{A.} $z=a+ib=r(\cos (\theta)+i \sin (\theta))$, $r=\sqrt{a^2 + b^2} = 3\sqrt{2}$, $\theta = \tan^{-1}(\frac{b}{a}) = \tan^{-1}(-1) = \frac{\pi}{4}$, $z=3\sqrt{2}(\cos (-\frac{\pi}{4})+i \sin (-\frac{\pi}{4}))$  
-        \item[c.] \textbf{Q.} Show that Im $(2 i(1+4 i)-3 i(2-i))=-4$ \textbf{A.}
+        
+        \item[c.] \textbf{Q.} Show that Im $(2 i(1+4 i)-3 i(2-i))=-4$ \textbf{A.} 
+        \begin{align*}
+            \text{Im }(2i(1+4i)-3i(2-i)) &= \text{Im}((-8 + 2i) - (3 - 6i))\\
+                                    &= \text{Im}(-11 - 4i)\\
+                                    &= -4
+        \end{align*}
+        
         \item[d.] \textbf{Q.} Write $\frac{1}{(1-i)(3+i)}$ in $a+ib$ form. \textbf{A.}
+        \begin{align*}
+            \frac{1}{(1-i)(3+i)} &= \frac{1}{4-2i}\\
+                                    &= \frac{1}{2(2-i)}\\
+                                    &= \frac{2+i}{2(2-i)(2+i)}\\
+                                    &= \frac{2+i}{10}\\
+                                    &= 0.2 + 0.1i
+        \end{align*}
+        
         \item[e.] \textbf{Q.} If $z=i^{\frac{1}{3}}$, what is the phase of $z^{*}$ in degrees? \textbf{A.}
+        \begin{align*}
+            z^{*} &= -i^{\frac{1}{3}}\\
+                    &= \cos \left(-\frac{5 \pi}{6}\right)+i \sin \left(-\frac{5 \pi}{6}\right)\\
+            \therefore \theta &= -\frac{5\pi}{6}
+        \end{align*}
     \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 2:} Suppose $z=z^{*}$ for a complex number $z$. What can you infer about the imaginary part of $z$?
+\item[] \textbf{In-Class Exercise 2:} \textbf{Q.} Suppose $z=z^{*}$ for a complex number $z$. What can you infer about the imaginary part of $z$? \textbf{A.} A complex number is equal to its complex conjugate if its imaginary part is zero, or equivalently, if the number is real. 
 
 \item[] \textbf{In-Class Exercise 3:} Prove the two results stated above, and one more
 
     \begin{enumerate}
-        \item[a.] $\langle u \mid \alpha v+\beta w\rangle=\alpha\langle u \mid v\rangle+\beta\langle u \mid w\rangle$
-        \item[b.] $\langle\alpha u+\beta v \mid w\rangle=\alpha^{*}\langle u \mid w\rangle+\beta^{*}\langle v \mid w\rangle$
-        \item[c.] $\langle u \mid v\rangle=\langle v \mid u\rangle^{*}$
+        \item[a.] \textbf{Q.} $\langle u \mid \alpha v+\beta w\rangle=\alpha\langle u \mid v\rangle+\beta\langle u \mid w\rangle$ \textbf{A.}
+        \begin{align*}
+            \langle u \mid \alpha v+\beta w\rangle &= \langle u \mid (\alpha \mid v \rangle + \beta \mid w\rangle)\\
+            &=\alpha\langle u \mid v\rangle+\beta\langle u \mid w\rangle
+        \end{align*}
+        
+        \item[b.] \textbf{Q.} $\langle\alpha u+\beta v \mid w\rangle=\alpha^{*}\langle u \mid w\rangle+\beta^{*}\langle v \mid w\rangle$ \textbf{A.}
+        \begin{align*}
+            \langle\alpha u+\beta v \mid w\rangle &= (\alpha^{*}\langle u \mid + \beta^{*} \langle v \mid) \mid w\rangle)\\
+            &=\alpha^{*}\langle u \mid w\rangle+\beta^{*}\langle v \mid w\rangle
+        \end{align*}
+        
+        \item[c.] \textbf{Q.} $\langle u \mid v\rangle=\langle v \mid u\rangle^{*}$ \textbf{A.}
+        \begin{align*}
+            \langle u \mid v \rangle & = \mid u \rangle^{\dagger}  \langle v \mid^{\dagger}\\
+            &=\langle v \mid u\rangle^{\dagger}\\
+            &=\langle v \mid u\rangle^{*}
+        \end{align*}   
+        Note that $\langle v \mid u \rangle$ is a scalar, so the Hermitian conjugate is just the complex conjugate, i.e., (\langle v \mid u \rangle)^{\dagger}=\langle v \mid u \rangle^{*}
+        
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 4:} Review \href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module2/problems2.html#vectors}{these examples} and then solve the following. Given $|u\rangle=\left(\frac{1}{\sqrt{2}}, \frac{i}{\sqrt{2}}\right)$, $|v\rangle=\left(\frac{1}{\sqrt{2}}, -\frac{i}{\sqrt{2}}\right)$, $w=(1,0)$, $\alpha=i$, $\beta=-\sqrt{2}i$, calculate (without converting $\sqrt{2}$ to decimal format):
 
     \begin{enumerate}
-        \item[a.] $\alpha|v\rangle$, $|\alpha v\rangle$, $\langle\alpha u|$, $\alpha^{*}\langle u$;
-        \item[b.] $\langle u \mid v\rangle$;
-        \item[c.] $|u\rangle\langle v|,| u\rangle\langle v|| w\rangle$, and $\langle v \mid w\rangle|u\rangle$, and compare the latter two results;
-        \item[d.] $\| u\rangle\left.\right|^{2},\langle u \mid u\rangle$;
-        \item[e.] $\langle w|\alpha| u\rangle+\beta|v\rangle\rangle \text { and } \alpha\langle w \mid u\rangle+\beta\langle w \mid v\rangle$;
-        \item[f.] $\langle\alpha \mid u\rangle+\beta|v\rangle|w\rangle \text { and } \alpha *\langle u \mid w\rangle+\beta^{*}\langle v \mid w\rangle$.
+        \item[a.] \textbf{Q.} $\alpha|v\rangle$, $|\alpha v\rangle$, $\langle\alpha u|$, $\alpha^{*}\langle u |$; \textbf{A.}
+        \begin{align*}
+            \alpha|v\rangle         & = |\alpha v\rangle\\ 
+                                    & = i \left[\begin{array}{l}\frac{1}{\sqrt{2}}\\-\frac{i}{\sqrt{2}}\end{array}\right]\\ 
+                                    & = \left[\begin{array}{l}\frac{i}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{array}\right]\\
+            \langle\alpha u|        & = \left[\begin{array}{ll} -\frac{i}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\end{array}\right] \\
+            \alpha^{*}\langle u |   &= -i \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{i}{\sqrt{2}}\end{array}\right] \\
+                                    &= \left[\begin{array}{ll} -\frac{i}{\sqrt{2}} & \frac{1}{\sqrt{2}}\end{array}\right]
+        \end{align*}
+        
+        \item[b.] \textbf{Q.} $\langle u \mid v\rangle$; \textbf{A.}
+        \begin{align*}
+            \langle u \mid v\rangle & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{i}{\sqrt{2}} \end{array}\right] \left[\begin{array}{r} \frac{1}{\sqrt{2}} \\ -\frac{i}{\sqrt{2}} \end{array}\right]\\
+                                    & = 0
+        \end{align*} 
+        
+        \item[c.] \textbf{Q.} $|u\rangle\langle v|,| u\rangle\langle v|| w\rangle$, and $\langle v \mid w\rangle|u\rangle$, and compare the latter two results; \textbf{A.}
+        \begin{align*}
+            |u\rangle\langle v|             & = \left[\begin{array}{r} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right] \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{i}{\sqrt{2}} \end{array}\right]\\ 
+                                            & = \left[\begin{array}{cc} \frac{1}{2} & \frac{i}{2} \\ \frac{i}{2} & -\frac{1}{2} \end{array}\right]\\
+            |u\rangle\langle v|| w\rangle   & = \left[\begin{array}{cc} \frac{1}{2} & \frac{i}{2} \\ \frac{i}{2} & -\frac{1}{2} \end{array}\right] \left[\begin{array}{r} 1 \\ 0 \end{array}\right]\\
+                                            & = \left[\begin{array}{r} \frac{1}{2} \\ \frac{i}{2} \end{array}\right]\\
+            \langle v\mid w\rangle|u\rangle & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{i}{\sqrt{2}} \end{array}\right] 
+                                                \left[\begin{array}{r} 1 \\ 0 \end{array}\right] 
+                                                \left[\begin{array}{r} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right]\\
+                                            & = \left[\begin{array}{r} \frac{1}{2} \\ \frac{i}{2} \end{array}\right]
+        \end{align*}
+        The second and third results are equivalent.
+        
+        \item[d.] \textbf{Q.} $\|u\rangle|^{2},\langle u \mid u\rangle$ \textbf{A.}
+        \begin{align*}
+            \| u\rangle|^{2}   & = |\frac{1}{\sqrt{2}}|^2 + |\frac{i}{\sqrt{2}}|^2\\
+                                    & = \frac{1}{2} + \frac{1}{2} \\
+                                    & = 1 \\
+            \langle u \mid u\rangle & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{i}{\sqrt{2}} \end{array}\right] \left[\begin{array}{r} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right]\\
+                                    & = 1
+        \end{align*}
+        
+        \item[e.] \textbf{Q.} $\langle w|\alpha| u\rangle+\beta|v\rangle\rangle$ and $\alpha\langle w \mid u\rangle+\beta\langle w \mid v\rangle$; \textbf{A.}
+        \begin{align*}
+            \langle w|\alpha| u\rangle+\beta|v\rangle\rangle            & = \left[\begin{array}{ll} 1 & 0 \end{array}\right] \left( i \left[\begin{array}{r} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right] 
+                                                                            + -\sqrt{2}i \left[\begin{array}{l}\frac{1}{\sqrt{2}}\\-\frac{i}{\sqrt{2}}\end{array}\right] \right) \\            
+                                                                        & = \left[\begin{array}{ll} 1 & 0 \end{array}\right] \left[\begin{array}{r} \frac{i(1-\sqrt{2})}{\sqrt{2}} \\ -\frac{1+\sqrt{2}}{\sqrt{2}} \end{array}\right] \\
+                                                                        & = \frac{i(1-\sqrt{2})}{\sqrt{2}}\\
+            \alpha\langle w \mid u\rangle+\beta\langle w \mid v\rangle  & = i \left[\begin{array}{ll} 1 & 0 \end{array}\right] \left[\begin{array}{r} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right] 
+                                                                            + -\sqrt{2}i \left[\begin{array}{ll} 1 & 0 \end{array}\right] \left[\begin{array}{l}\frac{1}{\sqrt{2}}\\-\frac{i}{\sqrt{2}}\end{array}\right] \\
+                                                                        & = \frac{i}{\sqrt{2}} - i\\
+                                                                        & = \frac{i(1-\sqrt{2})}{\sqrt{2}}
+        \end{align*}
+        
+        \item[f.] \textbf{Q.} $\langle \alpha \mid u\rangle+\beta|v\rangle|w\rangle$ and $\alpha^{*} \langle u \mid w\rangle+\beta^{*}\langle v \mid w\rangle$. \textbf{A.}
+        \begin{align*}
+            \langle \alpha \mid u\rangle+\beta|v\rangle|w\rangle                & = \left( i \left[\begin{array}{r} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right] 
+                                                                                    + -\sqrt{2}i \left[\begin{array}{l}\frac{1}{\sqrt{2}}\\-\frac{i}{\sqrt{2}}\end{array}\right] \right) \left[\begin{array}{r} 1 \\ 0 \end{array}\right]\\
+                                                                                & = \left[\begin{array}{r} \frac{i(1-\sqrt{2})}{\sqrt{2}} \\ -\frac{1+\sqrt{2}}{\sqrt{2}} \end{array}\right] \left[\begin{array}{r} 1 \\ 0 \end{array}\right] \\
+                                                                                & = ? \\
+            \alpha^{*} \langle u \mid w\rangle+\beta^{*}\langle v \mid w\rangle & = -i \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{i}{\sqrt{2}} \end{array}\right] \left[\begin{array}{r} 1 \\ 0 \end{array}\right]
+                                                                                    + \sqrt{2}i \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{i}{\sqrt{2}} \end{array}\right] \left[\begin{array}{r} 1 \\ 0 \end{array}\right]  \\
+                                                                                & = \frac{-i}{\sqrt{2}} + i\\
+                                                                                & = \frac{i(\sqrt{2}-1)}{\sqrt{2}}
+        \end{align*}
+        
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 5:} Suppose $|u\rangle=(1,0,0,0)$, $|v\rangle=(0,0,1,0)$ and $W=\operatorname{span}(|u\rangle,|v\rangle)$.
@@ -46,8 +140,6 @@
         \item[e.] Is $W=\mathbb{C}^{k}$ for any value of $k$?
     \end{enumerate}
     
-Work up to here
-
 \item[] \textbf{In-Class Exercise 6:} For the vectors $|00\rangle$, $|01\rangle$, $|10\rangle$, $|11\rangle$ defined above, compute the outer products
 
     \begin{enumerate}
@@ -104,6 +196,8 @@ Work up to here
     \end{enumerate}
     
     In computing the adjoint, do we get the same result if we first apply conjugation and then transpose?
+    
+Work up to here
 
 \item[] \textbf{In-Class Exercise 11:} Use
 
@@ -116,6 +210,12 @@ Work up to here
 \item[] \textbf{In-Class Exercise 13:} Use a $2 \times 2$ example to show that the sum of two unitary matrices is not necessarily unitary.
 
 \item[] \textbf{In-Class Exercise 14:} Suppose $A=\left[\begin{array}{ll}2 & 0 \\ 0 & 3\end{array}\right]$ and $|u\rangle=\alpha\left|e_{1}\right\rangle+\beta\left|e_{2}\right\rangle$. Show that $\langle u|A| u\rangle=2|\alpha|^{2}+3|\beta|^{2}$.
+
+        \begin{align*}
+            \langle u|A| u\rangle & = \left[\begin{array}{ll} \alpha^* & \beta^* \end{array}\right]  \left[\begin{array}{ll}2 & 0 \\ 0 & 3\end{array}\right] \left[\begin{array}{l} \alpha \\ \beta \end{array}\right]\\
+            & = \left[\begin{array}{ll} \alpha^* & \beta^* \end{array}\right] \left[\begin{array}{l} 2 \alpha \\ 3 \beta \end{array}\right]\\
+            &=2|\alpha|^{2}+3|\beta|^{2}
+        \end{align*}
 
 \item[] \textbf{In-Class Exercise 15:} Using $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle$ as the basis, 
 

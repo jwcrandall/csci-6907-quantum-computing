@@ -348,15 +348,62 @@
     
     \textbf{Q.} In computing the adjoint, do we get the same result if we first apply conjugation and then transpose? \textbf{A.} Yes
     
-\item[] \textbf{In-Class Exercise 11:} Use
+\item[] \textbf{In-Class Exercise 11:} \textbf{Q.} Use
 
     $$A=\left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right] \quad B=\left[\begin{array}{cc}i & 1 \\ 1 & -i\end{array}\right] \quad \alpha=1+i$$
     
-    as examples in confirming (i)-(iv) above.
+    as examples in confirming (i)-(iv) above. \textbf{A.}
+    
+    \begin{align*}
+        (A^{\dagger})^{\dagger}             & = \left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right]^{\dagger}\\
+                                            & = \left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right]\\
+                                            & = A\\
+        (\alpha A)^{\dagger}                & = \left[1+i \left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right] \right]^{\dagger}\\
+                                            & = \left[\begin{array}{cc} 1+i & 1-i \\ -1+i & 1+i \end{array}\right]^{\dagger}\\
+                                            & = \left[\begin{array}{cc} 1-i & -1-i \\ 1+i & 1-i \end{array}\right]\\
+                                            & = 1-i \left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right]\\
+                                            & = \alpha^{*} A^{\dagger} \\
+        (A+B)^{\dagger}                     & = \left( \left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right] + \left[\begin{array}{cc}i & 1 \\ 1 & -i\end{array}\right] \right)^{\dagger}\\
+                                            & = \left( \left[\begin{array}{cc} 1+i & 1-i \\ 1+i & 1-i\end{array}\right] \right)^{\dagger}\\
+                                            & = \left[\begin{array}{cc} 1-i & 1-i \\ 1+i & 1+i\end{array}\right]\\
+                                            & = \left[\begin{array}{cc} 1 & -i \\ i & 1\end{array}\right] + \left[\begin{array}{cc}-i & 1 \\ 1 & i\end{array}\right]\\
+                                            & = A^{\dagger}+B^{\dagger}\\
+        (A B)^{\dagger}                     & = \left( \left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right] \left[\begin{array}{cc}i & 1 \\ 1 & -i\end{array}\right] \right)^{\dagger}\\
+                                            & = \left[\begin{array}{cc} 0 & 0 \\ 0 & 0\end{array}\right]^{\dagger}\\
+                                            & = \left[\begin{array}{cc} 0 & 0 \\ 0 & 0\end{array}\right]\\
+                                            & = \left[\begin{array}{cc} -i & 1 \\ 1 & i\end{array}\right] \left[\begin{array}{cc} 1 & -i \\ i & 1\end{array}\right]\\
+                                            & = B^{\dagger} A^{\dagger}
+    \end{align*}
 
-\item[] \textbf{In-Class Exercise 12:} If $\alpha$ were not real above, show with an $2 \times 2$ example that $\alpha A$ is not Hermitian when $A$ is Hermitian.
+\item[] \textbf{In-Class Exercise 12:} \textbf{Q.} If $\alpha$ were not real above, show with an $2 \times 2$ example that $\alpha A$ is not Hermitian when $A$ is Hermitian. \textbf{A.}
+    \begin{align*}
+        \alpha                  & = i\\
+        A                       & = \left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right]\\
+                                & = A^{\dagger}\\ 
+        \alpha A                & = \left[\begin{array}{cc}i & 1 \\ -1 & i\end{array}\right]\\
+        (\alpha A)^{\dagger}    & = \left[\begin{array}{cc}-i & -1 \\ 1 & -i\end{array}\right]\\
+        \alpha A                & \neq (\alpha A)^{\dagger}
+    \end{align*}
 
-\item[] \textbf{In-Class Exercise 13:} Use a $2 \times 2$ example to show that the sum of two unitary matrices is not necessarily unitary.
+\item[] \textbf{In-Class Exercise 13:} \textbf{Q.} Use a $2 \times 2$ example to show that the sum of two unitary matrices is not necessarily unitary. \textbf{A.}
+    \begin{align*}
+        Y                                           & = \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right]\\
+        Y^{\dagger} Y = Y Y^{\dagger}               & = \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right] \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right]
+                                                    = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right]
+                                                    = I\\
+        H                                           & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]\\
+        H^{\dagger} H = H H^{\dagger}               & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]
+                                                    \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]
+                                                    = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right]
+                                                    = I\\
+        Y + H                                       & = \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right] 
+                                                    + \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]\\
+                                                    & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} -i \\ \frac{1}{\sqrt{2}} + i & -\frac{1}{\sqrt{2}} \end{array}\right]\\
+        (Y+H)^{\dagger}(Y+H) = (Y+H)(Y+H)^{\dagger} & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} -i \\ \frac{1}{\sqrt{2}} + i & -\frac{1}{\sqrt{2}} \end{array}\right]
+                                                    \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} -i \\ \frac{1}{\sqrt{2}} + i & -\frac{1}{\sqrt{2}} \end{array}\right]\\
+                                                    & = \left[\begin{array}{cc} 2 & 0 \\ 0 & 2 \end{array}\right]\\
+                                                    & \neq I
+    \end{align*}
 
 \item[] \textbf{In-Class Exercise 14:} Suppose $A=\left[\begin{array}{ll}2 & 0 \\ 0 & 3\end{array}\right]$ and $|u\rangle=\alpha\left|e_{1}\right\rangle+\beta\left|e_{2}\right\rangle$. Show that $\langle u|A| u\rangle=2|\alpha|^{2}+3|\beta|^{2}$.
 
@@ -369,9 +416,73 @@
 \item[] \textbf{In-Class Exercise 15:} Using $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle$ as the basis, 
 
     \begin{enumerate}
-        \item[a.] Find the coordinates of $\left|e_{1}\right\rangle,\left|e_{2}\right\rangle$;
-        \item[b.] Then, compute $\left|y_{2}\right\rangle=P_{e_{2}}|u\rangle$ in this basis.
-        \item[c.] Check your calculations by obtaining $\left|y_{2}\right\rangle$ in the standard basis and converting that to the $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle$ basis.
+        \item[a.] \textbf{Q.} Find the coordinates of $\left|e_{1}\right\rangle,\left|e_{2}\right\rangle$; \textbf{A.}
+        \begin{align*}
+            \alpha_{1}\left|v_{1}\right\rangle+\alpha_{2}\left|v_{2}\right\rangle                               & = \left|e_{1}\right\rangle\\
+            \alpha_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \alpha_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right]    & = \left[\begin{array}{l} 1 \\ 0 \end{array}\right]\\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \alpha_{1} \\ \alpha_{2} \end{array}\right]                                  & = \left[\begin{array}{c} 1 \\ 0 \end{array}\right] \tag{matrix is unitary, inverse is the adjoint} \\
+            \left|e_{1}\right\rangle = 
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} 1 \\ 0 \end{array}\right]                                                    & = \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] \tag{new basis}\\
+            \alpha_{1}\left|v_{1}\right\rangle+\alpha_{2}\left|v_{2}\right\rangle                               & = \left|e_{2}\right\rangle\\
+            \alpha_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \alpha_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right]    & = \left[\begin{array}{l} 0 \\ 1 \end{array}\right]\\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \alpha_{1} \\ \alpha_{2} \end{array}\right]                                  & = \left[\begin{array}{c} 0 \\ 1 \end{array}\right] \tag{matrix is unitary, inverse is the adjoint} \\
+            \left|e_{2}\right\rangle = 
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} 0 \\ 1 \end{array}\right]                                                    & = \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] \tag{new basis}\\
+        \end{align*}
+
+        \item[b.] \textbf{Q.} Then, compute $\left|y_{2}\right\rangle=P_{e_{2}}|u\rangle$ in this basis. \textbf{A.}
+        \begin{align*}
+            P_{e_2}                                                                     & = \left|e_{2}\right\rangle \left\langle e_{2} \right| 
+                                                                                        = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]\\
+                                                                                        & = \left[\begin{array}{ll} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{array}\right] \\
+            \alpha_{1}\left|v_{1}\right\rangle+\alpha_{2}\left|v_{2}\right\rangle       & = \left|u\right\rangle\\
+            \alpha_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \alpha_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} 
+            \\ -\frac{1}{\sqrt{2}} \end{array}\right]                                   & = \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ \frac{1}{2} \end{array}\right] \\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \alpha_{1} \\ \alpha_{2} \end{array}\right]          & = \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ \frac{1}{2} \end{array}\right] \tag{matrix is unitary, inverse is the adjoint} \\
+            |u\rangle =
+            \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \frac{\sqrt{3}}{2} 
+            \\ \frac{1}{2} \end{array}\right]                                           & = \left[\begin{array}{c} \frac{\sqrt{3}+1}{2 \sqrt{2}} \\ \frac{\sqrt{3}-1}{2 \sqrt{2}} \end{array}\right] \tag{new basis}\\
+            P_{e_2} \left|u\right\rangle                                                & = \left[\begin{array}{ll} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{array}\right] 
+                                                                                        \left[\begin{array}{c} \frac{\sqrt{3}+1}{2 \sqrt{2}} \\ \frac{\sqrt{3}-1}{2 \sqrt{2}} \end{array}\right] \\
+            \left|y_{2}\right\rangle                                                    & = \left[\begin{array}{c} \frac{1}{2\sqrt{2}} \\ -\frac{1}{2\sqrt{2}} \end{array}\right]
+        \end{align*}
+        
+        \item[c.] \textbf{Q.} Check your calculations by obtaining $\left|y_{2}\right\rangle$ in the standard basis and converting that to the $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle$ basis. \textbf{A.}
+        \begin{align*}
+            P_{e_2}                                                                                             & = \left|e_{2}\right\rangle \left\langle e_{2} \right| 
+                                                                                                                = \left[\begin{array}{l} 0 \\ 1 \end{array}\right] \left[\begin{array}{ll} 0 & 1 \end{array}\right] 
+                                                                                                                = \left[\begin{array}{ll} 0 & 0 \\ 0 & 1 \end{array}\right] \\
+            P_{e_2} \left|u\right\rangle                                                                        & = \left[\begin{array}{ll} 0 & 0 \\ 0 & 1 \end{array}\right] 
+                                                                                                                \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ \frac{1}{2} \end{array}\right] \\
+            \left|y_{2}\right\rangle                                                                            & = \left[\begin{array}{c} 0 \\ \frac{1}{2} \end{array}\right] \\
+            \gamma_{1}\left|v_{1}\right\rangle+\gamma_{2}\left|v_{2}\right\rangle                               & = \left|y_{2}\right\rangle\\
+            \gamma_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \gamma_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right]    & = \left[\begin{array}{c} 0 \\ \frac{1}{2} \end{array}\right]\\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{l} \gamma_{1} \\ \gamma_{2} \end{array}\right]                                  & = \left[\begin{array}{c} 0 \\ \frac{1}{2} \end{array}\right] \tag{matrix is unitary, inverse is the adjoint}\\
+            \left|y_{2}\right\rangle =
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} 0 \\ \frac{1}{2} \end{array}\right]                                          & = \left[\begin{array}{c} \frac{1}{2\sqrt{2}} \\ -\frac{1}{2\sqrt{2}} \end{array}\right] \tag{new basis}\\
+        \end{align*}
+        
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 16:} This is just a writing exercise to get used to the new symbols. Rewrite the previous exercise with the new symbols. That is, using $|+\rangle,|-\rangle$ as the basis, 

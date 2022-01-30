@@ -8,15 +8,25 @@
 \item[] \textbf{In-Class Exercise 1:} Review \href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module2/problems2.html#complex}{these examples} and then solve:
 
     \begin{enumerate}
-        \item[a.] \textbf{Q.} Compute $|z|$ when $z = 4-3i$ \textbf{A.} $|z| = \triangleq \sqrt{a^{2}+b^{2}} = \sqrt{4^2 + (-3)^2} = \sqrt{25} = 5$ 
+        \item[a.] \textbf{Q.} Compute $|z|$ when $z = 4-3i$ \textbf{A.} $|z| \triangleq \sqrt{a^{2}+b^{2}} = \sqrt{4^2 + (-3)^2} = \sqrt{25} = 5$ 
         
-        \item[b.] \textbf{Q.} Express $3-3 i$ in polar form. \textbf{A.} $z=a+ib=r(\cos (\theta)+i \sin (\theta))$, $r=\sqrt{a^2 + b^2} = 3\sqrt{2}$, $\theta = \tan^{-1}(\frac{b}{a}) = \tan^{-1}(-1) = \frac{\pi}{4}$, $z=3\sqrt{2}(\cos (-\frac{\pi}{4})+i \sin (-\frac{\pi}{4}))$  
+        \item[b.] \textbf{Q.} Express $3-3 i$ in polar form. \textbf{A.}
+        \begin{align*}
+            z       & = a+ib \\
+                    & = r(\cos (\theta)+i \sin (\theta)) \\
+            r       & = \sqrt{a^2 + b^2} \\ 
+                    & = 3\sqrt{2} \\
+            \theta  & = \tan^{-1}(\frac{b}{a}) \\ 
+                    & = \tan^{-1}(-1) \\ 
+                    & = \frac{\pi}{4}\\ 
+            z       & =3\sqrt{2}(\cos (-\frac{\pi}{4})+i \sin (-\frac{\pi}{4})) 
+        \end{align*}
         
         \item[c.] \textbf{Q.} Show that Im $(2 i(1+4 i)-3 i(2-i))=-4$ \textbf{A.} 
         \begin{align*}
-            \text{Im }(2i(1+4i)-3i(2-i)) &= \text{Im}((-8 + 2i) - (3 - 6i))\\
-                                    &= \text{Im}(-11 - 4i)\\
-                                    &= -4
+            \text{Im}(2i(1+4i)-3i(2-i)) & = \text{Im}((-8 + 2i) - (3 - 6i))\\
+                                        & = \text{Im}(-11 - 4i)\\
+                                        & = -4
         \end{align*}
         
         \item[d.] \textbf{Q.} Write $\frac{1}{(1-i)(3+i)}$ in $a+ib$ form. \textbf{A.}
@@ -133,40 +143,154 @@
 \item[] \textbf{In-Class Exercise 5:} Suppose $|u\rangle=(1,0,0,0)$, $|v\rangle=(0,0,1,0)$ and $W=\operatorname{span}(|u\rangle,|v\rangle)$.
 
     \begin{enumerate}
-        \item[a.] Show that $|u\rangle$, $|v\rangle$ are linearly independent.
-        \item[b.] What is the dimension of $W$?
-        \item[c.] Express $|x\rangle=(-i, 0, i+1,0)$ in terms of $|u\rangle$, $|v\rangle)$.
-        \item[d.] Is $|u\rangle$, $|v\rangle)$ a basis for $W$? Explain.
-        \item[e.] Is $W=\mathbb{C}^{k}$ for any value of $k$?
+        \item[a.] \textbf{Q.} Show that $|u\rangle$, $|v\rangle$ are linearly independent. \textbf{A.} Vectors $\mathbf{u}, \mathbf{v}$ are linearly independent if the only solution to the equation $x_{1} \mathbf{v}_{1}+x_{2} \mathbf{v}_{2}=\mathbf{0}$ is $x_{1}=x_{2}=0$. No other values of $x_1$ or $x_2$ exists that satisfy this condition.
+        \begin{align*}
+            0 \left[\begin{array}{l} 1 \\ 0 \\ 0 \\ 0 \end{array}\right] + 0 \left[\begin{array}{l} 0 \\ 0 \\ 1 \\ 0 \end{array}\right] = \left[\begin{array}{l} 0 \\ 0 \\ 0 \\ 0 \end{array}\right]
+        \end{align*}
+        
+        
+        \item[b.] \textbf{Q.} What is the dimension of $W$? \textbf{A.} 
+        
+        \begin{itemize}
+            \item \textbf{Span}: Given a collection of vectors $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{k}\right\rangle$, the span of these vectors is the set of all possible linear combinations of these (with complex scalars): $\operatorname{span}\left(\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{k}\right\rangle\right) \triangleq\left\{\alpha_{1}\left|v_{1}\right\rangle+\alpha_{2}\left|v_{2}\right\rangle+\ldots+\alpha_{k}\left|v_{k}\right\rangle: \alpha_{i} \in \mathrm{C}\right\}$
+            \item \textbf{Vector Space}: The vector space $V$ is a set of vectors such that, for any subset $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{k}\right\rangle$ where $\left|v_{i}\right\rangle \in V$, $\operatorname{span}\left(\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{k}\right\rangle\right) \subseteq V$.
+            \item \textbf{Basis}: There are multiple equivalent definitions for the Basis:
+            \begin{enumerate}
+                \item [1.] A basis for a given vector space $V$, is a set of vectors $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{n}\right\rangle$ from $V$ such that:
+                \begin{enumerate}
+                    \item [i.] $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{n}\right\rangle$ are linearly independent.
+                    \item [ii.] $V=\operatorname{span}\left(\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{n}\right\rangle\right)$ 
+                \end{enumerate}
+                \item [2.] A basis for a given vector space $V$, is a set of vectors $\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{n}\right\rangle$ from $V$ such that any vector $|u\rangle \in V$ is uniquely expressible as a linear combination of the $\left|v_{i}\right\rangle$ 's. That is, there is only one linear combination $|u\rangle=\sum_{i} \alpha_{i}\left|v_{i}\right\rangle$.
+            \end{enumerate}
+            Note: all bases have the same number of vectors. That is, if one basis has $n$ vectors, so does any other basis.
+            \item \textbf{Dimension}: The dimension of a vector space $V$ is the number of vectors in any basis, written as $\operatorname{dim}(V)$. As a consequence, if $\operatorname{dim}(V)=n$, any $n$ linearly independent vectors from $V$ forms a basis for $V$.
+        \end{itemize}
+        
+        \begin{align*}
+            W = \operatorname{span}\left(\left|u\right\rangle,\left|v\right\rangle\right) 
+            & \triangleq\left\{\alpha_{1}\left|u\right\rangle+\alpha_{2}\left|v\right\rangle: \alpha_{i} \in C\right\} \\
+            & = \alpha_1 \left[\begin{array}{l} 1 \\ 0 \\ 0 \\ 0 \end{array}\right] + \alpha_2 \left[\begin{array}{l} 0 \\ 0 \\ 1 \\ 0 \end{array}\right] \subseteq V \\
+            \operatorname{dim}(V) & = 2 
+        \end{align*}
+        
+        \item[c.] \textbf{Q.} Express $|x\rangle=(-i, 0, i+1,0)$ in terms of $|u\rangle$, $|v\rangle)$. \textbf{A.}
+        \begin{align*}
+            -i |u\rangle + i |v\rangle + |v\rangle = \left[\begin{array}{l} -i \\ 0 \\ i+1 \\ 0 \end{array}\right] 
+        \end{align*}
+        
+        \item[d.] \textbf{Q.} Is $|u\rangle$, $|v\rangle)$ a basis for $W$? Explain. \textbf{A.} Yes, $|u\rangle$, $|v\rangle)$ are linearly independent and $W=\operatorname{span}(|u\rangle,|v\rangle)$, which combined constitute a basis as defined in b.
+        \item[e.] \textbf{Q.} Is $W=\mathbb{C}^{k}$ for any value of $k$? \textbf{A.} No, only when $k=4$. The special vector space $\mathbb{C}^{n}=\left\{|v\rangle=\left(v_{1}, \ldots, v_{n}\right): v_{i} \in \mathbb{C}\right\}$ is the set of all vectors with $n$ elements, where each element is a complex number. In 5b we can see that $W = \operatorname{span}\left(\left|u\right\rangle,\left|v\right\rangle\right)$ is composed of two vectors with four elements each of complex value. 
+
     \end{enumerate}
     
 \item[] \textbf{In-Class Exercise 6:} For the vectors $|00\rangle$, $|01\rangle$, $|10\rangle$, $|11\rangle$ defined above, compute the outer products
 
     \begin{enumerate}
-        \item[a.] $|00\rangle\langle 00|$
-        \item[b.] $|01\rangle\langle 01|$
-        \item[c.] $|10\rangle\langle 10|$
-        \item[d.] $|11\rangle\langle 11|$
+        \item[a.] \textbf{Q.} $|00\rangle\langle 00|$ \textbf{A.}
+        \begin{align*}
+            & = \left[\begin{array}{l} 1 \\ 0 \\ 0 \\ 0 \end{array}\right] \left[\begin{array}{llll} 1 & 0 & 0 & 0 \end{array}\right] \\
+            & = \left[\begin{array}{llll} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] 
+        \end{align*}
+        \item[b.] \textbf{Q.} $|01\rangle\langle 01|$ \textbf{A.}
+        \begin{align*}
+            & = \left[\begin{array}{l} 0 \\ 1 \\ 0 \\ 0 \end{array}\right] \left[\begin{array}{llll} 0 & 1 & 0 & 0 \end{array}\right] \\
+            & = \left[\begin{array}{llll} 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] 
+        \end{align*}
+        \item[c.] \textbf{Q.} $|10\rangle\langle 10|$ \textbf{A.}
+        \begin{align*}
+            & = \left[\begin{array}{l} 0 \\ 0 \\ 1 \\ 0 \end{array}\right] \left[\begin{array}{llll} 0 & 0 & 1 & 0 \end{array}\right] \\
+            & = \left[\begin{array}{llll} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] 
+        \end{align*}
+        \item[d.] \textbf{Q.} $|11\rangle\langle 11|$ \textbf{A.}
+        \begin{align*}
+            & = \left[\begin{array}{l} 0 \\ 0 \\ 0 \\ 1 \end{array}\right] \left[\begin{array}{llll} 0 & 0 & 0 & 1 \end{array}\right] \\
+            & = \left[\begin{array}{llll} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{array}\right] 
+        \end{align*}
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 7:} Using the vectors $|0\rangle$, $|1\rangle$, compute the vectors
 
     \begin{enumerate}
-        \item[a.] $\left|h_{1}\right\rangle=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)$
-        \item[b.] $\left|h_{2}\right\rangle=\frac{1}{\sqrt{2}}(|0\rangle-|1\rangle)$
-        \item[c.] Show that $\left|h_{1}\right\rangle$, $\left|h_{2}\right\rangle$ are orthonormal (unit length and orthogonal).
-        \item[d.] Show that $\left|h_{1}\right\rangle$, $\left|h_{2}\right\rangle$ are a basis for $\mathbb{C}^2$. [Hint: start by expressing $|0\rangle$, $|1\rangle$ in terms of $\left|h_{1}\right\rangle,\left|h_{2}\right\rangle$.]   
-        \end{enumerate}
+        \item[a.] \textbf{Q.} $\left|h_{1}\right\rangle=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)$ \textbf{A.}
+        \begin{align*}
+            & = \frac{1}{\sqrt{2}} \left( \left[\begin{array}{l} 1 \\ 0 \end{array}\right] + \left[\begin{array}{l} 0 \\ 1 \end{array}\right] \right)\\
+            & = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] 
+        \end{align*}
+        
+        \item[b.] \textbf{Q.} $\left|h_{2}\right\rangle=\frac{1}{\sqrt{2}}(|0\rangle-|1\rangle)$ \textbf{A.}
+        \begin{align*}
+            & = \frac{1}{\sqrt{2}} \left( \left[\begin{array}{l} 1 \\ 0 \end{array}\right] - \left[\begin{array}{l} 0 \\ 1 \end{array}\right] \right)\\
+            & = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right]             
+        \end{align*}
+        
+        \item[c.] \textbf{Q.} Show that $\left|h_{1}\right\rangle$, $\left|h_{2}\right\rangle$ are orthonormal (unit length and orthogonal). \textbf{A.} Two vectors $|u\rangle$ and $|v\rangle$ from a vector space $V$ are orthonormal if $\langle u \mid v\rangle=0$ and $|u|=|v|=1$ (that is, each is of unit length).
+        \begin{align*}
+            \left\langle h_{1} \mid h_{2}\right\rangle  & =  \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right] 
+                                                            \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] \\   
+                                                        & = 0 \\  
+                \left|\left|h_{1}\right\rangle\right|   & = \sqrt{\left(\frac{1}{\sqrt{2}}\right)^2 + \left(\frac{1}{\sqrt{2}}\right)^2} \\
+                                                        & = 1 \\
+                \left|\left|h_{2}\right\rangle\right|   & = \sqrt{\left(\frac{1}{\sqrt{2}}\right)^2 + \left(-\frac{1}{\sqrt{2}}\right)^2} \\
+                                                        & = 1
+        \end{align*}
+        
+        \item[d.] \textbf{Q.} Show that $\left|h_{1}\right\rangle$, $\left|h_{2}\right\rangle$ are a basis for $\mathbb{C}^2$. [Hint: start by expressing $|0\rangle$, $|1\rangle$ in terms of $\left|h_{1}\right\rangle,\left|h_{2}\right\rangle$.] \textbf{A.} Using definitions in 5a, 5b, and 5e, $\left|h_{1}\right\rangle$, $\left|h_{2}\right\rangle$ are linearly independent 
+       \begin{align*}
+            0 \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] 
+            + 0 \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{-\sqrt{2}} \end{array}\right] & = \left[\begin{array}{l} 0 \\ 0 \end{array}\right]
+        \end{align*}
+        and
+        \begin{align*}
+            \mathbb{C}^2 = \operatorname{span} \left( \left|h_{1} \right\rangle, \left|h_{2}\right\rangle \right)  
+        \end{align*}
+    \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 8:} For any projector $|v\rangle\langle v|$ show that $(|v\rangle\langle v|)^{\dagger}=|v\rangle\langle v|$. [Hint: you can transpose and then conjugate.] Note: a matrix $A$ like $P_{v}=|v\rangle\langle v|$ that satisfies $A^{\dagger}=A$ is called \emph{Hermitian}, as we'll see below.
+\item[] \textbf{In-Class Exercise 8:} \textbf{Q.} For any projector $|v\rangle\langle v|$ show that $(|v\rangle\langle v|)^{\dagger}=|v\rangle\langle v|$. [Hint: you can transpose and then conjugate.] Note: a matrix $A$ like $P_{v}=|v\rangle\langle v|$ that satisfies $A^{\dagger}=A$ is called \emph{Hermitian}, as we'll see below. \textbf{A.}
+
+    \begin{align*}
+        (|v\rangle\langle v|)^{\dagger} & = (P_{v})^{\dagger} \tag {outerproduct $\left|v_{1}\right\rangle\left\langle v_{1}\right|$ equals projector matrix}\\    
+        (P_{v})^{\dagger} & = P_{v} \tag{Hermitian projector}\\
+        P_{v} & = |v\rangle\langle v|
+    \end{align*}
 
 \item[] \textbf{In-Class Exercise 9:} Using the vectors $|0\rangle$, $|1\rangle$, compute the vectors
 
     \begin{enumerate}
-        \item[a.] $\left|y_{1}\right\rangle=\frac{1}{\sqrt{2}}|0\rangle+\frac{i}{\sqrt{2}}|1\rangle$
-        \item[b.] $\left.\left|y_{2}\right\rangle=\frac{1}{\sqrt{2}}|0\rangle-\frac{i}{\sqrt{2}}|1\rangle\right)$
-        \item[c.] Show that $\left|y_{1}\right\rangle$, $\left|y_{2}\right\rangle$ are a basis for $\mathbb{C}^{2}$.
-        \item[d.] Show the completeness relation for this basis.
+        \item[a.] \textbf{Q.} $\left|y_{1}\right\rangle=\frac{1}{\sqrt{2}}|0\rangle+\frac{i}{\sqrt{2}}|1\rangle$ \textbf{A.}
+        \begin{align*}
+            \frac{1}{\sqrt{2}}|0\rangle+\frac{i}{\sqrt{2}}|1\rangle & = \frac{1}{\sqrt{2}} \left[\begin{array}{l} 1 \\ 0 \end{array}\right] 
+                                                                        + \frac{i}{\sqrt{2}} \left[\begin{array}{l} 0 \\ 1 \end{array}\right] \\
+                                                                    & = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right] 
+        \end{align*}
+        
+        \item[b.] \textbf{Q.} $\left.\left|y_{2}\right\rangle=\frac{1}{\sqrt{2}}|0\rangle-\frac{i}{\sqrt{2}}|1\rangle\right$ \textbf{A.}
+        \begin{align*}
+            \frac{1}{\sqrt{2}}|0\rangle-\frac{i}{\sqrt{2}}|1\rangle & = \frac{1}{\sqrt{2}} \left[\begin{array}{l} 1 \\ 0 \end{array}\right] 
+                                                                        - \frac{i}{\sqrt{2}} \left[\begin{array}{l} 0 \\ 1 \end{array}\right] \\
+                                                                    & = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{i}{\sqrt{2}} \end{array}\right] 
+        \end{align*}
+        
+        \item[c.] \textbf{Q.} Show that $\left|y_{1}\right\rangle$, $\left|y_{2}\right\rangle$ are a basis for $\mathbb{C}^{2}$. \textbf{A.} $\alpha_1=\alpha_2=0$ are the only values that satisfy
+        \begin{align*}
+            0 \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right]  
+            + 0 \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{i}{\sqrt{2}} \end{array}\right]  & = \left[\begin{array}{l} 0 \\ 0 \end{array}\right]
+        \end{align*}
+        and
+        \begin{align*}
+            \mathbb{C}^2 = \operatorname{span} \left( \left|y_{1} \right\rangle, \left|y_{2}\right\rangle \right)  
+        \end{align*}
+        
+        \item[d.] \textbf{Q.} Show the completeness relation for this basis. \textbf{A.} We define the completeness relation as the sum of all outer products (projectors) of the vectors that comprise the basis as the identity matrix  
+        \begin{align*}
+            I   & = \left|v_{1}\right\rangle\left\langle v_{1}|+\ldots+| v_{n}\right\rangle\left\langle v_{n}\right|= P_{1}+\ldots+P_{n}\\
+                & = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{array}\right] 
+                    \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{-i}{\sqrt{2}} \end{array}\right]
+                    + \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{i}{\sqrt{2}} \end{array}\right]
+                    \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{i}{\sqrt{2}} \end{array}\right] \\
+                & = \left[\begin{array}{ll} 1 & 0 \\ 0 & 1 \end{array}\right]
+        \end{align*}
+        
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 10:} Consider these matrices. (Yes, the latter two have special names.)
@@ -190,15 +314,40 @@
     Compute
     
     \begin{enumerate}
-        \item[1.] The adjoints $A^{\dagger}$, $B^{\dagger}$, $Y^{\dagger}$, $H^{\dagger}$
-        \item[2.] $A^{\dagger} A, Y^{\dagger} Y \text{ and } H^{\dagger} H$
-        \item[3.] $A A^{\dagger}, Y Y^{\dagger}$ and $H H^{\dagger}$
+        \item[1.] \textbf{Q.} The adjoints $A^{\dagger}$, $B^{\dagger}$, $Y^{\dagger}$, $H^{\dagger}$ \textbf{A.}
+        \begin{align*}
+            A^{\dagger} & = \left[\begin{array}{cc} 1 & -i \\ i & 1 \end{array}\right]\\
+            B^{\dagger} & = \left[\begin{array}{cc} -i & 1 \\ 1 & i \end{array}\right]\\
+            Y^{\dagger} & = \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right]\\
+            H^{\dagger} & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]
+        \end{align*}
+        
+        \item[2.] \textbf{Q.} $A^{\dagger} A, Y^{\dagger} Y \text{ and } H^{\dagger} H$ \textbf{A.}
+        \begin{align*}
+            A^{\dagger} A   & = \left[\begin{array}{cc} 1 & -i \\ i & 1 \end{array}\right] \left[\begin{array}{cc} 1 & -i \\ i & 1 \end{array}\right]\\
+                            & = \left[\begin{array}{cc} 2 & -2i \\ 2i & 2 \end{array}\right] \\
+            Y^{\dagger} Y   & = \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right] \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right]\\
+                            & = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right]\\
+            H^{\dagger} H   & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]
+                                \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]\\
+                            & = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right]\\
+        \end{align*}
+        
+        \item[3.] \textbf{Q.} $A A^{\dagger}, Y Y^{\dagger}$ and $H H^{\dagger}$ \textbf{A.}
+        \begin{align*}
+            A A^{\dagger}   & = \left[\begin{array}{cc} 1 & -i \\ i & 1 \end{array}\right] \left[\begin{array}{cc} 1 & -i \\ i & 1 \end{array}\right]\\
+                            & = \left[\begin{array}{cc} 2 & -2i \\ 2i & 2 \end{array}\right] \\
+            Y Y^{\dagger}   & = \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right] \left[\begin{array}{cc} 0 & -i \\ i & 0 \end{array}\right]\\
+                            & = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right]\\
+            H H^{\dagger}   & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]
+                                \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array} \right]\\
+                            & = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right]\\
+        \end{align*}
+        
     \end{enumerate}
     
-    In computing the adjoint, do we get the same result if we first apply conjugation and then transpose?
+    \textbf{Q.} In computing the adjoint, do we get the same result if we first apply conjugation and then transpose? \textbf{A.} Yes
     
-Work up to here
-
 \item[] \textbf{In-Class Exercise 11:} Use
 
     $$A=\left[\begin{array}{cc}1 & -i \\ i & 1\end{array}\right] \quad B=\left[\begin{array}{cc}i & 1 \\ 1 & -i\end{array}\right] \quad \alpha=1+i$$

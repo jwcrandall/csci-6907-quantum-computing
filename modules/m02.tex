@@ -482,44 +482,194 @@
             \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
             \left[\begin{array}{c} 0 \\ \frac{1}{2} \end{array}\right]                                          & = \left[\begin{array}{c} \frac{1}{2\sqrt{2}} \\ -\frac{1}{2\sqrt{2}} \end{array}\right] \tag{new basis}\\
         \end{align*}
-        
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 16:} This is just a writing exercise to get used to the new symbols. Rewrite the previous exercise with the new symbols. That is, using $|+\rangle,|-\rangle$ as the basis, 
-
+    
     \begin{enumerate}
-    \item[a.] Find the coordinates of $|0\rangle,|1\rangle$;
-    \item[b.] Then, compute $\left|y_{2}\right\rangle=P_{0}|u\rangle$ in this basis.
-    \item[c.] Check your calculations by obtaining $\left|y_{2}\right\rangle$ in the standard basis and converting that to the $|+\rangle,|-\rangle$ basis.
+        \item[a.] \textbf{Q.} Find the coordinates of $|0\rangle,|1\rangle$; \textbf{A.}
+        \begin{align*}
+            \alpha_{1}\left|+\right\rangle+\alpha_{2}\left|-\right\rangle                                       & = \left|0\right\rangle\\
+            \alpha_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \alpha_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right]    & = \left[\begin{array}{l} 1 \\ 0 \end{array}\right]\\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \alpha_{1} \\ \alpha_{2} \end{array}\right]                                  & = \left[\begin{array}{c} 1 \\ 0 \end{array}\right] \tag{matrix is unitary, inverse is the adjoint} \\
+            \left|0\right\rangle = 
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} 1 \\ 0 \end{array}\right]                                                    & = \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] \tag{new basis}\\
+            \alpha_{1}\left|+\right\rangle+\alpha_{2}\left|-\right\rangle                                       & = \left|1\right\rangle\\
+            \alpha_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \alpha_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right]    & = \left[\begin{array}{l} 0 \\ 1 \end{array}\right]\\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \alpha_{1} \\ \alpha_{2} \end{array}\right]                                  & = \left[\begin{array}{c} 0 \\ 1 \end{array}\right] \tag{matrix is unitary, inverse is the adjoint} \\
+            \left|1\right\rangle = 
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} 0 \\ 1 \end{array}\right]                                                    & = \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] \tag{new basis}\\
+        \end{align*}
+
+        \item[b.] \textbf{Q.} Then, compute $\left|y_{2}\right\rangle=P_{0}|u\rangle$ in this basis. \textbf{A.}
+        \begin{align*}
+            P_{0}                                                               & = \left|0\right\rangle \left\langle 0\right| 
+                                                                                        = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] 
+                                                                                        \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right]\\
+                                                                                & = \left[\begin{array}{ll} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{array}\right] \\
+            \alpha_{1}\left|+\right\rangle+\alpha_{2}\left|-\right\rangle       & = \left|u\right\rangle\\
+            \alpha_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \alpha_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} 
+            \\ -\frac{1}{\sqrt{2}} \end{array}\right]                                   & = \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ \frac{1}{2} \end{array}\right] \\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \alpha_{1} \\ \alpha_{2} \end{array}\right]          & = \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ \frac{1}{2} \end{array}\right] \tag{matrix is unitary, inverse is the adjoint} \\
+            |u\rangle =
+            \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \frac{\sqrt{3}}{2} 
+            \\ \frac{1}{2} \end{array}\right]                                           & = \left[\begin{array}{c} \frac{\sqrt{3}+1}{2 \sqrt{2}} \\ \frac{\sqrt{3}-1}{2 \sqrt{2}} \end{array}\right] \tag{new basis}\\
+            P_{0} \left|u\right\rangle                                                & = \left[\begin{array}{ll} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{array}\right] 
+                                                                                        \left[\begin{array}{c} \frac{\sqrt{3}+1}{2 \sqrt{2}} \\ \frac{\sqrt{3}-1}{2 \sqrt{2}} \end{array}\right] \\
+            \left|y_{2}\right\rangle                                                    & = \left[\begin{array}{c} \frac{\sqrt{3}}{2\sqrt{2}} \\ \frac{\sqrt{3}}{2\sqrt{2}} \end{array}\right]
+        \end{align*}
+        
+        \item[c.] \textbf{Q.} Check your calculations by obtaining $\left|y_{2}\right\rangle$ in the standard basis and converting that to the $|+\rangle,|-\rangle$ basis. \textbf{A.}
+        \begin{align*}
+            P_{0}                                                                                               & = \left|0\right\rangle \left\langle 0\right| 
+                                                                                                                = \left[\begin{array}{l} 1 \\ 0 \end{array}\right] \left[\begin{array}{ll} 1 & 0 \end{array}\right] 
+                                                                                                                = \left[\begin{array}{ll} 1 & 0 \\ 0 & 0 \end{array}\right] \\
+            P_{0} \left|u\right\rangle                                                                          & = \left[\begin{array}{ll} 0 & 0 \\ 0 & 1 \end{array}\right] 
+                                                                                                                \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ \frac{1}{2} \end{array}\right] \\
+            \left|y_{2}\right\rangle                                                                            & = \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ 0 \end{array}\right] \\
+            \gamma_{1}\left|+\right\rangle+\gamma_{2}\left|-\right\rangle                                       & = \left|y_{2}\right\rangle\\
+            \gamma_{1} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]
+            + \gamma_{2} \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right]    & = \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ 0 \end{array}\right]\\
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{l} \gamma_{1} \\ \gamma_{2} \end{array}\right]                                  & = \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ 0 \end{array}\right] \tag{matrix is unitary, inverse is the adjoint}\\
+            \left|y_{2}\right\rangle =
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} 
+            \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{c} \frac{\sqrt{3}}{2} \\ 0 \end{array}\right]                                   & = \left[\begin{array}{c} \frac{\sqrt{3}}{2\sqrt{2}} \\ \frac{\sqrt{3}}{2\sqrt{2}} \end{array}\right] \tag{new basis}\\
+        \end{align*}
     \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 17:} Suppose A is an operator that "flips" the Hadamard basis vectors. That is, $A|+\rangle=|-\rangle$ and $A|-\rangle=|+\rangle$. Use the approach above to derive the matrix for $A$. Then, apply the matrix to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$. Is the resulting vector orthogonal to $|\psi\rangle$?
+\item[] \textbf{In-Class Exercise 17:} \textbf{Q.} Suppose A is an operator that "flips" the Hadamard basis vectors. That is, $A|+\rangle=|-\rangle$ and $A|-\rangle=|+\rangle$. Use the approach above to derive the matrix for $A$. \textbf{A.}
+    \begin{align*}
+        A|+\rangle          & = |-\rangle \\
+        A|-\rangle          & = |+\rangle \\
+        \langle+|+\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] = 1\\
+        \langle+|-\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] = 0 \\
+        \langle-|+\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] = 0 \\
+        \langle-|-\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] = 1 \\
+        A_{i j}     &= \left\langle - |A| + \right\rangle\\
+                    & = \left[\begin{array}{ll} 1 \langle + \mid + \rangle & \langle + \mid - \rangle \\ -1 \langle - \mid + \rangle & -1 \langle - \mid - \rangle \end{array}\right] \tag{missing something}\\
+                    & = \left[\begin{array}{ll} 1 & 0 \\ 0 & -1 \end{array}\right]
+    \end{align*}
+    
+    \textbf{Q.} Then, apply the matrix to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$. Is the resulting vector orthogonal to $|\psi\rangle$? \textbf{A.}
+    \begin{align*}
+        A|\psi\rangle                                                       & = \left[\begin{array}{ll} 1 & 0 \\ 0 & -1 \end{array}\right] \left[\begin{array}{c} \alpha \\ \beta \end{array}\right]\\
+                                                                            & = \left[\begin{array}{c} \alpha \\ -\beta \end{array}\right]\\
+        \left[\begin{array}{c} \alpha \\ \beta \end{array}\right] 
+        \cdot \left[\begin{array}{c} \alpha \\ -\beta \end{array}\right]    & \neq 0 \tag{not orthogonal, missing something}\\
+    \end{align*}
 
-\item[] \textbf{In-Class Exercise 18:} Show that $|z\rangle \in W$.
+\item[] \textbf{In-Class Exercise 18:} \textbf{Q.} Show that $|z\rangle \in W$. \textbf{A.} In vector space $V$
+    \begin{align*}
+        V   & = \operatorname{span}\left\{\left|v_{1}\right\rangle,\left|v_{2}\right\rangle, \ldots,\left|v_{n}\right\rangle\right\} \\
+            & = \left\{\alpha_{1}\left|v_{1}\right\rangle+\alpha_{2}\left|v_{2}\right\rangle+\ldots+\alpha_{k}\left|v_{n}\right\rangle: \alpha_{i} \in \mathbb{C}\right\}
+    \end{align*}
+    consider just the span of the first two of these vectors $W$
+    \begin{align*}
+        W   & = \operatorname{span}\left\{\left|v_{1}\right\rangle,\left|v_{2}\right\rangle\right\} \\
+            & = \left\{\alpha_{1}\left|v_{1}\right\rangle+\alpha_{2}\left|v_{2}\right\rangle: \alpha_{i} \in \mathbb{C}\right\}
+    \end{align*}
+    and pick three vectors in $W$ and ask if the linear combination is in $W$:
+    \begin{align*}
+        \left|x_{1}\right\rangle    & = a_{1}\left|v_{1}\right\rangle+a_{2}\left|v_{2}\right\rangle \\
+        \left|x_{2}\right\rangle    & = b_{1}\left|v_{1}\right\rangle+b_{2}\left|v_{2}\right\rangle \\
+        \left|x_{3}\right\rangle    & = c_{1}\left|v_{1}\right\rangle+c_{2}\left|v_{2}\right\rangle \\
+        |z\rangle                   & = \beta_{1}\left|x_{1}\right\rangle+\beta_{2}\left|x_{2}\right\rangle+\beta_{3}\left|x_{3}\right\rangle
+    \end{align*}
+    $W$ is a vector space, meaning that all linear combinations of any subset of vectors in $W$ is in $W$. Vectors $\left|v_{1}\right\rangle$, and $\left|v_{2}\right\rangle$ are a subset of $W$, vectors $\left|x_{1}\right\rangle$, $\left|x_{2}\right\rangle$, and $\left|x_{3}\right\rangle$, are linear combinations of vectors $\left|v_{1}\right\rangle$ and $\left|v_{2}\right\rangle$, and vector $|z\rangle$ is a linear combination of vectors $\left|x_{1}\right\rangle$, $\left|x_{2}\right\rangle$, and $\left|x_{3}\right\rangle$. Vector $|z\rangle$ is a linear combination of a subset of vectors in $W$ and $\therefore |z\rangle \in W$.
+    
+\item[] \textbf{In-Class Exercise 19:} \textbf{Q.} Write down the projector $P _$ for the subspace $\operatorname{span}(|-\rangle)$. \textbf{A.}
 
-\item[] \textbf{In-Class Exercise 19:} Write down the projector $P _$ for the subspace $\operatorname{span}(|-\rangle)$.
+    \begin{align*}
+        P_{-}   & = \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]\\
+                & = \left[\begin{array}{cc} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{array}\right]
+    \end{align*}
 
     \begin{enumerate}
-    \item[1.] Show that $P_{-}|0\rangle=\frac{1}{\sqrt{2}}|-\rangle$.
-    \item[2.] What is the result = of applying $P_{-}$to $|+\rangle ?$.
+    \item[1.] \textbf{Q.} Show that $P_{-}|0\rangle=\frac{1}{\sqrt{2}}|-\rangle$. \textbf{A.}
+        \begin{align*}
+            P_{-}|0\rangle  & = \left[\begin{array}{cc} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{array}\right] \left[\begin{array}{c} 1 \\ 0 \end{array}\right]\\
+                            & = \left[\begin{array}{c} \frac{1}{2} \\ -\frac{1}{2} \end{array}\right]\\
+                            & = \frac{1}{\sqrt{2}}|-\rangle
+        \end{align*}
+    
+    \item[2.] \textbf{Q.} What is the result of applying $P_{-}$to $|+\rangle ?$. \textbf{A.}
+        \begin{align*}
+            P_{-}|+\rangle  & = \left[\begin{array}{cc} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]\\
+                            & = \left[\begin{array}{l} 0 \\ 0 \end{array}\right]
+        \end{align*}
+
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 20:} Suppose $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$.
 
     \begin{enumerate}
-    \item[1.] Show that $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle$is orthogonal and of unit-length.
-    \item[2.] Express $=|+\rangle$ in this basis by computing the coefficients $\langle w \mid+\rangle$ and $\left\langle w^{\perp} \mid+\right\rangle$.
-    \item[3.] Check your calculations by showing $|\langle w \mid+\rangle|^{2}+\left|\left\langle w^{\perp} \mid+\right\rangle\right|^{2}=1$.
+    \item[1.] \textbf{Q.} Show that $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle$ is orthogonal and of unit-length. \textbf{A.}
+        \begin{align*}
+            \left\langle w \mid w^{\perp}\right\rangle          & = \left\langle \frac{\sqrt{3}}{2}\langle0|-\frac{1}{2}\langle1|  \mid \frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle \right\rangle \\
+                                                                & = \frac{\sqrt{3}}{4}\langle 0 \mid 0\rangle - \frac{\sqrt{3}}{4} \left\langle 1 \mid 1 \right\rangle \\
+                                                                & = 0 \tag{orthogonal} \\
+             \left| |w^{\perp}\rangle \right|             & = \sqrt{\left(\frac{1}{2}\right)^2+\left(\frac{\sqrt{3}}{2}\right)^2}\\
+                                                                & = 1 \tag{unit length}
+        \end{align*}
+    \item[2.] \textbf{Q.} Express $|+\rangle$ in this basis by computing the coefficients $\langle w \mid+\rangle$ and $\left\langle w^{\perp} \mid+\right\rangle$. \textbf{A.}
+        \begin{align*}
+            \langle w \mid+\rangle          & = \left[\begin{array}{ll} \frac{\sqrt{3}}{2} & -\frac{1}{2} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]\\
+                                            & = \frac{\sqrt{3}-1}{2\sqrt{2}} \\
+            \langle w^{\perp} \mid+\rangle  & = \left[\begin{array}{ll} \frac{1}{2} & \frac{\sqrt{3}}{2} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right]\\
+                                            & = \frac{\sqrt{3}+1}{2\sqrt{2}} \\
+        \end{align*}
+        
+    \item[3.] \textbf{Q.} Check your calculations by showing $|\langle w \mid+\rangle|^{2}+\left|\left\langle w^{\perp} \mid+\right\rangle\right|^{2}=1$. \textbf{A.}
+        \begin{align*}
+            \left(\frac{\sqrt{3}-1}{2\sqrt{2}}\right)^2 + \left( \frac{\sqrt{3}+1}{2\sqrt{2}} \right)^2 & = \frac{3 -2\sqrt{3} + 1 + 3 +2\sqrt{3} + 1}{8}\\
+                                                                                                        & = 1
+        \end{align*}
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 21:}
 
     \begin{enumerate}
-    \item[1.] Write down the two projectors $P_{0}, P_{1}$ for $|0\rangle,|1\rangle$ respectively. Then compute the matrix product $P_{0} P_{1}$.
-    \item[2.] Write down the two projectors $P_{+}, P_{-}$ for $|+\rangle,|-\rangle$, respectively. Then compute the matrix product $P_{+} P_{-}$.
+    \item[1.] \textbf{Q.} Write down the two projectors $P_{0}, P_{1}$ for $|0\rangle,|1\rangle$ respectively. Then compute the matrix product $P_{0} P_{1}$. \textbf{A.}
+        \begin{align*}
+            P_{0} = |0 \rangle \langle 0|   & = \left[\begin{array}{c} 1 \\ 0 \end{array}\right] \left[\begin{array}{ll} 1 & 0 \end{array}\right] = \left[\begin{array}{ll} 1 & 0 \\ 0 & 0 \end{array}\right]\\
+            P_{1} = |1 \rangle \langle 1|   & = \left[\begin{array}{c} 0 \\ 1 \end{array}\right] \left[\begin{array}{ll} 0 & 1 \end{array}\right] = \left[\begin{array}{ll} 0 & 0 \\ 0 & 1 \end{array}\right]\\
+            P_{0}P_{1}                      & = \left[\begin{array}{ll} 1 & 0 \\ 0 & 0 \end{array}\right] \left[\begin{array}{ll} 0 & 0 \\ 0 & 1 \end{array}\right]\\
+                                            & = \left[\begin{array}{ll} 1 & 0 \\ 0 & 1 \end{array}\right]
+        \end{align*}
+    \item[2.] \textbf{Q.} Write down the two projectors $P_{+}, P_{-}$ for $|+\rangle,|-\rangle$, respectively. Then compute the matrix product $P_{+} P_{-}$. \textbf{A.}
+        \begin{align*}
+            P_{+} = |+ \rangle \langle +|   & = \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] 
+                                                \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right] 
+                                                = \left[\begin{array}{ll} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{array}\right]\\
+            P_{-} = |- \rangle \langle -|   & = \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] 
+                                                \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] 
+                                                = \left[\begin{array}{ll} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{array}\right]\\
+            P_{0}P_{1}                      & = \left[\begin{array}{ll} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{array}\right]
+                                                \left[\begin{array}{ll} \frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{array}\right]\\
+                                            & = \left[\begin{array}{ll} 0 & 0 \\ 0 & 0 \end{array}\right]
+        \end{align*}
     \end{enumerate}
     
-    Explain the resulting product matrices.
+    \textbf{Q.} Explain the resulting product matrices. \textbf{A.} The product of the projectors of the standard basis is the identity matrix and the product of the projectors of the Hadamard basis is the zero matrix.
 
 \end{enumerate}
 \end{document}

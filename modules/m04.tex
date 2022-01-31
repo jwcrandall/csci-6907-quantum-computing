@@ -1,55 +1,66 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/module4.html}{Module 4: Quantum Linear Algebra Part 2}
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/module4.html}{Module 4: Quantum Linear Algebra Part 2}\\
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/problems3.html}{Module-4 solved Problems}
 
 \begin{enumerate}
 
-\item[] \textbf{In-Class Exercise 1:} Suppose the qubit state is $|\psi\rangle=1+\rangle$ and the measurement basis is: $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$, and $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle$. What are the possible output vectors, and with what probabilities do they occur? Start by expressing $|+\rangle$ in the $|w\rangle$, $\left|w^{\perp}\right\rangle$ basis by computing the coefficients $\langle w \mid+\rangle,\left\langle w^{\perp} \mid+\right\rangle$.
-
-\item[] \textbf{In-Class Exercise 2:} What does the $X$ gate do to the state $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$ ?
-
-\item[] \textbf{In-Class Exercise 3:} Derive the above result that applies $H$ to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$. Also show that $H|\psi\rangle=\alpha|+\rangle+\beta|-\rangle$.
-
-\item[] \textbf{In-Class Exercise 4:} Consider the two circuits below, each given the same input.
-
+\item[] \textbf{In-Class Exercise 1:} Compute the following tensor products in column format:
     \begin{enumerate}
-        \item[1.] Write down the possible states of the outputs.
-        \item[2.] Calculate the probabilities associated with each output state.
+        \item[1.] $|+\rangle \otimes|+\rangle$
+        \item[2.] $|+\rangle \otimes|0\rangle$
     \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 5:} Consider the following set up: (polariser 6)
+\item[] \textbf{In-Class Exercise 2:} Evaluate the inner product $\langle\mid 0\rangle \otimes|+\rangle||+\rangle \otimes|0\rangle\rangle$.
 
-What percentage of $|1\rangle$ photons arriving on the left reach the output? Work through your probability calculations as shown above.
+\item[] \textbf{In-Class Exercise 3:} Fill in the missing steps in the matrix tensor derivation above.
 
-\item[] \textbf{In-Class Exercise 6:}
+\item[] \textbf{In-Class Exercise 4:} In-Class Exercise $4:$ Write down the single qubit matrices $|0\rangle\langle 0|,| 1\rangle\langle 1$, , and then calculate
+$$|0\rangle\langle 0|\otimes I+| 1\rangle\langle 1| \otimes X$$
+where $X=\left[\begin{array}{ll}0 & 1 \\ 1 & 0\end{array}\right]$. The result is one of the most important operators in quantum computing called $C_{N O r}$.
 
+\item[] \textbf{In-Class Exercise 5:} Recall that $H$ is the Hadamard operator 
+$H=\left[\begin{array}{cc}\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\end{array}\right]$
+\begin{enumerate}
+    \item[1.] Compute and compare $H|0\rangle \otimes H|0\rangle$ and $(H \otimes H)(|0\rangle \otimes|0\rangle$
+    \item[2.] Show that $(H \otimes H)\left(|0\rangle \otimes|0\rangle=\frac{1}{2}(|0\rangle \otimes|0\rangle+|0\rangle \otimes|1\rangle+|1\rangle \otimes|0\rangle+|1\rangle \otimes|1\rangle)\right.$
+\end{enumerate}
+
+\item[] \textbf{In-Class Exercise 6:} Let's explore this non-equivalence. Consider the first way (tensoring two vectors):
+$$|\psi\rangle=(\alpha|0\rangle+\beta|1\rangle) \otimes(\gamma|0\rangle+\delta|1\rangle)$$
+and the second way (using the larger basis vectors):
+$$|\phi\rangle=a_{00}|00\rangle+a_{01}|01\rangle+a_{10}|10\rangle+a_{11}|11\rangle$$
+For each $|\phi\rangle$ below
+\begin{enumerate}
+    \item[1.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|10\rangle+|11\rangle)$
+    \item[2.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle)$
+\end{enumerate}
+ identify the coefficients $a_{00}, \ldots, a_{11}$, then reason about whether the equation $|\psi\rangle=|\phi\rangle$ can be solved for $\alpha, \beta, \gamma, \delta$.
+
+\item[] \textbf{In-Class Exercise 7:} Complete the missing proof steps above (propositions $4.3,4.6($ ii $), 4.12)$.
+
+\item[] \textbf{In-Class Exercise 8:} Calculate the matrix form of the projectors
     \begin{enumerate}
-        \item[1.] What would go wrong if the S-H strings were exchanged before Bob performs qubit measurements?
-        \item[2.] Write out the details of Case 2(B) above, explaining the details of measurement and probabilities.
+        \item[1.] $|0 \otimes 0\rangle\langle 0 \otimes 0|$
+        \item[2.] $|0 \otimes 1\rangle\langle 0 \otimes 1|$
+        \item[3.] $|1 \otimes 0\rangle\langle 1 \otimes 0|$
+        \item[4.] $|1 \otimes 1\rangle\langle 1 \otimes 1|$
     \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 7:} Show that with $a,|\psi\rangle$ and $\left|\psi^{\prime}\right\rangle$ defined above,
+\item[] \textbf{In-Class Exercise 9:} Use the just-described approach above to write $|0\rangle\langle 0|\otimes| 1\rangle\langle 0|$ as a single outer-product using the 2-qubit basis vectors, and then confirm your results by working through the matrix versions.
 
+\item[] \textbf{In-Class Exercise 10:} Compute the projector $|0,+\rangle\langle 0,+|$ in two ways:
     \begin{enumerate}
-        \item[1.] $|a|^{2}=1$
-        \item[2.] $\left|\psi^{\prime}\right\rangle=a|\psi\rangle$
-        \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 8:} Write down the two projector matrices $P_{v}, P_{v^{\perp}}$ for the general 2D basis $|v\rangle=a|0\rangle+b|1\rangle$, and $\left|v^{\perp}\right\rangle=b^{*}|0\rangle-a^{*}|1\rangle$ and check your calculations by showing $P_{v} P_{v^{\perp}}=0$.
-
-\item[] \textbf{In-Class Exercise 9:} Suppose the qubit state is $|\psi\rangle=|+\rangle$ and the measurement basis is: $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$, and $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle$. Apply the projective measurement approach:
-
-    \begin{enumerate}
-        \item[1.] Compute the projectors $P_{w}, P_{w^{\perp}}$.
-        \item[2.] Apply the three steps, simplifying where possible.
+        \item[1.] Write out the column and row forms of $|0,+\rangle$ and then tensor.
+        \item[2.]  Tensor the smaller projectors using Proposition $4.5$.
     \end{enumerate}
-    
-    Confirm that you get the same results as in Exercise 1.
 
-\item[] \textbf{In-Class Exercise 10:} Use the projector matrices for the basis and the numbers $\gamma_{1}=3, \gamma_{2}=5$ to construct the Hermitian. Then show that these are the eigenvalues with $k t+,|-\rangle$ as eigenvectors.
+\item[] \textbf{In-Class Exercise 11:} Compute the matrix resulting from adding the operators $|0\rangle\langle 1|+| 1\rangle\langle 0|$ and apply that to $|1\rangle .$
 
-\item[] \textbf{In-Class Exercise 11:} Show that the Hadamard matrix can be written as $H=\frac{1}{\sqrt{2}}(|0\rangle\langle 0|+| 0\rangle\langle 1|+| 1\rangle\langle 0|-| 1\rangle\langle 1|)$ and then apply it to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$.
+\item[] \textbf{In-Class Exercise 12:} Use both the outer-product and regular matrix approaches to show $Z=H X H$.
+
+\item[] \textbf{In-Class Exercise 13:}  Show that the four Bell vectors do in fact form a basis for the 2-qubit vector space.
 
 \end{enumerate}
 \end{document}

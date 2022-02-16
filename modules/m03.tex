@@ -158,22 +158,40 @@
                                             +\left(\frac{2-\sqrt{2}-i\left(\sqrt{2}-1\right)}{3\sqrt{2}}\right)|-\rangle\\
     \end{align*}
         
-\item[] \textbf{In-Class Exercise 8:} Write down the two projector matrices $P_{v}, P_{v^{\perp}}$ for the general 2D basis $|v\rangle=a|0\rangle+b|1\rangle$, and $\left|v^{\perp}\right\rangle=b^{*}|0\rangle-a^{*}|1\rangle$ and check your calculations by showing $P_{v} P_{v^{\perp}}=0$.
+\item[] \textbf{In-Class Exercise 8:} \textbf{Q.} Write down the two projector matrices $P_{v}, P_{v^{\perp}}$ for the general 2D basis $|v\rangle=a|0\rangle+b|1\rangle$, and $\left|v^{\perp}\right\rangle=b^{*}|0\rangle-a^{*}|1\rangle$ and check your calculations by showing $P_{v} P_{v^{\perp}}=0$. \textbf{A.}
 
-\item[] \textbf{In-Class Exercise 9:} Suppose the qubit state is $|\psi\rangle=|+\rangle$ and the measurement basis is: $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$, and $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle$. Apply the projective measurement approach:
+    \begin{align*}
+        P_{v}               & = |v\rangle\langle v| \\
+                            & = \left[\begin{array}{l} a \\ b \end{array}\right] \left[\begin{array}{ll} a^{*} & b^{*} \end{array}\right]\\
+                            & = \left[\begin{array}{ll} a a^{*} & a b^{*} \\ b a^{*} & b b^{*} \end{array}\right]\\
+        P_{v^{\perp}}       & = \left|v^{\perp}\right\rangle \left\langle v^{\perp}\right|\\
+                            & = \left[\begin{array}{l} b^{*} \\ -a^{*} \end{array}\right] \left[\begin{array}{ll} b & -a \end{array}\right]\\
+                            & = \left[\begin{array}{ll} b^{*} b & -b^{*} a  \\ -a^{*} b & a^{*} a \end{array}\right]\\
+        P_{v}P_{v^{\perp}}  & = \left[\begin{array}{ll} a a^{*} & a b^{*} \\ b a^{*} & b b^{*} \end{array}\right]
+                            \left[\begin{array}{ll} b^{*} b & -b^{*} a \\ -a^{*} b & a^{*} a \end{array}\right]\\
+                            & = a a^{*} b^{*} b - a b^{*} a^{*} b \\
+                            & = 0
+    \end{align*}
+
+\item[] \textbf{In-Class Exercise 9:} \textbf{Q.} Suppose the qubit state is $|\psi\rangle=|+\rangle$ and the measurement basis is: $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$, and $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle$. Apply the projective measurement approach: 
 
     \begin{enumerate}
-        \item[1.] Compute the projectors $P_{w}, P_{w^{\perp}}$.
-        \item[2.] Apply the three steps, simplifying where possible.
+        \item[1.] \textbf{Q.} Compute the projectors $P_{w}, P_{w^{\perp}}$.
+        \begin{align*}
+            
+        \end{align*}
+        \item[2.] \textbf{Q.} Apply the three steps, simplifying where possible.
     \end{enumerate}
     
-    Confirm that you get the same results as in Exercise 1.
+     \textbf{Q.} Confirm that you get the same results as in Exercise 1.
 
-\item[] \textbf{In-Class Exercise 10:} Use the projector matrices for the basis and the numbers $\gamma_{1}=3, \gamma_{2}=5$ to construct the Hermitian. Then show that these are the eigenvalues with $k t+,|-\rangle$ as eigenvectors.
+\item[] \textbf{In-Class Exercise 10:}  \textbf{Q.} Use the projector matrices for the basis and the numbers $\gamma_{1}=3, \gamma_{2}=5$ to construct the Hermitian. Then show that these are the eigenvalues with $k t+,|-\rangle$ as eigenvectors.  \textbf{A.}
 
-\item[] \textbf{In-Class Exercise 11:} Suppose the qubit state is $|\psi\rangle=|+\rangle$ and the measurement basis is: $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$, and $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle .$ Compute $\left\langle+\left|P_{w}\right|+\right\rangle$ and $\left\langle+\left|P_{w^{\perp}}\right|+\right\rangle .$
+\item[] \textbf{In-Class Exercise 11:}  \textbf{Q.} Suppose the qubit state is $|\psi\rangle=|+\rangle$ and the measurement basis is: $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$, and $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle .$ Compute $\left\langle+\left|P_{w}\right|+\right\rangle$ and $\left\langle+\left|P_{w^{\perp}}\right|+\right\rangle .$  \textbf{A.}
 
-\item[] \textbf{In-Class Exercise 12:} Show that the Hadamard matrix can be written as $H=\frac{1}{\sqrt{2}} \backslash$ parenl $|0\rangle\langle 0|+| 0\rangle\langle 1|+| 1\rangle\langle 0|-| 1\rangle\langle 1|$ and then apply it to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle .$
+\item[] \textbf{In-Class Exercise 12:}  \textbf{Q.} Show that the Hadamard matrix can be written as $H=\frac{1}{\sqrt{2}} \backslash$ parenl $|0\rangle\langle 0|+| 0\rangle\langle 1|+| 1\rangle\langle 0|-| 1\rangle\langle 1|$ and then apply it to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle .$  \textbf{A.}
+
+finish
 
 \end{enumerate}
 \end{document}

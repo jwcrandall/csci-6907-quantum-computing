@@ -176,14 +176,69 @@
 \item[] \textbf{In-Class Exercise 9:} \textbf{Q.} Suppose the qubit state is $|\psi\rangle=|+\rangle$ and the measurement basis is: $|w\rangle=\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle$, and $\left|w^{\perp}\right\rangle=\frac{1}{2}|0\rangle+\frac{\sqrt{3}}{2}|1\rangle$. Apply the projective measurement approach: 
 
     \begin{enumerate}
-        \item[1.] \textbf{Q.} Compute the projectors $P_{w}, P_{w^{\perp}}$.
+        \item[1.] \textbf{Q.} Compute the projectors $P_{w}, P_{w^{\perp}}$. \textbf{A.}
         \begin{align*}
-            
+            P_{w}           & = |w\rangle \langle w| \\
+                            & = \left(\frac{\sqrt{3}}{2} |0\rangle - \frac{1}{2}|1\rangle \right)
+                            \left(\frac{\sqrt{3}}{2} \langle0| - \frac{1}{2} \langle1| \right)\\
+                            & = \frac{3}{4} |0\rangle\langle0| - \frac{\sqrt{3}}{4} |0\rangle\langle1|
+                            - \frac{\sqrt{3}}{4} |1\rangle\langle0| + \frac{1}{4} |1\rangle\langle1|\\
+                            & =  \left[\begin{array}{ll} \frac{3}{4} & -\frac{\sqrt{3}}{4} \\ 
+                            -\frac{\sqrt{3}}{4} & \frac{1}{4}\end{array} \right] \\
+            P_{w^{\perp}}   & = |w^{\perp}\rangle \langle w^{\perp}| \\
+                            & = \left(\frac{1}{2} |0\rangle + \frac{\sqrt{3}}{2} |1\rangle \right)
+                            \left(\frac{1}{2} \langle0| + \frac{\sqrt{3}}{2} \langle1| \right)\\
+                            & = \frac{1}{4} |0\rangle\langle0| + \frac{\sqrt{3}}{4} |0\rangle\langle1|
+                            + \frac{\sqrt{3}}{4} |1\rangle\langle0| + \frac{3}{4} |1\rangle \langle 1|\\
+                            & = \left[\begin{array}{ll} \frac{1}{4} & \frac{\sqrt{3}}{4} \\ 
+                            \frac{\sqrt{3}}{4} & \frac{3}{4}\end{array} \right] \\
         \end{align*}
-        \item[2.] \textbf{Q.} Apply the three steps, simplifying where possible.
+        
+        \item[2.] \textbf{Q.} Apply the three steps, simplifying where possible. \textbf{A.}
+        \begin{enumerate}
+            \item [] \textbf{Step:} compute the projected vectors
+                \begin{align*}
+                    |\psi_{P_{w}}\rangle            & = P_{w} | \psi \rangle \\
+                                                    & = \left[\begin{array}{ll} \frac{3}{4} & -\frac{\sqrt{3}}{4} \\ 
+                                                    -\frac{\sqrt{3}}{4} & \frac{1}{4}\end{array} \right]
+                                                    \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array} \right]\\
+                                                    & = \left[\begin{array}{l} \frac{3-\sqrt{3}}{4\sqrt{2}} \\  
+                                                    \frac{-\sqrt{3}+1}{4\sqrt{2}}\end{array}\right]\\
+                    |\psi_{P_{w^{\perp}}}\rangle    & = P_{w^{\perp}} | \psi \rangle \\
+                                                    & = \left[\begin{array}{ll} \frac{1}{4} & \frac{\sqrt{3}}{4} \\ 
+                                                    \frac{\sqrt{3}}{4} & \frac{3}{4}\end{array} \right]
+                                                    \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array} \right]\\
+                                                    & = \left[\begin{array}{l} \frac{1+\sqrt{3}}{4\sqrt{2}} \\
+                                                    \frac{\sqrt{3}+3}{4\sqrt{2}}\end{array}\right]\\
+                \end{align*}
+            \item [] \textbf{Step:} compute the squared magnitude of each projection
+                \begin{align*}
+                    ||\psi_{P_{w}}\rangle|^2            & = \left|\left[\begin{array}{l} \frac{3-\sqrt{3}}{4\sqrt{2}} \\
+                                                        \frac{-\sqrt{3}+1}{4\sqrt{2}}\end{array}\right]\right|^2\\
+                                                        & = \left(\frac{3-\sqrt{3}}{4\sqrt{2}}\right)^2 + \left(\frac{-\sqrt{3}+1}{4\sqrt{2}}\right)^2\\
+                                                        & = \frac{9-6\sqrt{3}+3+3-2\sqrt{3}+1}{32} \\
+                                                        & = \frac{2-\sqrt{3}}{4}\\
+                    ||\psi_{P_{w^{\perp}}}\rangle|^2    & = \left|\left[\begin{array}{l} \frac{1+\sqrt{3}}{4\sqrt{2}} \\
+                                                        \frac{\sqrt{3}+3}{4\sqrt{2}}\end{array}\right]\right|^2\\
+                                                        & = \left(\frac{1+\sqrt{3}}{4\sqrt{2}}\right)^2 + \left(\frac{\sqrt{3}+3}{4\sqrt{2}}\right)^2\\
+                                                        & = \frac{1+2\sqrt{3}+3+3+6\sqrt{3}+9}{32} \\
+                                                        & = \frac{2+\sqrt{3}}{4}\\
+                \end{align*}
+            \item [] \textbf{Step:} compute the normalized projections
+                \begin{align*}
+                    |\psi_{N_{w^{\perp}}}\rangle    & = \frac{|\psi_{P_{w}}\rangle}{||\psi_{P_{w}}\rangle|}\\
+                                                    & = \left(\frac{2-\sqrt{3}}{4}\right)^{-\frac{1}{2}}
+                                                    \left[\begin{array}{l} \frac{3-\sqrt{3}}{4\sqrt{2}} \\  
+                                                    \frac{-\sqrt{3}+1}{4\sqrt{2}}\end{array}\right]\\
+                    |\psi_{N_{w^{\perp}}}\rangle    & = \frac{|\psi_{P_{w^{\perp}}}\rangle}{||\psi_{P_{w^{\perp}}}\rangle|}\\
+                                                    & = \left(\frac{2+\sqrt{3}}{4}\right)^{-\frac{1}{2}}
+                                                    \left[\begin{array}{l} \frac{1+\sqrt{3}}{4\sqrt{2}} \\
+                                                    \frac{\sqrt{3}+3}{4\sqrt{2}}\end{array}\right]\\
+                \end{align*}
+        \end{enumerate}
     \end{enumerate}
     
-     \textbf{Q.} Confirm that you get the same results as in Exercise 1.
+     \textbf{Q.} Confirm that you get the same results as in Exercise 1. \textbf{A.} The probabilities are the same.
 
 \item[] \textbf{In-Class Exercise 10:}  \textbf{Q.} Use the projector matrices for the basis and the numbers $\gamma_{1}=3, \gamma_{2}=5$ to construct the Hermitian. Then show that these are the eigenvalues with $k t+,|-\rangle$ as eigenvectors.  \textbf{A.}
 

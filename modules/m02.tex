@@ -560,13 +560,18 @@
     \begin{align*}
         A|+\rangle          & = |-\rangle \\
         A|-\rangle          & = |+\rangle \\
-        \langle+|+\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] = 1\\
-        \langle+|-\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] = 0 \\
-        \langle-|+\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] = 0 \\
-        \langle-|-\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] = 1 \\
-        A_{i j}     &= \left\langle - |A| + \right\rangle\\
-                    & = \left[\begin{array}{ll} 1 \langle + \mid + \rangle & \langle + \mid - \rangle \\ -1 \langle - \mid + \rangle & -1 \langle - \mid - \rangle \end{array}\right] \tag{missing something}\\
-                    & = \left[\begin{array}{ll} 1 & 0 \\ 0 & -1 \end{array}\right]
+        \langle+|+\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right]   
+                            \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] = 1\\
+        \langle+|-\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right] 
+                            \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] = 0 \\
+        \langle-|+\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] 
+                            \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{array}\right] = 0 \\
+        \langle-|-\rangle   & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] 
+                            \left[\begin{array}{c} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{array}\right] = 1 \\
+        A_{i j}             & = \left\langle - |A| + \right\rangle\\
+                            & = \left[\begin{array}{ll} 1 \langle+\mid+\rangle & \langle+\mid-\rangle \\ 
+                            -1 \langle-\mid+\rangle & -1\langle-\mid-\rangle \end{array}\right] \\
+                            & = \left[\begin{array}{ll} 1 & 0 \\ 0 & -1 \end{array}\right]
     \end{align*}
     
     \textbf{Q.} Then, apply the matrix to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$. Is the resulting vector orthogonal to $|\psi\rangle$? \textbf{A.}

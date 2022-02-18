@@ -295,7 +295,22 @@
                                                                 & = \frac{2+\sqrt{3}}{4}
     \end{align*}
 
-\item[] \textbf{In-Class Exercise 12:}  \textbf{Q.} Show that the Hadamard matrix can be written as $H=\frac{1}{\sqrt{2}} \backslash$ parenl $|0\rangle\langle 0|+| 0\rangle\langle 1|+| 1\rangle\langle 0|-| 1\rangle\langle 1|$ and then apply it to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle .$  \textbf{A.}
-
+\item[] \textbf{In-Class Exercise 12:}  \textbf{Q.} Show that the Hadamard matrix can be written as 
+$$H= \frac{1}{\sqrt{2}} \left(|0\rangle\langle 0|+| 0\rangle\langle 1|+| 1\rangle\langle 0|-| 1\rangle\langle 1|\right)$$ 
+and then apply it to $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$.  \textbf{A.}
+    \begin{align*}
+        H               & = \frac{1}{\sqrt{2}}\left(|0\rangle\langle0|+|0\rangle\langle1|
+                        +|1\rangle\langle0|-|1\rangle\langle1|\right) \\
+                        & = \frac{1}{\sqrt{2}}\left[\begin{array}{cc} 1 & 1 \\ 1 & -1\end{array}\right]\\
+                        & = \left[\begin{array}{cc} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+                        \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\end{array}\right]\\
+        H |\psi\rangle  & = \left(\frac{1}{\sqrt{2}}\left(|0\rangle\langle0|+|0\rangle\langle1|
+                        +|1\rangle\langle0|-|1\rangle\langle1|\right)\right)
+                        \left(\alpha|0\rangle+\beta|1\rangle\right) \\ 
+                        & = \frac{1}{\sqrt{2}}\left(\alpha|0\rangle+\beta|0\rangle
+                        +\alpha|1\rangle-\beta|1\rangle\right)\\
+                        & = \left[\begin{array}{cc} \frac{\alpha+\beta}{\sqrt{2}} \\
+                        \frac{\alpha-\beta}{\sqrt{2}}\end{array}\right]\\
+    \end{align*}
 \end{enumerate}
 \end{document}

@@ -187,29 +187,179 @@ For each $|\phi\rangle$ below
     
     For the second example, although we can use the basis of the larger space and build a linear combination in the larger space, we cannot construct the larger vector by tensoring two smaller vectors, one from each space.
 
-\item[] \textbf{In-Class Exercise 7:} \textbf{Q.} Complete the missing proof steps above (propositions $4.3,4.6($ ii $), 4.12)$. \textbf{A.}
+\item[] \textbf{In-Class Exercise 7:} \textbf{Q.} Complete the missing proof steps above (propositions 4.3, 4.6(ii), 4.12).
+    \textbf{A.} Proof of Proposition 4.3: The operator tensor product $A \otimes B$ satisfies
+    \begin{align*}
+    (A \otimes B)
+    \left(\alpha_{1}\left|v_{1}\right\rangle 
+    \otimes\left|w_{1}\right\rangle
+    +\alpha_{2}\left|v_{2}\right\rangle 
+    \otimes\left|w_{2}\right\rangle\right)          & = \alpha_{1}A\left|v_{1}\right\rangle
+                                                    \otimes B\left|w_{1}\right\rangle
+                                                    +\alpha_{2}A\left|v_{2}\right\rangle
+                                                    \otimes B\left|w_{2}\right\rangle \tag{Bilinearity}\\
+    (A \otimes B)
+    \left(\left(\alpha_{1}\left|v_{1}\right\rangle
+    +\alpha_{2}\left|v_{2}\right\rangle\right) 
+    \otimes|w\rangle\right)                         & = A\left(\alpha_{1} \left|v_{1}\right\rangle
+                                                    +\alpha_{2} \left|v_{2}\right\rangle\right)\otimes B|w\rangle \tag{Bilinearity}\\
+                                                    & = \left(\alpha_{1} A\left|v_{1}\right\rangle
+                                                    +\alpha_{2} A\left|v_{2}\right\rangle\right)\otimes B|w\rangle 
+                                                    \tag{Distribute Operator}\\
+                                                    & = \alpha_{1} A\left|v_{1}\right\rangle 
+                                                    \otimes B|w\rangle+\alpha_{2}A\left|v_{2}\right\rangle
+                                                    \otimes B|w\rangle \tag{Tensor Vectors}
+    \end{align*}
+    and symmetrically,
+    \begin{align*}
+        (A \otimes B)
+        \left(\left|v_{1}\right\rangle 
+        \otimes \beta_{1}\left|w_{1}\right\rangle
+        +\left|v_{2}\right\rangle 
+        \otimes \beta_{2}\left|w_{2}\right\rangle\right)    & = A\left|v_{1}\right\rangle 
+                                                            \otimes \beta_{1} B\left|w_{1}\right\rangle
+                                                            +A\left|v_{2}\right\rangle 
+                                                            \otimes \beta_{2} B\left|w_{2}\right\rangle \tag{Bilineariy}\\
+        (A \otimes B) \left(|v\rangle 
+        \otimes\left(\beta_{1}\left|w_{1}\right\rangle
+        +\beta_{2}\left|w_{2}\right\rangle\right)\right)    & = A|v\rangle \otimes\left(\beta_{1} B\left|w_{1}\right\rangle
+                                                            +\beta_{2} B\left|w_{2}\right\rangle\right) \tag{Bilineariy}\\
+                                                            & = A|v\rangle \otimes \beta_{1} B\left|w_{1}\right\rangle+A|v\rangle 
+                                                            \otimes \beta_{2} B\left|w_{2}\right\rangle \tag{Tensor Vectors}
+    \end{align*}
+    Application: This says that the tensored operator $A \otimes B$ is linear, which we will take advantage of when simplifying quantum operations.
+    
+    \textbf{A.} Proof of Proposition 4.6(ii):
+    \begin{align*}
+        (A \otimes B)^{T}   & = \left[\begin{array}{ccc} a_{11} B & \ldots & a_{1 n} B \\ 
+                            \vdots & \vdots & \vdots \\ 
+                            a_{n 1} B & \ldots & a_{n n} B \end{array}\right]^{T} \\
+                            & = \left[\begin{array}{ccc} a_{11} B^{T} & \ldots & a_{n 1} B^{T} \\
+                            \vdots & \vdots & \vdots \\ 
+                            a_{1 n} B^{T} & \ldots & a_{n n} B^{T} \end{array}\right] \\
+                            & = A^{T} \otimes B^{T}
+    \end{align*}
+    
+    \textbf{A.} Proof of Proposition 4.12: If the $\left|v_{i}\right\rangle\mathrm{'s}$ are orthonormal and the $\left|w_{j}\right\rangle\mathrm{'s}$ are orthonormal in proposition 4.11, then so are the tensored eigenvectors $\left|v_{i}\right\rangle \otimes\left|w_{j}\right\rangle$. Suppose $A$ has orthonormal eigenvectors $\left|v_{1}\right\rangle, \ldots,\left|v_{m}\right\rangle$ and eigenvalues $\lambda_{1}, \ldots, \lambda_{m}$, and $B$ has orthonormal eigenvectors $\left|w_{1}\right\rangle, \ldots,\left|w_{n}\right\rangle$ with eigenvalues $\gamma_{1}, \ldots, \gamma_{n}$. Then $A \otimes B$ has $m n$ orthonormal eigenvectors $\left|v_{i}\right\rangle \otimes\left|w_{j}\right\rangle$ with corresponding eigenvalues $\lambda_{i} \gamma_{j}.
+    
+    \begin{align*}
+        (A \otimes B)\left(\left|v_{i}\right\rangle 
+        \otimes\left|w_{j}\right\rangle\right)      & = A\left|v_{i}\right\rangle 
+                                                    \otimes B\left|w_{j}\right\rangle \\
+                                                    & = \lambda_{i}\left|v_{i}\right\rangle 
+                                                    \otimes \gamma_{j}\left|w_{j}\right\rangle \\
+                                                    & = \lambda_{i} \gamma_{j}\left(\left|v_{i}\right\rangle 
+                                                    \otimes \left|w_{j}\right\rangle\right)
+    \end{align*}
+    
 
-\item[] \textbf{In-Class Exercise 8:} Calculate the matrix form of the projectors
+\item[] \textbf{In-Class Exercise 8:} \textbf{Q.} Calculate the matrix form of the projectors \textbf{A.}
     \begin{enumerate}
-        \item[1.] $|0 \otimes 0\rangle\langle 0 \otimes 0|$
-        \item[2.] $|0 \otimes 1\rangle\langle 0 \otimes 1|$
-        \item[3.] $|1 \otimes 0\rangle\langle 1 \otimes 0|$
-        \item[4.] $|1 \otimes 1\rangle\langle 1 \otimes 1|$
+        \begin{align*}
+            |0 \otimes 0\rangle\langle 0 \otimes 0| & = \left[\begin{array}{ll} 1 & {\left[\begin{array}{l} 1 \\ 0 \end{array}\right]} \\
+                                                    0 & {\left[\begin{array}{l} 1 \\ 0 \end{array}\right]} \end{array}\right]
+                                                    \left[\begin{array}{ll} 1 & 0 \\
+                                                    {\left[\begin{array}{ll} 1 & 0 \end{array}\right]} & 
+                                                    {\left[\begin{array}{ll} 1 & 0 \end{array}\right]} \end{array}\right]\\
+                                                    & = \left[\begin{array}{l} 1 \\ 0 \\ 0 \\ 0 \end{array}\right]
+                                                    \left[\begin{array}{llll} 1 & 0 & 0 & 0 \end{array}\right]\\
+                                                    & = \left[\begin{array}{llll} 1&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{array}\right]\\
+            |0 \otimes 1\rangle\langle 0 \otimes 1| & = \left[\begin{array}{ll} 1 & {\left[\begin{array}{l} 0 \\ 1 \end{array}\right]} \\
+                                                    0 & {\left[\begin{array}{l} 0 \\ 1 \end{array}\right]} \end{array}\right]
+                                                    \left[\begin{array}{ll} 1 & 0 \\
+                                                    {\left[\begin{array}{ll} 0 & 1 \end{array}\right]} & 
+                                                    {\left[\begin{array}{ll} 0 & 1 \end{array}\right]} \end{array}\right]\\
+                                                    & = \left[\begin{array}{l} 0 \\ 1 \\ 0 \\ 0 \end{array}\right]
+                                                    \left[\begin{array}{llll} 0 & 1 & 0 & 0 \end{array}\right]\\
+                                                    & = \left[\begin{array}{llll} 0&0&0&0\\0&1&0&0\\0&0&0&0\\0&0&0&0\end{array}\right]\\
+            |1 \otimes 0\rangle\langle 1 \otimes 0| & = \left[\begin{array}{ll} 0 & {\left[\begin{array}{l} 1 \\ 0 \end{array}\right]} \\
+                                                    1 & {\left[\begin{array}{l} 1 \\ 0 \end{array}\right]} \end{array}\right]
+                                                    \left[\begin{array}{ll} 0 & 1 \\
+                                                    {\left[\begin{array}{ll} 1 & 0 \end{array}\right]} & 
+                                                    {\left[\begin{array}{ll} 1 & 0 \end{array}\right]} \end{array}\right]\\
+                                                    & = \left[\begin{array}{l} 0 \\ 0 \\ 1 \\ 0 \end{array}\right]
+                                                    \left[\begin{array}{llll} 0 & 0 & 1 & 0 \end{array}\right]\\
+                                                    & = \left[\begin{array}{llll} 0&0&0&0\\0&0&0&0\\0&0&1&0\\0&0&0&0\end{array}\right]\\
+            |1 \otimes 1\rangle\langle 1 \otimes 1| & = \left[\begin{array}{ll} 0 & {\left[\begin{array}{l} 0 \\ 1 \end{array}\right]} \\
+                                                    1 & {\left[\begin{array}{l} 0 \\ 1 \end{array}\right]} \end{array}\right]
+                                                    \left[\begin{array}{ll} 0 & 1 \\
+                                                    {\left[\begin{array}{ll} 0 & 1 \end{array}\right]} & 
+                                                    {\left[\begin{array}{ll} 0 & 1 \end{array}\right]} \end{array}\right]\\
+                                                    & = \left[\begin{array}{l} 0 \\ 0 \\ 0 \\ 1 \end{array}\right]
+                                                    \left[\begin{array}{llll} 0 & 0 & 0 & 1 \end{array}\right]\\
+                                                    & = \left[\begin{array}{llll} 0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&1\end{array}\right]
+        \end{align*}
     \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 9:} Use the just-described approach above to write $|0\rangle\langle 0|\otimes| 1\rangle\langle 0|$ as a single outer-product using the 2-qubit basis vectors, and then confirm your results by working through the matrix versions.
+\item[] \textbf{In-Class Exercise 9:} \textbf{Q.} Use the just-described approach above to write $|0\rangle\langle 0|\otimes| 1\rangle\langle 0|$ as a single outer-product using the 2-qubit basis vectors, and then confirm your results by working through the matrix versions. \textbf{A.}
 
+    \begin{align*}
+        |0\rangle\langle0| \otimes |1\rangle\langle0|   & = |01\rangle \langle00|\\
+                                                        & = \left[\begin{array}{l} 0 \\ 1 \\ 0 \\ 0 \end{array}\right]
+                                                        \left[\begin{array}{llll} 1 & 0 & 0 & 0 \end{array}\right]\\
+                                                        & = \left[\begin{array}{llll} 0&0&0&0\\1&0&0&0\\0&0&0&0\\0&0&0&0\end{array}\right]
+    \end{align*}
+    
 \item[] \textbf{In-Class Exercise 10:} Compute the projector $|0,+\rangle\langle 0,+|$ in two ways:
     \begin{enumerate}
         \item[1.] Write out the column and row forms of $|0,+\rangle$ and then tensor.
-        \item[2.]  Tensor the smaller projectors using Proposition $4.5$.
+        \item[2.] Tensor the smaller projectors using Proposition $4.5$.
     \end{enumerate}
+    
+    \begin{align*}
+        |0,+\rangle\langle 0,+| & = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \\ 0 \end{array}\right]
+                                \left[\begin{array}{llll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 & 0 \end{array}\right]\\
+                                & = \left[\begin{array}{llll} \frac{1}{2}&\frac{1}{2}&0&0\\\frac{1}{2}&\frac{1}{2}&0&0\\
+                                0&0&0&0\\0&0&0&0\end{array}\right]\\
+        P_{0} \otimes P_{+}     & = |0\rangle\langle 0|\otimes| +\rangle\langle +| \\
+                                & = |0 \otimes +\rangle\langle 0 \otimes +| \\
+                                & = P_{0 \otimes +}\\
+                                & = \left[\begin{array}{llll} \frac{1}{2}&\frac{1}{2}&0&0\\\frac{1}{2}&\frac{1}{2}&0&0\\
+                                0&0&0&0\\0&0&0&0\end{array}\right]
+    \end{align*}
 
-\item[] \textbf{In-Class Exercise 11:} Compute the matrix resulting from adding the operators $|0\rangle\langle 1|+| 1\rangle\langle 0|$ and apply that to $|1\rangle .$
+\item[] \textbf{In-Class Exercise 11:} Compute the matrix resulting from adding the operators $|0\rangle\langle 1|+| 1\rangle\langle 0|$ and apply that to $|1\rangle$.
+    \begin{align*}
+        \left(|0\rangle\langle 1|+| 1\rangle\langle 0|\right)|1\rangle  & = \left[\begin{array}{ll} 0 & 1 \\ 1 & 0 \end{array}\right]
+                                                                        \left[\begin{array}{l}0\\1\end{array}\right]\\
+                                                                        & = \left[\begin{array}{l}1\\0\end{array}\right] 
+    \end{align*}
 
 \item[] \textbf{In-Class Exercise 12:} Use both the outer-product and regular matrix approaches to show $Z=H X H$.
+    \begin{align*}
+        Z   & = H X H \\
+            & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ 
+            \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{ll} 0 & 1 \\ 1 & 0 \end{array}\right]
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ 
+            \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] \\
+            & = \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ 
+            -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{array}\right]
+            \left[\begin{array}{ll} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ 
+            \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{array}\right] \\
+            & = \left[\begin{array}{ll} 1 & 0 \\ 0 & -1 \end{array}\right] \\
+            & = \frac{1}{\sqrt{2}}(|0\rangle\langle 0|+| 1\rangle\langle 0|+| 0\rangle\langle 1|-| 1\rangle\langle 1|)
+            \left(|0\rangle\langle 1|+| 1\rangle\langle 0|\right)
+            \frac{1}{\sqrt{2}}(|0\rangle\langle 0|+| 1\rangle\langle 0|+| 0\rangle\langle 1|-| 1\rangle\langle 1|)\\
+            & = \frac{1}{\sqrt{2}} (|0\rangle\langle 0|+| 1\rangle\langle 0|+| 0\rangle\langle 1|-| 1\rangle\langle 1|)
+            \frac{1}{\sqrt{2}} (|0\rangle\langle 0|-|0\rangle\langle 1|+| 1\rangle\langle 0|+| 1\rangle\langle 1|)\\
+            & = \frac{1}{2} (2|0\rangle\langle 0|-2| 1\rangle\langle 1|)\\
+            & = \left[\begin{array}{ll} 1 & 0 \\ 0 & -1 \end{array}\right]
+    \end{align*}
 
 \item[] \textbf{In-Class Exercise 13:}  Show that the four Bell vectors do in fact form a basis for the 2-qubit vector space.
+    \begin{align*}
+        \left|\Phi^{+}\right\rangle & = \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)
+                                    = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ 0 \\ 0 \\ \frac{1}{\sqrt{2}} \end{array}\right]\\ 
+        \left|\Phi^{-}\right\rangle & = \frac{1}{\sqrt{2}}(|00\rangle-|11\rangle)
+                                    = \left[\begin{array}{l} \frac{1}{\sqrt{2}} \\ 0 \\ 0 \\ -\frac{1}{\sqrt{2}} \end{array}\right]\\ 
+        \left|\Psi^{+}\right\rangle & = \frac{1}{\sqrt{2}}(|01\rangle+|10\rangle)
+                                    = \left[\begin{array}{l} 0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \end{array}\right]\\ 
+        \left|\Psi^{-}\right\rangle & = \frac{1}{\sqrt{2}}(|01\rangle-|10\rangle)
+                                    = \left[\begin{array}{l} 0 \\ \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \\ 0 \end{array}\right]\\ 
+    \end{align*}
+    $\left|\Phi^{+}\right\rangle, \left|\Phi^{-}\right\rangle, \left|\Psi^{+}\right\rangle, \left|\Psi^{-}\right\rangle$ are linearly independent, and for the 2-qubit vector space $V$:
+    $$V = \operatorname{span}\left(\left|\Phi^{+}\right\rangle,\left|\Phi^{-}\right\rangle,\left|\Psi^{+}\right\rangle,\left|\Psi^{-}\right\rangle\right)$$
 
 \end{enumerate}
 \end{document}

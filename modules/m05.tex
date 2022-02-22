@@ -1,66 +1,51 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/module4.html}{Module 4: Quantum Linear Algebra Part 2}\\
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/problems3.html}{Module-4 solved Problems}
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module5/module5.html}{Module 5: Multiple Qubits - Measurement and Modification}\\
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module5/problems5.html}{Module-5 Solved Problems}
 
 \begin{enumerate}
 
-\item[] \textbf{In-Class Exercise 1:} Compute the following tensor products in column format:
+\item[] \textbf{In-Class Exercise 1:} Consider the single-qubit projectors $P_{+}=|+\rangle\langle+|$ and $P_{-}=|-\rangle\langle-|$.
     \begin{enumerate}
-        \item[1.] $|+\rangle \otimes|+\rangle$
-        \item[2.] $|+\rangle \otimes|0\rangle$
+        \item[1.] Show that $\left(P_{+} \otimes I\right)|00\rangle=\frac{1}{\sqrt{2}}|+, 0\rangle$ and $\left(P_{+} \otimes I\right)|11\rangle=\frac{1}{\sqrt{2}}|+, 1\rangle$
+        \item[2.] Show that $\frac{1}{\sqrt{2}}|+, 0\rangle+\frac{1}{\sqrt{2}}|+, 1\rangle=|+,+\rangle$
+        \item[3.] Expand $\left(P_{+} \otimes I\right)$ into a matrix and use that to show $\left(P_{+} \otimes I\right)|\psi\rangle=|+,+\rangle$ where $|\psi\rangle=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)$
     \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 2:} Evaluate the inner product $\langle\mid 0\rangle \otimes|+\rangle||+\rangle \otimes|0\rangle\rangle$.
+\item[] \textbf{In-Class Exercise 2:} Apply the projectors $\left(P_{+} \otimes I\right)$ and $\left(P_{-} \otimes I\right)$ to $|\psi\rangle=\frac{1}{2}(|00\rangle+|01\rangle+|10\rangle+|11\rangle$ using the Dirac-notation approach above, and then confirm your results by expanding into matrices.
 
-\item[] \textbf{In-Class Exercise 3:} Fill in the missing steps in the matrix tensor derivation above.
+\item[] \textbf{In-Class Exercise 3:} Fill in the missing step of normalization in the above example. Then, apply the same projectors to the vector $|\psi\rangle=|+,+,+\rangle$ and list the outcomes and probabilities.
 
-\item[] \textbf{In-Class Exercise 4:} In-Class Exercise $4:$ Write down the single qubit matrices $|0\rangle\langle 0|,| 1\rangle\langle 1$, , and then calculate
-$$|0\rangle\langle 0|\otimes I+| 1\rangle\langle 1| \otimes X$$
-where $X=\left[\begin{array}{ll}0 & 1 \\ 1 & 0\end{array}\right]$. The result is one of the most important operators in quantum computing called $C_{N O r}$.
+\item[] \textbf{In-Class Exercise 4:} There was one step missing in the sequence of projections above: what happened to the terms $\sqrt{|\alpha|^{2}+|\beta|^{2}}$ and $\sqrt{|\gamma|^{2}+|\delta|^{2}}$ ? Hint: write down the probabilities  $\left.\left.\left|P_{0}\right| \psi\right\rangle\left.\right|^{2}$ and $\left|P_{2}\right| \psi_{0}\right\rangle\left.\right|^{2}$, and then ask: what product of probabilities leads us to observing $|00\rangle$ as the outcome?
 
-\item[] \textbf{In-Class Exercise 5:} Recall that $H$ is the Hadamard operator 
-$H=\left[\begin{array}{cc}\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\end{array}\right]$
+\item[] \textbf{In-Class Exercise 5:}
 \begin{enumerate}
-    \item[1.] Compute and compare $H|0\rangle \otimes H|0\rangle$ and $(H \otimes H)(|0\rangle \otimes|0\rangle$
-    \item[2.] Show that $(H \otimes H)\left(|0\rangle \otimes|0\rangle=\frac{1}{2}(|0\rangle \otimes|0\rangle+|0\rangle \otimes|1\rangle+|1\rangle \otimes|0\rangle+|1\rangle \otimes|1\rangle)\right.$
+    \item[1.] Show that $X^{2}=I$ both with matrix and Dirac forms.
+    \item[2.] Write out the matrix and Dirac forms of $X \otimes X$.
 \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 6:} Let's explore this non-equivalence. Consider the first way (tensoring two vectors):
-$$|\psi\rangle=(\alpha|0\rangle+\beta|1\rangle) \otimes(\gamma|0\rangle+\delta|1\rangle)$$
-and the second way (using the larger basis vectors):
-$$|\phi\rangle=a_{00}|00\rangle+a_{01}|01\rangle+a_{10}|10\rangle+a_{11}|11\rangle$$
-For each $|\phi\rangle$ below
+\item[] \textbf{In-Class Exercise 6:} Confirm the above result with the matrix form of $(I \otimes X)|\psi\rangle$.
+
+\item[] \textbf{In-Class Exercise 7:} Write down the matrices for $H^{\otimes 2}$ and  $H^{\otimes 3}$ in the above form (pulling out $\frac{1}{\sqrt{2^{n}}}$). This is admittedly a bit tedious but will be useful when we analyze the structure of this matrix for algorithmic insight.
+
+\item[] \textbf{In-Class Exercise 8:}
+    \begin{enumerate}
+        \item[1.] Use the Dirac form to apply $C_{\text{NOT}}$ to $|\psi\rangle=(\alpha|0\rangle+\beta|1\rangle) \otimes |0\rangle$ and $\left|\psi^{\prime}\right\rangle=(\alpha|0\rangle+\beta|1\rangle) \otimes |1\rangle$. 
+        \item[2.] Then confirm with matrix versions.
+        \item[3.] Apply this to the case where $\alpha=\beta=\frac{1}{\sqrt{2}}$.
+    \end{enumerate}
+
+\item[] \textbf{In-Class Exercise 9:} Use the above ideas to draw a two-stage circuit that takes the vector $|00\rangle$ to $\left|\Phi^{+}\right\rangle$.
+
+\item[] \textbf{In-Class Exercise 10:} Show the steps in applying $C_{\text{NOT}}$ to each of: $|-,+\rangle,|+,-\rangle,|-,-\rangle$.
+
+
+\item[] \textbf{In-Class Exercise 11:}
 \begin{enumerate}
-    \item[1.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|10\rangle+|11\rangle)$
-    \item[2.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle)$
+    \item [1.] Show that $(H \otimes I \otimes I) \frac{1}{\sqrt{2}}(\alpha|000\rangle+\alpha|011\rangle+\beta|110\rangle+\beta|101\rangle)=\frac{1}{2}(|00\rangle \otimes(\alpha|0\rangle+\beta|1\rangle)+|01\rangle \otimes(\beta|0\rangle+\alpha|1\rangle)+|10\rangle \otimes(\alpha|0\rangle-\beta|1\rangle)+|11\rangle \otimes(\alpha|1\rangle-\beta|0\rangle))$ Hint: see one of the solved problems
+    \item [2.] Show that $(I \otimes I \otimes Z)(|10\rangle \otimes(\alpha|0\rangle-\beta|1\rangle))=|10\rangle(\alpha|0\rangle+\beta|1\rangle)$
 \end{enumerate}
- identify the coefficients $a_{00}, \ldots, a_{11}$, then reason about whether the equation $|\psi\rangle=|\phi\rangle$ can be solved for $\alpha, \beta, \gamma, \delta$.
-
-\item[] \textbf{In-Class Exercise 7:} Complete the missing proof steps above (propositions $4.3,4.6($ ii $), 4.12)$.
-
-\item[] \textbf{In-Class Exercise 8:} Calculate the matrix form of the projectors
-    \begin{enumerate}
-        \item[1.] $|0 \otimes 0\rangle\langle 0 \otimes 0|$
-        \item[2.] $|0 \otimes 1\rangle\langle 0 \otimes 1|$
-        \item[3.] $|1 \otimes 0\rangle\langle 1 \otimes 0|$
-        \item[4.] $|1 \otimes 1\rangle\langle 1 \otimes 1|$
-    \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 9:} Use the just-described approach above to write $|0\rangle\langle 0|\otimes| 1\rangle\langle 0|$ as a single outer-product using the 2-qubit basis vectors, and then confirm your results by working through the matrix versions.
-
-\item[] \textbf{In-Class Exercise 10:} Compute the projector $|0,+\rangle\langle 0,+|$ in two ways:
-    \begin{enumerate}
-        \item[1.] Write out the column and row forms of $|0,+\rangle$ and then tensor.
-        \item[2.]  Tensor the smaller projectors using Proposition $4.5$.
-    \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 11:} Compute the matrix resulting from adding the operators $|0\rangle\langle 1|+| 1\rangle\langle 0|$ and apply that to $|1\rangle .$
-
-\item[] \textbf{In-Class Exercise 12:} Use both the outer-product and regular matrix approaches to show $Z=H X H$.
-
-\item[] \textbf{In-Class Exercise 13:}  Show that the four Bell vectors do in fact form a basis for the 2-qubit vector space.
 
 \end{enumerate}
 \end{document}

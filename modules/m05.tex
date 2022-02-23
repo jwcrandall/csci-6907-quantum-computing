@@ -8,9 +8,42 @@
 
 \item[] \textbf{In-Class Exercise 1:} Consider the single-qubit projectors $P_{+}=|+\rangle\langle+|$ and $P_{-}=|-\rangle\langle-|$.
     \begin{enumerate}
-        \item[1.] Show that $\left(P_{+} \otimes I\right)|00\rangle=\frac{1}{\sqrt{2}}|+, 0\rangle$ and $\left(P_{+} \otimes I\right)|11\rangle=\frac{1}{\sqrt{2}}|+, 1\rangle$
+        \item[1.] \textbf{Q.} Show that $\left(P_{+} \otimes I\right)|00\rangle=\frac{1}{\sqrt{2}}|+, 0\rangle$ and $\left(P_{+} \otimes I\right)|11\rangle=\frac{1}{\sqrt{2}}|+, 1\rangle$ \textbf{A.}
+        \begin{align*}
+            \left(P_{+} \otimes I\right) |00\rangle & = |+\rangle \langle+|0\rangle \otimes I |0\rangle\\
+                                                    & = \frac{1}{\sqrt{2}} |+\rangle \otimes |0\rangle\\
+                                                    & = \frac{1}{\sqrt{2}} |+,0\rangle\\
+            \left(P_{+} \otimes I\right)|11\rangle  & = |+\rangle \langle+|1\rangle \otimes I|1\rangle\\
+                                                    & = \frac{1}{\sqrt{2}} |+\rangle \otimes |1\rangle\\
+                                                    & = \frac{1}{\sqrt{2}} |+,1\rangle
+        \end{align*}
         \item[2.] Show that $\frac{1}{\sqrt{2}}|+, 0\rangle+\frac{1}{\sqrt{2}}|+, 1\rangle=|+,+\rangle$
-        \item[3.] Expand $\left(P_{+} \otimes I\right)$ into a matrix and use that to show $\left(P_{+} \otimes I\right)|\psi\rangle=|+,+\rangle$ where $|\psi\rangle=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)$
+        \begin{align*}
+            \frac{1}{\sqrt{2}}|+, 0\rangle
+            + \frac{1}{\sqrt{2}}|+, 1\rangle    & = |+\rangle \otimes \left(\frac{1}{\sqrt{2}}| 0\rangle
+                                                + \frac{1}{\sqrt{2}}| 1\rangle \right) \\
+                                                & = |+,+\rangle 
+        \end{align*}
+        \item[3.] Expand $\left(P_{+} \otimes I\right)$ into a matrix and use that to show $\left(P_{+} \otimes I\right)|\psi\rangle=|+,+\rangle$ (normalized) where $|\psi\rangle=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)$
+        \begin{align*}
+            \left(P_{+}\otimes I\right) & = \left[\begin{array}{ll} \frac{1}{2} & \frac{1}{2} \\
+                                        \frac{1}{2} & \frac{1}{2}\end{array}\right] 
+                                        \otimes \left[\begin{array}{ll} 1 & 0 \\
+                                        0 & 1\end{array}\right]\\
+                                        & = \frac{1}{2}\left[\begin{array}{llll}1&1&0&0\\
+                                        1&1&0&0\\
+                                        0&0&1&1\\
+                                        0&0&1&1\\\end{array}\right]\\
+            \left(P_{+}\otimes I\right)
+            |\psi\rangle                & = \frac{1}{2\sqrt{2}}\left[\begin{array}{llll}1&1&0&0\\
+                                        1&1&0&0\\
+                                        0&0&1&1\\
+                                        0&0&1&1\\\end{array}\right]
+                                        \left[\begin{array}{l}1\\1\\1\\1\end{array}\right]\\
+                                        & = \frac{1}{\sqrt{2}} \left[\begin{array}{l}1\\1\\1\\1\end{array}\right]\\
+                                        & = \sqrt{2} |+,+\rangle \tag{normalized}
+            \end{array}
+        \end{align*}
     \end{enumerate}
 
 \item[] \textbf{In-Class Exercise 2:} Apply the projectors $\left(P_{+} \otimes I\right)$ and $\left(P_{-} \otimes I\right)$ to $|\psi\rangle=\frac{1}{2}(|00\rangle+|01\rangle+|10\rangle+|11\rangle$ using the Dirac-notation approach above, and then confirm your results by expanding into matrices.

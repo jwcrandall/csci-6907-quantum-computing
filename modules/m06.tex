@@ -1,66 +1,68 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/module4.html}{Module 4: Quantum Linear Algebra Part 2}\\
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/problems3.html}{Module-4 solved Problems}
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module6/module6.html}{Module 6: Quantum Circuits - Gates}\\
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module6/problems6.html}{Module-6 Solved Problems}
 
 \begin{enumerate}
 
-\item[] \textbf{In-Class Exercise 1:} Compute the following tensor products in column format:
-    \begin{enumerate}
-        \item[1.] $|+\rangle \otimes|+\rangle$
-        \item[2.] $|+\rangle \otimes|0\rangle$
-    \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 2:} Evaluate the inner product $\langle\mid 0\rangle \otimes|+\rangle||+\rangle \otimes|0\rangle\rangle$.
-
-\item[] \textbf{In-Class Exercise 3:} Fill in the missing steps in the matrix tensor derivation above.
-
-\item[] \textbf{In-Class Exercise 4:} In-Class Exercise $4:$ Write down the single qubit matrices $|0\rangle\langle 0|,| 1\rangle\langle 1$, , and then calculate
-$$|0\rangle\langle 0|\otimes I+| 1\rangle\langle 1| \otimes X$$
-where $X=\left[\begin{array}{ll}0 & 1 \\ 1 & 0\end{array}\right]$. The result is one of the most important operators in quantum computing called $C_{N O r}$.
-
-\item[] \textbf{In-Class Exercise 5:} Recall that $H$ is the Hadamard operator 
-$H=\left[\begin{array}{cc}\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\end{array}\right]$
+\item[] \textbf{In-Class Exercise 1:} Use the Dirac form and
 \begin{enumerate}
-    \item[1.] Compute and compare $H|0\rangle \otimes H|0\rangle$ and $(H \otimes H)(|0\rangle \otimes|0\rangle$
-    \item[2.] Show that $(H \otimes H)\left(|0\rangle \otimes|0\rangle=\frac{1}{2}(|0\rangle \otimes|0\rangle+|0\rangle \otimes|1\rangle+|1\rangle \otimes|0\rangle+|1\rangle \otimes|1\rangle)\right.$
+    \item [1.] Show that $Y(\alpha|0\rangle+\beta|1\rangle)=i(\alpha|1\rangle-\beta|0\rangle)$
+    \item [2.] Show that $Y$ switches the Hadamard basis vectors. (Remember global phase.)
 \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 6:} Let's explore this non-equivalence. Consider the first way (tensoring two vectors):
-$$|\psi\rangle=(\alpha|0\rangle+\beta|1\rangle) \otimes(\gamma|0\rangle+\delta|1\rangle)$$
-and the second way (using the larger basis vectors):
-$$|\phi\rangle=a_{00}|00\rangle+a_{01}|01\rangle+a_{10}|10\rangle+a_{11}|11\rangle$$
-For each $|\phi\rangle$ below
+\item[] \textbf{In-Class Exercise 2:} Prove the identity $YZ=-ZY=iX$
+
+\item[] \textbf{In-Class Exercise 3:} Derive the matrix for $R_{Z}(\theta)$ and show that it is unitary. Is it Hermitian?
+
+\item[] \textbf{In-Class Exercise 4:} Show that the three operators $T, R, K$ commute with different parameters:
 \begin{enumerate}
-    \item[1.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|10\rangle+|11\rangle)$
-    \item[2.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle)$
+    \item [1.] $T\left(\alpha_{1}\right) T\left(\alpha_{2}\right)=T\left(\alpha_{2}\right) T\left(\alpha_{1}\right)$
+    \item [2.] $R\left(\beta_{1}\right) R\left(\beta_{2}\right)=R\left(\beta_{2}\right) R\left(\beta_{1}\right)$
+    \item [3.] $K\left(\delta_{1}\right) K\left(\delta_{2}\right)=K\left(\delta_{2}\right) K\left(\delta_{1}\right)$ 
 \end{enumerate}
- identify the coefficients $a_{00}, \ldots, a_{11}$, then reason about whether the equation $|\psi\rangle=|\phi\rangle$ can be solved for $\alpha, \beta, \gamma, \delta$.
 
-\item[] \textbf{In-Class Exercise 7:} Complete the missing proof steps above (propositions $4.3,4.6($ ii $), 4.12)$.
+\item[] \textbf{In-Class Exercise 5:} Show that $P\theta$ is unitary. 
 
-\item[] \textbf{In-Class Exercise 8:} Calculate the matrix form of the projectors
-    \begin{enumerate}
-        \item[1.] $|0 \otimes 0\rangle\langle 0 \otimes 0|$
-        \item[2.] $|0 \otimes 1\rangle\langle 0 \otimes 1|$
-        \item[3.] $|1 \otimes 0\rangle\langle 1 \otimes 0|$
-        \item[4.] $|1 \otimes 1\rangle\langle 1 \otimes 1|$
-    \end{enumerate}
+\item[] \textbf{In-Class Exercise 6:} Show that the same property that we derived for $Z$ can be derived for $X$, that is, $e^{-i \frac{\pi}{2} X}=-i X$. This means fractional powers of $X$ can be computed in the same way, as shown in one of the solved examples.
 
-\item[] \textbf{In-Class Exercise 9:} Use the just-described approach above to write $|0\rangle\langle 0|\otimes| 1\rangle\langle 0|$ as a single outer-product using the 2-qubit basis vectors, and then confirm your results by working through the matrix versions.
+\item[] \textbf{In-Class Exercise 7:} Show the two $Y$ properties:
+\begin{enumerate}
+    \item [1.] $H Y H=-Y$
+    \item [2.] $H R_{Y}(\theta) H=R_{Y}(-\theta)$
+\end{enumerate}
 
-\item[] \textbf{In-Class Exercise 10:} Compute the projector $|0,+\rangle\langle 0,+|$ in two ways:
-    \begin{enumerate}
-        \item[1.] Write out the column and row forms of $|0,+\rangle$ and then tensor.
-        \item[2.]  Tensor the smaller projectors using Proposition $4.5$.
-    \end{enumerate}
+\item[] \textbf{In-Class Exercise 8:} 
+\begin{enumerate}
+    \item [1.]  Compute $R_{Z}\left(\frac{\pi}{2}\right) R_{X}\left(\frac{\pi}{2}\right) R_{Z}\left(\frac{\pi}{2}\right)$
+    \item [2.] Then show that $H=K\left(\frac{\pi}{2}\right) R_{Z}\left(\frac{\pi}{2}\right) R_{X}\left(\frac{\pi}{2}\right) R_{Z}\left(\frac{\pi}{2}\right)$
+\end{enumerate}
 
-\item[] \textbf{In-Class Exercise 11:} Compute the matrix resulting from adding the operators $|0\rangle\langle 1|+| 1\rangle\langle 0|$ and apply that to $|1\rangle .$
+\item[] \textbf{In-Class Exercise 9:} 
+\begin{enumerate}
+    \item [1.] Verify that $Y^{\frac{1}{2}} Z K\left(-\frac{\pi}{4}\right)=H$.
+    \item [2.] Compute the three vectors $\left|\psi_{1}\right\rangle,\left|\psi_{2}\right\rangle,\left|\psi_{3}\right\rangle$ at each step.
+\end{enumerate}
 
-\item[] \textbf{In-Class Exercise 12:} Use both the outer-product and regular matrix approaches to show $Z=H X H$.
+\item[] \textbf{In-Class Exercise 10:} Write down the Dirac and matrix forms of the two versions of the "upside-down", once with $|1\rangle$ achieving the flip, and once with $|0\rangle$. Show using Dirac notation that each is its own inverse. 
 
-\item[] \textbf{In-Class Exercise 13:}  Show that the four Bell vectors do in fact form a basis for the 2-qubit vector space.
+\item[] \textbf{In-Class Exercise 11:} Use matrices or Dirac forms to show both results above:
+\begin{enumerate}
+    \item [1.] $\bar{C}_{\mathrm{Z}}=C_{\mathrm{Z}}$
+    \item [2.] $C_{\text {NOT }}=(I \otimes H) C_{Z}(I \otimes H)$
+\end{enumerate}
+
+\item[] \textbf{In-Class Exercise 12:}
+\begin{enumerate}
+    \item [1.] Use either matrices or Dirac forms to show SWAP $=C_{N O T} \bar{C}_{NOT} C_{NOT}$
+    \item [2.] Sketch the staged circuit for swapping the first and eighth qubits. (Your drawing can be rough, and scanned from paper.)
+    \item [3.] With $n=2^{m}$ qubits, how many SWAP gates are needed to swap the first and last qubits?
+\end{enumerate}
+ 
+\item[] \textbf{In-Class Exercise 13:} Complete the remaining two steps in showing $\left(I \otimes \bar{C}_{\text {NOT }}\right) C C_{\text {NOT }}\left(I \otimes \bar{C}_{\text {NOT }}\right)$.
+
+\item[] \textbf{In-Class Exercise 14:} Use the above idea to draw the circuit that converts $|110\rangle$ to $|001\rangle$.
 
 \end{enumerate}
 \end{document}

@@ -8,14 +8,57 @@
 
 \item[] \textbf{In-Class Exercise 1:} Use the Dirac form and
 \begin{enumerate}
-    \item [1.] Show that $Y(\alpha|0\rangle+\beta|1\rangle)=i(\alpha|1\rangle-\beta|0\rangle)$
-    \item [2.] Show that $Y$ switches the Hadamard basis vectors. (Remember global phase.)
+    \item [1.] \textbf{Q.} Show that $Y(\alpha|0\rangle+\beta|1\rangle)=i(\alpha|1\rangle-\beta|0\rangle)$ \textbf{A.}
+    \begin{align*}
+        Y(\alpha|0\rangle + \beta |1\rangle)    & = (-i|0\rangle\langle1| + i|1\rangle\langle0|)
+                                                (\alpha|0\rangle + \beta |1\rangle)\\
+                                                & = -i\beta|0\rangle + i\alpha|1\rangle\\
+                                                & = i(\alpha|1\rangle-\beta|0\rangle)
+    \end{align*}        
+    \item [2.] \textbf{Q.} Show that $Y$ switches the Hadamard basis vectors. (Remember global phase.) \textbf{A.}
+    \begin{align*}
+        Y|+\rangle  & = (-i|0\rangle\langle 1|+i| 1\rangle\langle 0|)\frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)\\
+                    & = \frac{i}{\sqrt{2}}(|0\rangle - |1\rangle)\\
+                    & = i|-\rangle\\
+        Y|-\rangle  & = (-i|0\rangle\langle 1|+i| 1\rangle\langle 0|)\frac{1}{\sqrt{2}}(|0\rangle - |1\rangle)\\
+                    & = \frac{i}{\sqrt{2}}(|0\rangle + |1\rangle)\\
+                    & = i|+\rangle\\
+    \end{align*}
 \end{enumerate}
 
-\item[] \textbf{In-Class Exercise 2:} Prove the identity $YZ=-ZY=iX$
+\item[] \textbf{In-Class Exercise 2:} \textbf{Q.} Prove the identity $YZ=-ZY=iX$ \textbf{A.}
+    \begin{align*}
+        YZ  & = (-i|0\rangle\langle1| + i|1\rangle\langle0|)(|0\rangle\langle0| - |1\rangle\langle1|)\\
+            & = i|0\rangle\langle1| + i|1\rangle\langle 0|\\
+            & = -(|0\rangle\langle0| - |1\rangle\langle1|)(-i|0\rangle\langle1| + i|1\rangle\langle0|)\\
+            & = -ZY\\
+            & = i|0\rangle\langle1| + i|1\rangle\langle 0|\\
+            & = iX
+    \end{align*}
 
-\item[] \textbf{In-Class Exercise 3:} Derive the matrix for $R_{Z}(\theta)$ and show that it is unitary. Is it Hermitian?
-
+\item[] \textbf{In-Class Exercise 3:} \textbf{Q.} Derive the matrix for $R_{Z}(\theta)$ and show that it is unitary. Is it Hermitian? \textbf{A.}
+    \begin{align*}
+        R_{Z}(\theta)               & = e^{\frac{-i \theta}{2} Z}\\
+                                    & = I\cos \frac{\theta}{2} - i Z\sin\frac{\theta}{2}\\
+                                    & = \cos\frac{\theta}{2}\left[\begin{array}{ll}1&0\\0&1\end{array}\right]
+                                    -\sin\frac{\theta}{2}\left[\begin{array}{ll}i&0\\0&-i\end{array}\right]\\
+                                    & = \left[\begin{array}{cc}e^{\frac{-i \theta}{2}} & 0 \\ 
+                                    0 & e^{\frac{i \theta}{2}}\end{array}\right]\\
+        \left[\begin{array}{ll}
+        e^{\frac{-i \theta}{2}}&0\\ 
+        0 & e^{\frac{i \theta}{2}}
+        \end{array}\right]
+        \left[\begin{array}{ll}
+        e^{\frac{-i \theta}{2}}&0\\ 
+        0 & e^{\frac{i \theta}{2}}
+        \end{array}\right]^*        & = \left[\begin{array}{ll}e^0&0\\0&e^0\end{array}\right]\\
+                                    & = I\\
+        R_{Z}(\theta)^{\dagger}     & = \left[\begin{array}{ll}e^{\frac{i \theta}{2}}&0\\
+                                    0 & e^{\frac{-i \theta}{2}}\end{array}\right]\\
+                                    & \neq R_{Z}(\theta)
+    \end{align*}
+    $R_{Z}(\theta)$ is not Hermitian.
+    
 \item[] \textbf{In-Class Exercise 4:} Show that the three operators $T, R, K$ commute with different parameters:
 \begin{enumerate}
     \item [1.] $T\left(\alpha_{1}\right) T\left(\alpha_{2}\right)=T\left(\alpha_{2}\right) T\left(\alpha_{1}\right)$

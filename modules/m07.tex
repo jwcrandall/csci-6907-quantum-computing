@@ -1,66 +1,67 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/module4.html}{Module 4: Quantum Linear Algebra Part 2}\\
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/problems3.html}{Module-4 solved Problems}
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module7/module7.html}{Module 7: Quantum circuits - Universality}\\
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module7/problems7.html}{Module-7 Solved Problems}
 
 \begin{enumerate}
 
-\item[] \textbf{In-Class Exercise 1:} Compute the following tensor products in column format:
-    \begin{enumerate}
-        \item[1.] $|+\rangle \otimes|+\rangle$
-        \item[2.] $|+\rangle \otimes|0\rangle$
-    \end{enumerate}
+\item[] \textbf{In-Class Exercise 1:}\textbf{Q.} Show that \textbf{A.}
+\begin{align*}
+     K(\delta) T(\alpha) R(\beta) T(\gamma) & = \left[\begin{array}{cc}e^{i\delta}&0\\0&e^{i\delta}\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\alpha}&0\\0&e^{-i\alpha}\end{array}\right]
+                                            \left[\begin{array}{cc}\cos\beta&\sin\beta\\-\sin\beta&\cos\beta\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\gamma}&0\\0&e^{-i\gamma}\end{array}\right]\\
+                                            & = \left[\begin{array}{cc}e^{i(\delta+\alpha)}&0\\0&e^{i(\delta-\alpha)}\end{array}\right]
+                                            \left[\begin{array}{cc}\cos\beta&\sin\beta\\-\sin\beta&\cos\beta\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\gamma}&0\\0&e^{-i\gamma}\end{array}\right]\\
+                                            & = \left[\begin{array}{ll}e^{i(\delta+\alpha)\cos\beta}& e^{i(\delta+\alpha)\sin\beta}\\
+                                            -e^{i(\delta-\alpha)\sin\beta}&e^{i(\delta-\alpha)\cos\beta}\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\gamma}&0\\0&e^{-i\gamma}\end{array}\right]\\    
+                                            & = \left[\begin{array}{cc}
+                                            e^{i(\delta+\alpha+\gamma)} \cos \beta & e^{i(\delta+\alpha-\gamma)} \sin \beta \\
+                                            -e^{i(\delta-\alpha+\gamma)} \sin \beta & e^{i(\delta-\alpha-\gamma)} \cos \beta
+                                            \end{array}\right]
+\end{align*}
+   
 
-\item[] \textbf{In-Class Exercise 2:} Evaluate the inner product $\langle\mid 0\rangle \otimes|+\rangle||+\rangle \otimes|0\rangle\rangle$.
+\item[] \textbf{In-Class Exercise 2:} \textbf{Q.} What parameter values for $\alpha, \beta, \gamma, \delta$ result in the Hadamard gate? \textbf{A.}
+\begin{align*}
+                                    & \left[\begin{array}{ll}e^{i \theta_{00}} \cos \beta & e^{i \theta_{01}} \sin \beta \\
+                                    -e^{i \theta_{10}} \sin \beta & e^{i \theta_{11}} \cos \beta\end{array}\right]\\
+    \delta+\alpha+\gamma            & = \theta_{00} \\
+    \delta+\alpha-\gamma            & = \theta_{01} \\
+    \delta-\alpha+\gamma            & = \theta_{10} \\
+    \delta-\alpha-\gamma            & = \theta_{11} \\
+    \alpha                          & = \frac{-\pi}{2}\\
+    \beta                           & = \frac{\pi}{4}\\
+    \gamma                          & = 0\\
+    \delta                          & = \frac{\pi}{2}\\
+    \left[\begin{array}{ll}
+    e^{0}\cos\frac{\pi}{4}&
+    e^{0}\sin\frac{\pi}{4}\\
+    -e^{i\pi}\sin\frac{\pi}{4}&
+    e^{i\pi}\cos\frac{\pi}{4}
+    \end{array}\right]              & = \frac{1}{\sqrt{2}}\left[\begin{array}{ll}1&1\\1&-1\end{array}\right]
+\end{align*}
 
-\item[] \textbf{In-Class Exercise 3:} Fill in the missing steps in the matrix tensor derivation above.
-
-\item[] \textbf{In-Class Exercise 4:} In-Class Exercise $4:$ Write down the single qubit matrices $|0\rangle\langle 0|,| 1\rangle\langle 1$, , and then calculate
-$$|0\rangle\langle 0|\otimes I+| 1\rangle\langle 1| \otimes X$$
-where $X=\left[\begin{array}{ll}0 & 1 \\ 1 & 0\end{array}\right]$. The result is one of the most important operators in quantum computing called $C_{N O r}$.
-
-\item[] \textbf{In-Class Exercise 5:} Recall that $H$ is the Hadamard operator 
-$H=\left[\begin{array}{cc}\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\end{array}\right]$
-\begin{enumerate}
-    \item[1.] Compute and compare $H|0\rangle \otimes H|0\rangle$ and $(H \otimes H)(|0\rangle \otimes|0\rangle$
-    \item[2.] Show that $(H \otimes H)\left(|0\rangle \otimes|0\rangle=\frac{1}{2}(|0\rangle \otimes|0\rangle+|0\rangle \otimes|1\rangle+|1\rangle \otimes|0\rangle+|1\rangle \otimes|1\rangle)\right.$
-\end{enumerate}
-
-\item[] \textbf{In-Class Exercise 6:} Let's explore this non-equivalence. Consider the first way (tensoring two vectors):
-$$|\psi\rangle=(\alpha|0\rangle+\beta|1\rangle) \otimes(\gamma|0\rangle+\delta|1\rangle)$$
-and the second way (using the larger basis vectors):
-$$|\phi\rangle=a_{00}|00\rangle+a_{01}|01\rangle+a_{10}|10\rangle+a_{11}|11\rangle$$
-For each $|\phi\rangle$ below
-\begin{enumerate}
-    \item[1.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|10\rangle+|11\rangle)$
-    \item[2.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle)$
-\end{enumerate}
- identify the coefficients $a_{00}, \ldots, a_{11}$, then reason about whether the equation $|\psi\rangle=|\phi\rangle$ can be solved for $\alpha, \beta, \gamma, \delta$.
-
-\item[] \textbf{In-Class Exercise 7:} Complete the missing proof steps above (propositions $4.3,4.6($ ii $), 4.12)$.
-
-\item[] \textbf{In-Class Exercise 8:} Calculate the matrix form of the projectors
-    \begin{enumerate}
-        \item[1.] $|0 \otimes 0\rangle\langle 0 \otimes 0|$
-        \item[2.] $|0 \otimes 1\rangle\langle 0 \otimes 1|$
-        \item[3.] $|1 \otimes 0\rangle\langle 1 \otimes 0|$
-        \item[4.] $|1 \otimes 1\rangle\langle 1 \otimes 1|$
-    \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 9:} Use the just-described approach above to write $|0\rangle\langle 0|\otimes| 1\rangle\langle 0|$ as a single outer-product using the 2-qubit basis vectors, and then confirm your results by working through the matrix versions.
-
-\item[] \textbf{In-Class Exercise 10:} Compute the projector $|0,+\rangle\langle 0,+|$ in two ways:
-    \begin{enumerate}
-        \item[1.] Write out the column and row forms of $|0,+\rangle$ and then tensor.
-        \item[2.]  Tensor the smaller projectors using Proposition $4.5$.
-    \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 11:} Compute the matrix resulting from adding the operators $|0\rangle\langle 1|+| 1\rangle\langle 0|$ and apply that to $|1\rangle .$
-
-\item[] \textbf{In-Class Exercise 12:} Use both the outer-product and regular matrix approaches to show $Z=H X H$.
-
-\item[] \textbf{In-Class Exercise 13:}  Show that the four Bell vectors do in fact form a basis for the 2-qubit vector space.
+\item[] \textbf{In-Class Exercise 3:} \textbf{Q.} The first four were shown earlier. Prove the latter two using matrix representations. \textbf{A.}
+\begin{align*}
+    X R(\beta) X    & = \left[\begin{array}{ll}0&1\\1&0\end{array}\right]
+                    \left[\begin{array}{ll}\cos\beta&\sin\beta\\-\sin\beta&\cos\beta\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}-\sin\beta&\cos\beta\\\cos\beta&\sin\beta\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}\cos\beta&-\sin\beta\\\sin\beta&\cos\beta\end{array}\right]\\
+                    & = R(-\beta) \\
+    X T(\alpha) X   & = \left[\begin{array}{ll}0&1\\1&0\end{array}\right]
+                    \left[\begin{array}{ll}e^{i\alpha}&0\\0&e^{-i\alpha}\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}0&e^{-i\alpha}\\e^{i\alpha}&0\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}e^{-i\alpha}&0\\0&e^{i\alpha}\end{array}\right]\\ 
+                    & = T(-\alpha)
+\end{align*}
 
 \end{enumerate}
 \end{document}

@@ -1,66 +1,17 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/module4.html}{Module 4: Quantum Linear Algebra Part 2}\\
-\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module4/problems3.html}{Module-4 solved Problems}
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module8/module8.html}{Module 8: Quantum circuits - reversible construction}\\
 
 \begin{enumerate}
 
-\item[] \textbf{In-Class Exercise 1:} Compute the following tensor products in column format:
-    \begin{enumerate}
-        \item[1.] $|+\rangle \otimes|+\rangle$
-        \item[2.] $|+\rangle \otimes|0\rangle$
-    \end{enumerate}
+\item[] \textbf{In-Class Exercise 1:} Write out the AND-with- $X$ and OR-with- $X$ tables. Are these gates reversible?
 
-\item[] \textbf{In-Class Exercise 2:} Evaluate the inner product $\langle\mid 0\rangle \otimes|+\rangle||+\rangle \otimes|0\rangle\rangle$.
+\item[] \textbf{In-Class Exercise 2:} Show how the Fredkin gate can implement the classical AND and OR gates.
 
-\item[] \textbf{In-Class Exercise 3:} Fill in the missing steps in the matrix tensor derivation above.
+\item[] \textbf{In-Class Exercise 3:} Verify that the above circuit does indeed represent the functionality of a full adder.
 
-\item[] \textbf{In-Class Exercise 4:} In-Class Exercise $4:$ Write down the single qubit matrices $|0\rangle\langle 0|,| 1\rangle\langle 1$, , and then calculate
-$$|0\rangle\langle 0|\otimes I+| 1\rangle\langle 1| \otimes X$$
-where $X=\left[\begin{array}{ll}0 & 1 \\ 1 & 0\end{array}\right]$. The result is one of the most important operators in quantum computing called $C_{N O r}$.
-
-\item[] \textbf{In-Class Exercise 5:} Recall that $H$ is the Hadamard operator 
-$H=\left[\begin{array}{cc}\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\end{array}\right]$
-\begin{enumerate}
-    \item[1.] Compute and compare $H|0\rangle \otimes H|0\rangle$ and $(H \otimes H)(|0\rangle \otimes|0\rangle$
-    \item[2.] Show that $(H \otimes H)\left(|0\rangle \otimes|0\rangle=\frac{1}{2}(|0\rangle \otimes|0\rangle+|0\rangle \otimes|1\rangle+|1\rangle \otimes|0\rangle+|1\rangle \otimes|1\rangle)\right.$
-\end{enumerate}
-
-\item[] \textbf{In-Class Exercise 6:} Let's explore this non-equivalence. Consider the first way (tensoring two vectors):
-$$|\psi\rangle=(\alpha|0\rangle+\beta|1\rangle) \otimes(\gamma|0\rangle+\delta|1\rangle)$$
-and the second way (using the larger basis vectors):
-$$|\phi\rangle=a_{00}|00\rangle+a_{01}|01\rangle+a_{10}|10\rangle+a_{11}|11\rangle$$
-For each $|\phi\rangle$ below
-\begin{enumerate}
-    \item[1.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|10\rangle+|11\rangle)$
-    \item[2.]$|\phi\rangle=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle)$
-\end{enumerate}
- identify the coefficients $a_{00}, \ldots, a_{11}$, then reason about whether the equation $|\psi\rangle=|\phi\rangle$ can be solved for $\alpha, \beta, \gamma, \delta$.
-
-\item[] \textbf{In-Class Exercise 7:} Complete the missing proof steps above (propositions $4.3,4.6($ ii $), 4.12)$.
-
-\item[] \textbf{In-Class Exercise 8:} Calculate the matrix form of the projectors
-    \begin{enumerate}
-        \item[1.] $|0 \otimes 0\rangle\langle 0 \otimes 0|$
-        \item[2.] $|0 \otimes 1\rangle\langle 0 \otimes 1|$
-        \item[3.] $|1 \otimes 0\rangle\langle 1 \otimes 0|$
-        \item[4.] $|1 \otimes 1\rangle\langle 1 \otimes 1|$
-    \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 9:} Use the just-described approach above to write $|0\rangle\langle 0|\otimes| 1\rangle\langle 0|$ as a single outer-product using the 2-qubit basis vectors, and then confirm your results by working through the matrix versions.
-
-\item[] \textbf{In-Class Exercise 10:} Compute the projector $|0,+\rangle\langle 0,+|$ in two ways:
-    \begin{enumerate}
-        \item[1.] Write out the column and row forms of $|0,+\rangle$ and then tensor.
-        \item[2.]  Tensor the smaller projectors using Proposition $4.5$.
-    \end{enumerate}
-
-\item[] \textbf{In-Class Exercise 11:} Compute the matrix resulting from adding the operators $|0\rangle\langle 1|+| 1\rangle\langle 0|$ and apply that to $|1\rangle .$
-
-\item[] \textbf{In-Class Exercise 12:} Use both the outer-product and regular matrix approaches to show $Z=H X H$.
-
-\item[] \textbf{In-Class Exercise 13:}  Show that the four Bell vectors do in fact form a basis for the 2-qubit vector space.
+\item[] \textbf{In-Class Exercise 4:} Use the above approach to derive the outer-product form and matrix for the unitary version of a classical OR gate.
 
 \end{enumerate}
 \end{document}

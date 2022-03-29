@@ -70,7 +70,43 @@
         \label{fig:FredkinOR}
     \end{figure}
 
-\item[] \textbf{In-Class Exercise 3:} \textbf{Q.} Verify that the above circuit does indeed represent the functionality of a full adder. \textbf{A.}
+\item[] \textbf{In-Class Exercise 3:} \textbf{Q.} Verify that the above circuit does indeed represent the functionality of a full adder. \textbf{A.} Figure \ref{fig:FullAdder} illustrates the full adder and Table \ref{tab:FullAdderPermutations} enumerates its permutations.
+
+     \begin{figure}
+        \centering
+        \includegraphics[width=6in]{modules/figs/m08/FullAdder.png}
+        \caption{Full Adder}
+        \label{fig:FullAdder}
+    \end{figure}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{ |c|c|c|c|c|c|c|c| } 
+         \hline
+         \multicolumn{4}{|c|}{Inputs} & \multicolumn{4}{c|}{Outputs} \\ 
+         \hline
+         $|x\rangle$ & $|y\rangle$ & $|c-in\rangle$ & $|0\rangle$ & $|x\rangle$ & $|y\rangle$ & $|s\rangle$ & $|c-out\rangle$ \\ 
+         \hline
+         0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+         \hline
+         0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\ 
+         \hline
+         0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 \\ 
+         \hline
+         0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 \\ 
+         \hline
+         1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\ 
+         \hline
+         1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 \\ 
+         \hline
+         1 & 1 & 0 & 0 & 1 & 1 & 0 & 1 \\ 
+         \hline
+         1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\ 
+         \hline
+        \end{tabular}
+        \caption{Full Adder Permutations}
+        \label{tab:FullAdderPermutations}
+    \end{table}
 
 \item[] \textbf{In-Class Exercise 4:} \textbf{Q.} Use the above approach to derive the outer-product form and matrix for the unitary version of a classical OR gate. \textbf{A.}
 

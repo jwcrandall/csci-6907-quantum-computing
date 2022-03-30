@@ -108,7 +108,75 @@
         \label{tab:FullAdderPermutations}
     \end{table}
 
-\item[] \textbf{In-Class Exercise 4:} \textbf{Q.} Use the above approach to derive the outer-product form and matrix for the unitary version of a classical OR gate. \textbf{A.}
+\item[] \textbf{In-Class Exercise 4:} \textbf{Q.} Use the above approach to derive the outer-product form and matrix for the unitary version of a classical OR gate. 
+    \textbf{A.} Figure \ref{fig:UVOR} spatially describes Table \ref{tab:UnitaryOR} which is used to write the input-output vector transformation 
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=3in]{modules/figs/m08/UVOR.png}
+        \caption{Unitary version of classical OR gate}
+        \label{fig:UVOR}
+    \end{figure}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{ |c|c|c|c|c|c| } 
+         \hline
+         \multicolumn{3}{|c|}{Inputs} & \multicolumn{3}{c|}{Outputs} \\ 
+         \hline
+         $x_1$ & $x_2$ & $y$ & $x_1$ & $x_2$ & $y\oplus\left(x_{1}\vee x_{2}\right)$ \\ 
+         \hline
+         0 & 0 & 0 & 0 & 0 & 0\\ 
+         \hline
+         0 & 0 & 1 & 0 & 0 & 1\\ 
+         \hline
+         0 & 1 & 0 & 0 & 1 & 1\\ 
+         \hline
+         0 & 1 & 1 & 0 & 1 & 0\\ 
+         \hline
+         1 & 0 & 0 & 1 & 0 & 1\\ 
+         \hline
+         1 & 0 & 1 & 1 & 0 & 0\\ 
+         \hline
+         1 & 1 & 0 & 1 & 1 & 1\\ 
+         \hline
+         1 & 1 & 1 & 1 & 1 & 0\\ 
+         \hline
+        \end{tabular}
+        \caption{Unitary OR}
+        \label{tab:UnitaryOR}
+    \end{table}
+
+    \begin{align*}
+        |000\rangle & \rightarrow|000\rangle\\
+        |001\rangle & \rightarrow|001\rangle\\
+        |010\rangle & \rightarrow|011\rangle\\
+        |011\rangle & \rightarrow|010\rangle\\
+        |100\rangle & \rightarrow|101\rangle\\
+        |101\rangle & \rightarrow|100\rangle\\
+        |110\rangle & \rightarrow|111\rangle\\
+        |111\rangle & \rightarrow|110\rangle\\
+    \end{align*}
+
+    with corresponding operator written using the sum of outer-products
+    
+    \begin{align*}
+        P = &|000\rangle\langle 000|+| 001\rangle\langle 001|+| 010\rangle\langle 011|+| 011\rangle\langle 010|+\\ 
+            & |100\rangle\langle 101|+| 101\rangle\langle 100|+| 110\rangle\langle 111|+| 111\rangle\langle 110|
+    \end{align*}
+
+    which in matrix form is:
+    
+    \begin{align*}
+        \left[\begin{array}{llllllll}1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+        0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+        0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 
+        0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
+        0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 
+        0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ 
+        0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\end{array}\right]
+    \end{align*}
 
 \end{enumerate}
 \end{document}
